@@ -1,0 +1,6 @@
+framework module Pods_AndreySandbox {
+  umbrella header "Pods-AndreySandbox-umbrella.h"
+
+  export *
+  module * { export * }
+}
