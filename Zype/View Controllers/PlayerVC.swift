@@ -135,9 +135,11 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
         } else if let type = presses.first?.type, type == .menu
         {
             print("menu clicked")
-            
-            let timeStamp = self.playerController.player?.currentTime().seconds
-            userDefaults.setValue(timeStamp, forKey: "\(playerURL)")
+            if !currentVideo.onAir
+            {
+                let timeStamp = self.playerController.player?.currentTime().seconds
+                userDefaults.setValue(timeStamp, forKey: "\(currentVideo.getId())")
+            }
             
             NotificationCenter.default.removeObserver(self)
             if self.adPlayer != nil
@@ -422,7 +424,8 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
         
         // resume if possible
-        if let timeStamp = userDefaults.object(forKey: "\(playerURL)")
+        
+        if let timeStamp = userDefaults.object(forKey: "\(currentVideo.getId())")
         {
             let time = CMTimeMakeWithSeconds(timeStamp as! Float64, 1)
             player.seek(to: time)
