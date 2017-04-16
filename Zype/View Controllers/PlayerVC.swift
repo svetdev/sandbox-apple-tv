@@ -13,25 +13,25 @@ import ZypeAppleTVBase
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
 }
 
 // FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
 // Consider refactoring the code to use the non-optional operators.
 fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
 }
 
 
@@ -52,6 +52,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
     var adsData: [adObject] = [adObject]()
     
     var currentTime : CMTime!
+    var userDefaults = UserDefaults.standard
     
     deinit {
         print("Destroying")
@@ -134,6 +135,10 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
         } else if let type = presses.first?.type, type == .menu
         {
             print("menu clicked")
+            
+            let timeStamp = self.playerController.player?.currentTime().seconds
+            userDefaults.setValue(timeStamp, forKey: "\(playerURL)")
+            
             NotificationCenter.default.removeObserver(self)
             if self.adPlayer != nil
             {
@@ -208,7 +213,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
                     NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.addAdLabel), name: NSNotification.Name(rawValue: "adPlaying"), object: nil)
                     
                     //this is called when there are ad tags, but they don't return any ads
-                     NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.removeAdsAndPlayVideo), name: NSNotification.Name(rawValue: "noAdsToPlay"), object: nil)
+                    NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.removeAdsAndPlayVideo), name: NSNotification.Name(rawValue: "noAdsToPlay"), object: nil)
                     
                     NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.adPlayer!.contentPlayerItem)
                 }
@@ -221,7 +226,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
                 self.navigationController?.popViewController(animated: true)
                 displayError(error)
             }
-            })
+        })
     }
     
     func contentDidFinishPlaying(_ notification: Notification)
@@ -271,7 +276,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
         else if self.adPlayer!.status == .failed
         {
             print("ad player failed")
-        
+            
             self.removeAdPlayer()
             
             self.setupVideoPlayer()
@@ -415,7 +420,18 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
         self.view.addSubview(self.playerController.view)
         self.playerController.view.frame = self.view.frame
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
-        player.play()
+        
+        // resume if possible
+        if let timeStamp = userDefaults.object(forKey: "\(playerURL)")
+        {
+            let time = CMTimeMakeWithSeconds(timeStamp as! Float64, 1)
+            player.seek(to: time)
+            player.play()
+        }
+        else
+        {
+            player.play()
+        }
     }
     
     func addAdLabel() {
