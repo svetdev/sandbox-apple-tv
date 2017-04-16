@@ -424,12 +424,18 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
         
         // resume if possible
-        
-        if let timeStamp = userDefaults.object(forKey: "\(currentVideo.getId())")
+        if !currentVideo.onAir
         {
-            let time = CMTimeMakeWithSeconds(timeStamp as! Float64, 1)
-            player.seek(to: time)
-            player.play()
+            if let timeStamp = userDefaults.object(forKey: "\(currentVideo.getId())")
+            {
+                let time = CMTimeMakeWithSeconds(timeStamp as! Float64, 1)
+                player.seek(to: time)
+                player.play()
+            }
+            else
+            {
+                player.play()
+            }
         }
         else
         {
