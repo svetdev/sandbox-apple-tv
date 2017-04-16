@@ -430,17 +430,9 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
             {
                 let time = CMTimeMakeWithSeconds(timeStamp as! Float64, 1)
                 player.seek(to: time)
-                player.play()
-            }
-            else
-            {
-                player.play()
             }
         }
-        else
-        {
-            player.play()
-        }
+        player.play()
     }
     
     func addAdLabel() {
