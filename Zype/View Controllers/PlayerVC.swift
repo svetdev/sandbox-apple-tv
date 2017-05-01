@@ -162,17 +162,17 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
         super.pressesEnded(presses, with: event)
     }
     
-    func videoReachedEnd(_ notification: Notification) {
-        if let _ = self.playlist,
-            let currentVideoIndex = self.playlist?.index(of: self.currentVideo), self.playlist?.count > 0 {
-            if(currentVideoIndex + 1 < self.playlist!.count) {
-                let nextVideo = self.playlist![currentVideoIndex + 1]
-                self.play(nextVideo)
-            } else {
-                self.play(self.playlist!.first!)
-            }
-        }
-    }
+//    func videoReachedEnd(_ notification: Notification) {
+//        if let _ = self.playlist,
+//            let currentVideoIndex = self.playlist?.index(of: self.currentVideo), self.playlist?.count > 0 {
+//            if(currentVideoIndex + 1 < self.playlist!.count) {
+//                let nextVideo = self.playlist![currentVideoIndex + 1]
+//                self.play(nextVideo)
+//            } else {
+//                self.play(self.playlist!.first!)
+//            }
+//        }
+//    }
     
     func play(_ model: VideoModel)
     {
@@ -184,7 +184,9 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
                 self.playerURL = url as URL!
 
                 if adsArray.count == 0
+//                if true
                 {
+                    self.currentVideo = model
                     self.setupVideoPlayer()
                 }
                 else
@@ -224,7 +226,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate
                 }
                 
                 self.currentVideo = model
-                
+
             }
             else
             {
