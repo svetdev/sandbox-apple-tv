@@ -247,10 +247,10 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.removeAdTimer), name: NSNotification.Name(rawValue: "removeAdTimer"), object: nil)
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.addAdLabel), name: NSNotification.Name(rawValue: "adPlaying"), object: nil)
-        if let player = playerView {
-            addAdLabel(player: player)
-        }
+        NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.addAdLabel), name: NSNotification.Name(rawValue: "adPlaying"), object: nil)
+//        if let player = playerView {
+//            addAdLabel(player: player)
+//        }
         
         
         //this is called when there are ad tags, but they don't return any ads
