@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47102CDC1ECBA02F0060AF02 /* AdProtocolDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47102CDB1ECBA02F0060AF02 /* AdProtocolDelegate.swift */; };
 		A161E9CA1DDBBAA800D01C70 /* DVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A161E99F1DDBBAA800D01C70 /* DVPlayerView.m */; };
 		A161E9CB1DDBBAA800D01C70 /* DVIABPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A161E9A31DDBBAA800D01C70 /* DVIABPlayer.m */; };
 		A161E9CC1DDBBAA800D01C70 /* DVInlineVideoAd.m in Sources */ = {isa = PBXBuildFile; fileRef = A161E9A51DDBBAA800D01C70 /* DVInlineVideoAd.m */; };
@@ -73,6 +74,7 @@
 
 /* Begin PBXFileReference section */
 		28A1B0A9766255E45D8A6F76 /* Pods-AndreySandbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AndreySandbox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AndreySandbox/Pods-AndreySandbox.debug.xcconfig"; sourceTree = "<group>"; };
+		47102CDB1ECBA02F0060AF02 /* AdProtocolDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdProtocolDelegate.swift; sourceTree = "<group>"; };
 		8A486B9044ECBA209379902E /* Pods_AndreySandbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AndreySandbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A161E99E1DDBBAA800D01C70 /* DVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPlayerView.h; sourceTree = "<group>"; };
 		A161E99F1DDBBAA800D01C70 /* DVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPlayerView.m; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				F55957DA1BD7D1B2004A01A9 /* SDKHelpers.swift */,
 				F55732131BDA4EBC00D323A0 /* Utils.swift */,
 				F55940381C048F2700A0ECFF /* FadeNavigationAnimationController.swift */,
+				47102CDB1ECBA02F0060AF02 /* AdProtocolDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				A161E9CF1DDBBAA800D01C70 /* DVVideoAdServingTemplate+Parsing.m in Sources */,
 				F55732141BDA4EBC00D323A0 /* Utils.swift in Sources */,
 				F5534D251BCFC64100BEA509 /* FavoritesVC.swift in Sources */,
+				47102CDC1ECBA02F0060AF02 /* AdProtocolDelegate.swift in Sources */,
 				F5577D931BCE4FDC00F174CE /* URLImageView.swift in Sources */,
 				A161E9CB1DDBBAA800D01C70 /* DVIABPlayer.m in Sources */,
 				A161E9DA1DDBBAA800D01C70 /* DDXMLElement.m in Sources */,
