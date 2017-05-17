@@ -148,43 +148,6 @@ extension PlayerVC: AdHelperProtocol {
     }
     
     
-    func adTimerDidFire() {
-        self.isSkippable = false
-        if let viewWithTag = self.view.viewWithTag(1001) {
-            viewWithTag.removeFromSuperview()
-        }
-        let screenSize = UIScreen.main.bounds
-        let skipView = UIView(frame: CGRect(x: screenSize.width,
-                                            y: screenSize.height - 300,
-                                            width: 400,
-                                            height: 200))
-
-        skipView.tag = 1001
-        skipView.backgroundColor = UIColor.black
-        skipView.alpha = 0.7
-        let skipLabel = UILabel(frame: CGRect(x: skipView.bounds.size.width - 250,
-                                              y: skipView.bounds.size.height - 200,
-                                              width: 100,
-                                              height: 100))
-        skipLabel.text = "Skip"
-        skipLabel.font = UIFont.systemFont(ofSize: 30)
-        skipLabel.textColor = UIColor.white
-        skipLabel.textAlignment = .center
-        skipView.addSubview(skipLabel)
-        self.view.addSubview(skipView)
-        self.view.bringSubview(toFront: skipView)
-        
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
-            skipView.frame = CGRect(x: screenSize.width - 400,
-                                    y: screenSize.height - 300,
-                                    width: 400,
-                                    height: 100)
-        }) { (done) in
-            self.isSkippable = true
-        }
-    }
-    
-    
     func removeAdTimer() {
         self.isSkippable = false
         

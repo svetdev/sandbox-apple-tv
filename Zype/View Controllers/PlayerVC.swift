@@ -54,7 +54,6 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
     
     private var currentTime : CMTime!
     private var userDefaults = UserDefaults.standard
-    private let adHelperDelegate = AdHelper()
     
     // MARK: - View Lifecycle
     deinit {
@@ -62,7 +61,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         
         NotificationCenter.default.removeObserver(self)
         if self.adPlayer != nil {
-            self.adHelperDelegate.removeAdPlayer()
+            self.removeAdPlayer()
             self.adPlayer = nil
         }
         if self.playerController.player != nil {
@@ -81,7 +80,6 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentTime = CMTimeMake(250, 1)
-        adHelperDelegate.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -105,7 +103,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
                     if let viewWithTag = self.view.viewWithTag(1001) {
                         viewWithTag.removeFromSuperview()
                     }
-                    self.adHelperDelegate.nextAdPlayer()
+                    self.nextAdPlayer()
                 }
             }
         }
@@ -133,7 +131,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if self.adPlayer!.status == .readyToPlay {
             if self.adPlayer?.contentPlayerItem.currentTime().seconds < 0.5 && self.adPlayer?.contentPlayerItem.currentTime().seconds > 0.0 {
-                self.adHelperDelegate.removeAdPlayer()
+                self.removeAdPlayer()
                 self.setupVideoPlayer()
             }
             else {
@@ -143,7 +141,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
             }
         }
         else if self.adPlayer!.status == .failed {
-            self.adHelperDelegate.removeAdPlayer()
+            self.removeAdPlayer()
             self.setupVideoPlayer()
         }
         else {
@@ -156,7 +154,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
             
             if let _ = playerObject, let videoURL = playerObject?.videoURL, let url = NSURL(string: videoURL), error == nil {
              
-                let adsArray = self.adHelperDelegate.getAdsFromResponse(playerObject)
+                let adsArray = self.getAdsFromResponse(playerObject)
                 self.playerURL = url as URL!
 
                 if adsArray.count == 0 {
@@ -164,7 +162,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
                     self.setupVideoPlayer()
                 }
                 else {
-                    self.adHelperDelegate.playAds(adsArray: adsArray, url: url)
+                    self.playAds(adsArray: adsArray, url: url)
                 }
                 
                 self.currentVideo = model
@@ -184,8 +182,44 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
                                             repeats: false)
     }
     
+    func adTimerDidFire() {
+        self.isSkippable = false
+        if let viewWithTag = self.view.viewWithTag(1001) {
+            viewWithTag.removeFromSuperview()
+        }
+        let screenSize = UIScreen.main.bounds
+        let skipView = UIView(frame: CGRect(x: screenSize.width,
+                                            y: screenSize.height - 300,
+                                            width: 400,
+                                            height: 200))
+        
+        skipView.tag = 1001
+        skipView.backgroundColor = UIColor.black
+        skipView.alpha = 0.7
+        let skipLabel = UILabel(frame: CGRect(x: skipView.bounds.size.width - 250,
+                                              y: skipView.bounds.size.height - 200,
+                                              width: 100,
+                                              height: 100))
+        skipLabel.text = "Skip"
+        skipLabel.font = UIFont.systemFont(ofSize: 30)
+        skipLabel.textColor = UIColor.white
+        skipLabel.textAlignment = .center
+        skipView.addSubview(skipLabel)
+        self.view.addSubview(skipView)
+        self.view.bringSubview(toFront: skipView)
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: [], animations: {
+            skipView.frame = CGRect(x: screenSize.width - 400,
+                                    y: screenSize.height - 300,
+                                    width: 400,
+                                    height: 100)
+        }) { (done) in
+            self.isSkippable = true
+        }
+    }
+    
     func removeAdsAndPlayVideo() {
-        self.adHelperDelegate.removeAdPlayer()
+        self.removeAdPlayer()
         self.setupVideoPlayer()
     }
     
