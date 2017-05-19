@@ -320,7 +320,7 @@ class ZypeRESTController: NSObject, URLSessionDelegate {
         let task = session!.dataTask(with: request as URLRequest, completionHandler: {
             ( data, response, error) in
             var err = error
-            ZypeLog.assert(error == nil, message: "http error: \(err)")
+            ZypeLog.assert(error == nil, message: "http error: \(String(describing: err))")
             var statusCode = 0
             if response != nil
             {
@@ -336,7 +336,7 @@ class ZypeRESTController: NSObject, URLSessionDelegate {
                 catch _
                 {
                     let dataString = String(data:data!, encoding:String.Encoding.utf8)
-                    ZypeLog.error("JSON Parse Error \(dataString)")
+                    ZypeLog.error("JSON Parse Error \(String(describing: dataString))")
                     err = NSError(domain: kErrorDomaine, code: kErrorJSONParsing, userInfo: ["data" : dataString!])
                 }
             }
