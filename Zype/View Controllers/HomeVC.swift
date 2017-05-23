@@ -114,11 +114,11 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
     func getFeaturedVideos(livestreamItem: CollectionLabeledItem?, callback: @escaping () -> Void) {
         
         if self.playlistParentAsId == nil {//use only for Home Screen
-            
             let type = QueryZobjectsModel()
             type.zobjectType = "top_playlists"
             ZypeAppleTVBase.sharedInstance.getZobjects(type, completion: {(objects: Array<ZobjectModel>?, error: NSError?) in
                 if let _ = objects, objects!.count > 0 {
+                    
                     var items = CollectionContainerVC.featuresToCollectionItems(objects)
                     if let _ = livestreamItem {
                         items.insert(livestreamItem!, at: items.count / 2)
@@ -180,16 +180,13 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
     }
     
     func addPager() {
-        let objects : Array<PlaylistModel> = []
+        let objects : Array<PlaylistModel> = [self.playlistParent!]
         let items = CollectionContainerVC.categoryValuesToCollectionItems(objects)
         
-        /*for (index,zObject) in objects.enumerate() {
-         for picture in zObject.pictures {
-         if picture.titleString == "banner"{
-         items[index].imageURL = NSURL(string:picture.url)
-         }
-         }
-         }*/
+        for (index,zObject) in objects.enumerated() {
+
+            items[index].imageURL = playlistBannerURL(with: zObject)
+        }
         
         let section = CollectionSection()
         section.isPager = true
@@ -202,13 +199,13 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
         
         if self.pagerVC == nil {
             self.pagerVC = self.storyboard?.instantiateViewController(withIdentifier: "BaseCollectionVC") as! BaseCollectionVC
-            self.pagerVC.view.height = 70.0
+            self.pagerVC.view.height = 700.0
             self.pagerVC.isInfinityScrolling = false
             self.collectionVC.addChildViewController(self.pagerVC)
             self.pagerVC.didMove(toParentViewController: self.collectionVC)
-            self.pagerVC.itemSelectedCallback = {[unowned self] (item: CollectionLabeledItem, section: CollectionSection) in
-                
-            }
+//            self.pagerVC.itemSelectedCallback = {[unowned self] (item: CollectionLabeledItem, section: CollectionSection) in
+//                
+//            }
             self.pagerVC.configWithSection(section)
         } else {
             self.pagerVC.update([section])
@@ -231,7 +228,6 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
             //only pager and pager can be empty
             self.showErrorInfo("No videos available")
         }
-        
     }
     
     func getSectionsForShows() -> Array<CollectionSection> {
@@ -343,6 +339,10 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
             detailsVC.selectedVideo = self.selectedVideo
         }
         super.prepare(for: segue, sender: sender)
+        print("\n\n--")
+        
+        
+        print("--\n\n")
     }
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
