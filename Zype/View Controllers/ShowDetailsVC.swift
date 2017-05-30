@@ -42,6 +42,7 @@ class ShowDetailsVC: CollectionContainerVC {
         super.viewDidLoad()
         self.subscribeLabel.text = localized("ShowDetails.SubscribedButton")
         self.favoriteLabel.text = localized("ShowDetails.Favorite")
+        self.resumeLabel.text = localized("ShowDetails.Resume")
         self.descriptionLabel.textColor = StyledLabel.kBaseColor
         self.descriptionView.onSelected = {
             self.onExpandDescription()
@@ -68,6 +69,7 @@ class ShowDetailsVC: CollectionContainerVC {
         
         self.favoritesButton.label = self.favoriteLabel
         self.subscribeButton.label = self.subscribeLabel
+        self.resumeButton.label = self.resumeLabel
         
         self.posterImage.shouldAnimate = true
         self.titleLabel.text = self.selectedShow.titleString
@@ -76,6 +78,7 @@ class ShowDetailsVC: CollectionContainerVC {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.refreshButtons()
         if let path = self.indexPathForselectedVideo() {
             self.collectionVC.collectionView?.scrollToItem(at: path, at: .centeredHorizontally, animated: false)
         }

@@ -326,7 +326,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Resume" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fZE-Gl-ViQ" customClass="StyledLabel" customModule="AndreySandbox" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fZE-Gl-ViQ" customClass="StyledLabel" customModule="AndreySandbox" customModuleProvider="target">
                                                 <rect key="frame" x="340" y="100" width="150" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -352,11 +352,10 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Z0r-qp-3g1" userLabel="Resume Button" customClass="FocusableButton" customModule="AndreySandbox" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Z0r-qp-3g1" customClass="FocusableButton" customModule="AndreySandbox" customModuleProvider="target">
                                                 <rect key="frame" x="340" y="10" width="150" height="84"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" backgroundImage="on_air"/>
                                                 <connections>
                                                     <action selector="onResume:" destination="QVW-Vl-rtx" eventType="primaryActionTriggered" id="R6Z-l8-W9d"/>
                                                 </connections>
@@ -479,7 +478,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="BaseCollectionVC" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="6Pp-yV-woX" customClass="BaseCollectionVC" customModule="AndreySandbox" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CX6-6d-zQs">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1920" height="450"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aF6-sY-Nvx">
                             <size key="itemSize" width="500" height="500"/>
@@ -488,7 +487,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="vP8-eg-LL0">
-                            <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
+                            <rect key="frame" x="0.0" y="-315" width="1920" height="1080"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </activityIndicatorView>
                         <cells>
@@ -596,7 +595,6 @@
     <resources>
         <image name="FavoritesAdd" width="180" height="100"/>
         <image name="Subscribe" width="180" height="100"/>
-        <image name="on_air" width="838" height="370"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <nil key="statusBar"/>
@@ -604,6 +602,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FCR-gJ-gcb"/>
+        <segue reference="a18-Ts-CvM"/>
     </inferredMetricsTieBreakers>
 </document>
