@@ -326,19 +326,6 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fZE-Gl-ViQ" customClass="StyledLabel" customModule="AndreySandbox" customModuleProvider="target">
-                                                <rect key="frame" x="340" y="100" width="150" height="29"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <size key="shadowOffset" width="1" height="1"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="style">
-                                                        <integer key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Favorite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dSI-Rh-6hd" customClass="StyledLabel" customModule="AndreySandbox" customModuleProvider="target">
                                                 <rect key="frame" x="170" y="100" width="150" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -360,6 +347,19 @@
                                                     <action selector="onResume:" destination="QVW-Vl-rtx" eventType="primaryActionTriggered" id="R6Z-l8-W9d"/>
                                                 </connections>
                                             </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="HMU-Nx-YEH" customClass="StyledLabel" customModule="AndreySandbox" customModuleProvider="target">
+                                                <rect key="frame" x="340" y="100" width="150" height="29"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <size key="shadowOffset" width="1" height="1"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="style">
+                                                        <integer key="value" value="3"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
                                         </subviews>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="cDg-pl-fwV" customClass="URLImageView" customModule="AndreySandbox" customModuleProvider="target">
@@ -403,7 +403,7 @@
                         <outlet property="labelsView" destination="hhs-yQ-xcJ" id="nPl-A3-hEL"/>
                         <outlet property="posterImage" destination="cDg-pl-fwV" id="0Zj-Ys-93W"/>
                         <outlet property="resumeButton" destination="Z0r-qp-3g1" id="SVa-6e-Dhm"/>
-                        <outlet property="resumeLabel" destination="fZE-Gl-ViQ" id="nwq-Qi-4Qj"/>
+                        <outlet property="resumeLabel" destination="HMU-Nx-YEH" id="pGH-Qb-ufI"/>
                         <outlet property="subTitleLabel" destination="wkv-cB-oiB" id="cnv-pl-gEp"/>
                         <outlet property="subscribeButton" destination="Gr6-o5-BOz" id="gOl-Ak-jEJ"/>
                         <outlet property="subscribeLabel" destination="bTn-j7-y56" id="XiO-pL-TnS"/>
