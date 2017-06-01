@@ -37,14 +37,13 @@ class ShowDetailsVC: CollectionContainerVC {
     var focusGuide: UIFocusGuide!
     let userDefaults = UserDefaults.standard
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.subscribeLabel.text = localized("ShowDetails.SubscribedButton")
         self.favoriteLabel.text = localized("ShowDetails.Favorite")
         self.resumeLabel.text = localized("ShowDetails.Resume")
         self.descriptionLabel.textColor = StyledLabel.kBaseColor
-        self.descriptionView.onSelected = {
+        self.descriptionView.onSelected = {[unowned self] in
             self.onExpandDescription()
         }
         self.subscribeButton.setBackgroundImage(UIImage(named: "Subscribed"), for: UIControlState())

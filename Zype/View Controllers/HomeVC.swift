@@ -338,10 +338,6 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
             detailsVC.selectedVideo = self.selectedVideo
         }
         super.prepare(for: segue, sender: sender)
-        print("\n\n--")
-        
-        
-        print("--\n\n")
     }
     
     func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
