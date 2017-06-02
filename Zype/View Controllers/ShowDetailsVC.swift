@@ -41,7 +41,6 @@ class ShowDetailsVC: CollectionContainerVC {
         super.viewDidLoad()
         self.subscribeLabel.text = localized("ShowDetails.SubscribedButton")
         self.favoriteLabel.text = localized("ShowDetails.Favorite")
-        self.resumeLabel.text = localized("ShowDetails.Resume")
         self.descriptionLabel.textColor = StyledLabel.kBaseColor
         self.descriptionView.onSelected = {[unowned self] in
             self.onExpandDescription()
@@ -83,7 +82,7 @@ class ShowDetailsVC: CollectionContainerVC {
         }
     }
     
-    override func viewWillLayoutSubviews(){
+    override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.layoutLabels()
     }
