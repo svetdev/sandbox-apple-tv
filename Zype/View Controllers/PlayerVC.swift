@@ -38,6 +38,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
     
     // MARK: - Properties
     var adPlayer: DVIABPlayer?
+    var player: AVPlayer?
     var playerLayer = AVPlayerLayer()
     var playerItem: AVPlayerItem!
     var playerController = AVPlayerViewController()
@@ -147,6 +148,8 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         }
     }
     
+    var adsArray: NSMutableArray?
+    var url: NSURL?
     func play(_ model: VideoModel) {
         model.getVideoObject(.kVimeoHls, completion: {[unowned self] (playerObject: VideoObjectModel?, error: NSError?) in
             if let _ = playerObject, let videoURL = playerObject?.videoURL, let url = NSURL(string: videoURL), error == nil {
@@ -154,7 +157,10 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
                 let adsArray = self.getAdsFromResponse(playerObject)
                 self.playerURL = url as URL!
                 
-                if adsArray.count == 0 {
+                self.adsArray = adsArray
+                self.url = url
+//                if adsArray.count == 0 {
+                if true {
                     self.currentVideo = model
                     self.setupVideoPlayer()
                 }
@@ -178,27 +184,40 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
             viewWithTag.removeFromSuperview()
         }
         
-        let player = AVPlayer(url: self.playerURL)
+        self.player = AVPlayer(url: self.playerURL)
         self.playerController.player = player
         self.addChildViewController(self.playerController)
         self.view.addSubview(self.playerController.view)
         self.playerController.view.frame = self.view.frame
-        NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
+        
+        playAds(at: 2)
         
         if isResuming {
             if !currentVideo.onAir {
                 if let timeStamp = userDefaults.object(forKey: "\(currentVideo.getId())") {
                     let time = CMTimeMakeWithSeconds(timeStamp as! Float64, 1)
-                    player.seek(to: time)
+                    player?.seek(to: time)
                 }
             }
         }
-        player.play()
+        player?.play()
+    }
+    
+    func playVideo() {
+        if let viewWithTag = self.view.viewWithTag(1001) {
+            viewWithTag.removeFromSuperview()
+        }
+        if let viewWithTag = self.view.viewWithTag(1002) {
+            viewWithTag.removeFromSuperview()
+        }
+        player?.play()
     }
     
     func removeAdsAndPlayVideo() {
         self.removeAdPlayer()
-        self.setupVideoPlayer()
+//        self.setupVideoPlayer()
+        self.playVideo()
     }
     
     func contentDidFinishPlaying(_ notification: Notification) {
@@ -224,6 +243,30 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         }
     }
     
+    var adTimerObserver: Any?
+    var shouldRemoveObserver : Bool? {
+        didSet {
+            self.player?.removeTimeObserver(adTimerObserver)
+        }
+    }
+    func playAds(at seconds: Int64) {
+        let adTimer = self.player?.addPeriodicTimeObserver(forInterval: CMTimeMake(seconds, 1), queue: DispatchQueue.main) { (time) in
+            let timeString = Int(CMTimeGetSeconds(time))
+            
+            print("time is \(timeString)")
+            
+            if timeString == 46 {
+                self.player?.pause()
+                let pauseTime = CMTimeMakeWithSeconds((self.player?.currentTime().seconds)!, 1)
+                self.player?.seek(to: pauseTime)
+                self.shouldRemoveObserver = true
+                self.playAds(adsArray: self.adsArray!, url: self.url!)
+                print("Should be playing ads now")
+            }
+        }
+        self.adTimerObserver = adTimer
+    }
+    
     // MARK: - DVIABPlayerDelegate
     func player(_ player: DVIABPlayer!, shouldPauseForAdBreak playBreak: DVVideoPlayBreak!) -> Bool {
         return true
@@ -232,5 +275,5 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
     func player(_ player: DVIABPlayer!, didFail playBreak:DVVideoPlayBreak!, withError:Error ) {
         print("did fail playback")
     }
-    
+
 }
