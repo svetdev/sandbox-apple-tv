@@ -72,6 +72,7 @@ class ShowDetailsVC: CollectionContainerVC {
         self.posterImage.shouldAnimate = true
         self.titleLabel.text = self.selectedShow.titleString
         self.loadVideos()
+        self.setSubscriptionStatus(isSubscribed: InAppPurchaseManager.sharedInstance.lastSubscribeStatus)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +81,9 @@ class ShowDetailsVC: CollectionContainerVC {
         if let path = self.indexPathForselectedVideo() {
             self.collectionVC.collectionView?.scrollToItem(at: path, at: .centeredHorizontally, animated: false)
         }
+        
+        self.refreshSubscriptionStatus()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted), object: nil)
     }
     
     override func viewWillLayoutSubviews() {
@@ -125,7 +129,7 @@ class ShowDetailsVC: CollectionContainerVC {
     }
     
     override func onItemSelected(_ item: CollectionLabeledItem, section: CollectionSection?) {
-        self.playVideo(item.object as! VideoModel, playlist: section?.allObjects() as? Array<VideoModel>)
+        self.onSubscribe(self)
     }
     
     func loadVideos() {
@@ -146,6 +150,9 @@ class ShowDetailsVC: CollectionContainerVC {
         self.descriptionLabel.text = video.descriptionString
         self.layoutLabels()
         self.refreshButtons()
+        if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
+            self.refreshPlaySubscribeStatus()
+        }
     }
     
     func requiresResumeButton() -> Bool {
@@ -158,24 +165,31 @@ class ShowDetailsVC: CollectionContainerVC {
     }
     
     func refreshButtons() {
-        if (self.selectedVideo != nil) {
-            if requiresResumeButton() {
-                self.resumeButton.isHidden = false
-                self.resumeLabel.text = localized(self.selectedVideo.isInFavorites() ? "ShowDetails.Unfavorite" : "ShowDetails.Favorite")
-                self.resumeButton.setBackgroundImage(UIImage(named: self.selectedVideo.isInFavorites() ? "FavoritesRemoveFocused" : "FavoritesAddFocused"), for: .normal)
-                self.favoriteLabel.text = "Play"
-                self.favoritesButton.setBackgroundImage(UIImage(named: "Subscribed"), for: .normal)
-                self.subscribeLabel.text = "Resume"
-                self.subscribeButton.setBackgroundImage(UIImage(named: "Resume"), for: .normal)
-            }
-            else {
-                self.favoriteLabel.text = localized(self.selectedVideo.isInFavorites() ? "ShowDetails.Unfavorite" : "ShowDetails.Favorite")
-                self.favoritesButton.setBackgroundImage(UIImage(named: self.selectedVideo.isInFavorites() ? "FavoritesRemoveFocused" : "FavoritesAddFocused"), for: .normal)
-                self.resumeButton.isHidden = true
-                self.resumeLabel.text = ""
-                self.subscribeLabel.text = "Play"
-                self.subscribeButton.setBackgroundImage(UIImage(named: "Subscribed"), for: .normal)
-            }
+        guard self.selectedVideo != nil else { return }
+        
+        if requiresResumeButton() {
+            self.resumeButton.isHidden = false
+            self.resumeLabel.text = localized(self.selectedVideo.isInFavorites() ? "ShowDetails.Unfavorite" : "ShowDetails.Favorite")
+            self.resumeButton.setBackgroundImage(UIImage(named: self.selectedVideo.isInFavorites() ? "FavoritesRemoveFocused" : "FavoritesAddFocused"), for: .normal)
+            self.favoriteLabel.text = "Play"
+            self.favoritesButton.setBackgroundImage(UIImage(named: "Subscribed"), for: .normal)
+            self.subscribeLabel.text = "Resume"
+            self.subscribeButton.setBackgroundImage(UIImage(named: "Resume"), for: .normal)
+        }
+        else {
+            self.favoriteLabel.text = localized(self.selectedVideo.isInFavorites() ? "ShowDetails.Unfavorite" : "ShowDetails.Favorite")
+            self.favoritesButton.setBackgroundImage(UIImage(named: self.selectedVideo.isInFavorites() ? "FavoritesRemoveFocused" : "FavoritesAddFocused"), for: .normal)
+            self.resumeButton.isHidden = true
+            self.resumeLabel.text = ""
+            self.subscribeLabel.text = "Play"
+            self.subscribeButton.setBackgroundImage(UIImage(named: "Subscribed"), for: .normal)
+        }
+    }
+    
+    func refreshPlaySubscribeStatus() {
+        if(self.selectedVideo != nil) {
+            self.subscribeLabel.text = localized(self.selectedVideo.subscriptionRequired == true ? "ShowDetails.SubscribeButton" : "ShowDetails.SubscribedButton")
+            self.subscribeButton.setBackgroundImage(UIImage(named: self.selectedVideo.subscriptionRequired == true ? "SubscribeFocused" : "Subscribed"), for: .normal)
         }
     }
     
@@ -200,12 +214,25 @@ class ShowDetailsVC: CollectionContainerVC {
     }
     
     @IBAction func onSubscribe(_ sender: AnyObject) {
-        if (self.selectedVideo != nil) {
-            if requiresResumeButton() {
-                self.playVideo(self.selectedVideo, playlist: self.videos, isResuming: true)
+        let resume = requiresResumeButton()
+        
+        if self.selectedVideo.subscriptionRequired == false {
+            self.playVideo(self.selectedVideo, playlist: self.videos, isResuming: resume)
+        }
+        else {
+            if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
+                let purchaseVC = self.storyboard?.instantiateViewController(withIdentifier: "PurchaseVC") as! PurchaseVC
+                
+                InAppPurchaseManager.sharedInstance.requestProducts({ _ in
+                    NotificationCenter.default.addObserver(self,
+                                                           selector: #selector(ShowDetailsVC.onPurchased),
+                                                           name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted),
+                                                           object: nil)
+                    self.navigationController?.present(purchaseVC, animated: true, completion: nil)
+                })
             }
             else {
-                self.playVideo(self.selectedVideo, playlist: self.videos, isResuming: false)
+                self.playVideo(self.selectedVideo, playlist: self.videos, isResuming: resume)
             }
         }
     }
@@ -223,4 +250,16 @@ class ShowDetailsVC: CollectionContainerVC {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func refreshSubscriptionStatus() {
+        InAppPurchaseManager.sharedInstance.checkSubscription({ (isSubscripted: Bool, expirationDate: Date?, error: NSError?) in
+            self.setSubscriptionStatus(isSubscribed: isSubscripted)
+        })
+    }
+    
+    func setSubscriptionStatus(isSubscribed: Bool){
+        self.subscribeButton.setBackgroundImage(UIImage(named: isSubscribed ? "Subscribed" : "SubscribeFocused"), for: .normal)
+        self.subscribeLabel.text = localized(isSubscribed ? "ShowDetails.SubscribedButton" : "ShowDetails.SubscribeButton")
+        
+        self.favoritesButton.setBackgroundImage(UIImage(named: "FavoritesAdd"), for: .normal)
+    }
 }
