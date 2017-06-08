@@ -65,7 +65,7 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
     fileprivate var receiptRenewRequest: SKReceiptRefreshRequest?
     fileprivate var requestDelegate: RequestDelegate?
     fileprivate var commonError = NSError(domain: InAppPurchaseManager.kPurchaseErrorDomain, code: 999, userInfo: nil)
-    fileprivate var restoringCallback: ((Bool, NSError?)->()) = {_ in}
+    fileprivate var restoringCallback: ((Bool, NSError?)->()) = { _ in }
     
     override init() {
         super.init()
@@ -77,10 +77,11 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
             callback(nil)
             return
         }
+        
         let productIdentifiers: NSSet = NSSet(array: Const.productIdentifiers)
         let productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers as! Set<String>)
         self.productsRequestDelegate = ProductsRequestDelegate(callback: {(data: AnyObject?, error: NSError?) in
-            if(error != nil || data == nil){
+            if(error != nil || data == nil) {
                 callback(error ?? self.commonError)
                 return
             }
@@ -93,7 +94,7 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
             } else {
                 callback(self.commonError)
             }
-        });
+        })
         self.productsRequest = productsRequest
         productsRequest.delegate = self.productsRequestDelegate
         productsRequest.start()
@@ -138,7 +139,6 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
             }
         })
     }
-    
     
     func restorePurchases(_ restoringCallback: ((Bool, NSError?)->())? = nil){
         if let _ = restoringCallback {
@@ -221,7 +221,8 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
                 if error == nil,
                     let jsonResponse = self.deserializeJSON(data!),
                     let expirationDate: Date = self.expirationDateFromResponse(jsonResponse),
-                    let currentDate = self.dateFromResponse(response){
+                    let currentDate = self.dateFromResponse(response) {
+                    
                     let isNotExpited = currentDate?.compare(expirationDate) == .orderedAscending
                     self.lastSubscribeStatus = isNotExpited
                     callback(isNotExpited, expirationDate, nil)
@@ -232,7 +233,6 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
                     callback(false, nil, error)
                 }
             })
-            
         }
         task.resume()
     }
