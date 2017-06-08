@@ -229,6 +229,9 @@
                                         <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="0.47578660102739728" colorSpace="calibratedRGB"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="1 Month - $0.99"/>
+                                        <connections>
+                                            <action selector="onPlanSelected:" destination="Mez-m6-YQ6" eventType="primaryActionTriggered" id="OC8-J3-hRA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="89L-rZ-SoH">
                                         <rect key="frame" x="0.0" y="312" width="911" height="86"/>
@@ -236,6 +239,9 @@
                                         <color key="backgroundColor" red="0.80000001190000003" green="0.40000000600000002" blue="1" alpha="0.4783550941780822" colorSpace="calibratedRGB"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="1 Year - $5.99"/>
+                                        <connections>
+                                            <action selector="onPlanSelected:" destination="Mez-m6-YQ6" eventType="primaryActionTriggered" id="qfx-8D-TkT"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
