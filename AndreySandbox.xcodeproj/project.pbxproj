@@ -678,7 +678,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zype.andreysandbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zype.sandbox;
 				PRODUCT_NAME = AndreySandbox;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
@@ -699,7 +699,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zype.andreysandbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zype.sandbox;
 				PRODUCT_NAME = AndreySandbox;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
