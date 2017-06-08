@@ -37,10 +37,8 @@ class RequestDelegate: NSObject, SKRequestDelegate {
 
 class ProductsRequestDelegate: RequestDelegate, SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print(response.products)
         for invalidIdentifier in response.invalidProductIdentifiers {
             print("Invalid Identifier \(invalidIdentifier)")
-            // Handle any invalid product identifiers.
         }
         
         self.callback(response.products as AnyObject, nil)
@@ -48,6 +46,12 @@ class ProductsRequestDelegate: RequestDelegate, SKProductsRequestDelegate {
     
     override func requestDidFinish(_ request: SKRequest) {
         
+    }
+    
+    override func request(_ request: SKRequest, didFailWithError error: Error) {
+        if request is SKProductsRequest {
+            print("Subscription Options Failed Loading: \(error.localizedDescription)")
+        }
     }
 }
 
@@ -77,7 +81,6 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
             callback(nil)
             return
         }
-        
         let productIdentifiers: NSSet = NSSet(array: Const.productIdentifiers)
         let productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers as! Set<String>)
         self.productsRequestDelegate = ProductsRequestDelegate(callback: {(data: AnyObject?, error: NSError?) in
@@ -94,18 +97,25 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
             } else {
                 callback(self.commonError)
             }
-        })
+        });
         self.productsRequest = productsRequest
         productsRequest.delegate = self.productsRequestDelegate
         productsRequest.start()
     }
     
-    func receiptURL() -> URL? {
-        if let appStoreReceiptURL = Bundle.main.appStoreReceiptURL,
-            FileManager.default.fileExists(atPath: appStoreReceiptURL.path) {
-            return Bundle.main.appStoreReceiptURL
+    func receiptURL() -> Data? {
+        guard let url = Bundle.main.appStoreReceiptURL else {
+            return nil
         }
-        return nil
+        
+        do {
+            let data = try Data(contentsOf: url)
+            return data
+        }
+        catch {
+            print("Error loading receipt data: \(error.localizedDescription)")
+            return nil
+        }
     }
     
     func checkReceipt(_ callback: @escaping (_ error: NSError?)->()) {
@@ -127,8 +137,8 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
     }
     
     func checkSubscription(_ callback: @escaping (_ isSubscripted: Bool, _ expirationDate: Date?, _ error: NSError?)->()) {
-        // callback(isSubscripted: true, expirationDate: nil, error: nil)
-        // return
+        //         callback(true, nil, nil)
+        //         return
         
         self.checkReceipt({ (error: NSError?) in
             if(error == nil) {
@@ -139,6 +149,7 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
             }
         })
     }
+    
     
     func restorePurchases(_ restoringCallback: ((Bool, NSError?)->())? = nil){
         if let _ = restoringCallback {
@@ -205,36 +216,39 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
         return data
     }
     
-    func sendExpirationRequest(_ callback: @escaping (_ isNotExpited: Bool, _ date: Date?, _ error: NSError?)->()) {
-        let receiptData = try? Data(contentsOf: self.receiptURL()!)
-        let receiptDictionary = ["receipt-data" : receiptData!.base64EncodedString(options: .endLineWithCarriageReturn), "password" : Const.appstorePassword]
-        let requestData = self.serializeJSON(receiptDictionary as AnyObject) as Data!
-        //        let storeURL = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
-        let storeURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")! // for testing only
-        let storeRequest = NSMutableURLRequest(url: storeURL)
-        storeRequest.httpMethod = "POST"
-        storeRequest.httpBody = requestData
-        let session = URLSession(configuration: URLSessionConfiguration.default)
-        
-        let task = session.dataTask(with: storeURL) { (data, response, error) in
-            DispatchQueue.main.async(execute: {() in
-                if error == nil,
-                    let jsonResponse = self.deserializeJSON(data!),
-                    let expirationDate: Date = self.expirationDateFromResponse(jsonResponse),
-                    let currentDate = self.dateFromResponse(response) {
-                    
-                    let isNotExpited = currentDate?.compare(expirationDate) == .orderedAscending
-                    self.lastSubscribeStatus = isNotExpited
-                    callback(isNotExpited, expirationDate, nil)
-                }
-                else {
-                    self.lastSubscribeStatus = false
-                    let error = error! as NSError
-                    callback(false, nil, error)
-                }
-            })
+    func sendExpirationRequest(_ callback: @escaping (_ isNotExpired: Bool, _ date: Date?, _ error: NSError?)->()) {
+        if let receiptData = self.receiptURL() {
+            let receiptDictionary = ["receipt-data" : receiptData.base64EncodedString(),
+                                     "password" : Const.appstorePassword]
+            let requestData = try! JSONSerialization.data(withJSONObject: receiptDictionary, options: [])
+            //            let storeURL = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
+            let storeURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")! // for testing only
+            var storeRequest = URLRequest(url: storeURL)
+            storeRequest.httpMethod = "POST"
+            storeRequest.httpBody = requestData
+            let session = URLSession(configuration: URLSessionConfiguration.default)
+            
+            let task = session.dataTask(with: storeRequest) { (data, response, error) in
+                DispatchQueue.main.async(execute: {() in
+                    if error == nil,
+                        let jsonResponse = self.deserializeJSON(data!),
+                        let expirationDate: Date = self.expirationDateFromResponse(jsonResponse),
+                        let currentDate = self.dateFromResponse(response) {
+                        
+                        let isNotExpired = currentDate?.compare(expirationDate) == .orderedAscending
+                        self.lastSubscribeStatus = isNotExpired
+                        callback(isNotExpired, expirationDate, nil)
+                    }
+                    else {
+                        self.lastSubscribeStatus = false
+                        if let error = error {
+                            callback(false, nil, error as NSError)
+                        }
+                    }
+                })
+            }
+            task.resume()
         }
-        task.resume()
     }
     
     func updateIAPExpirationDate(_ date: Date) {
