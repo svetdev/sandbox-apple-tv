@@ -12,6 +12,13 @@ import ZypeAppleTVBase
 
 class Const: NSObject {
     
+    static var productIdentifiers = ["monthly_subscription", "yearly_subscription"]
+    
+    //    static var appstorePassword = "f3abb52578a34a03a9ff5130beb95239" // the film detective
+    //static var appstorePassword = "2c9105ca20204085a01673bbdc42ace6" // hooplakidz
+    static var appstorePassword = "ead5fc19c42045cfa783e24d6e5a2325" // testing - zype
+    
+    
     static let sdkSettings = SettingsModel(clientID: "b3589bcfffad139cd61be701ce30928c118c12730af3c462c5c1e884e8944e03",
                                            secret: "3da57d2c71655d9309811d2f4bfc0191d15d33659f7a84e02f87d15edc60a372",
                                            appKey: "IKuC8xERY-oYRxQfE6c1HSeRrxKcpCwcsPr614RfaxCkYsJLgwpBkpkEo88EsyWr",
