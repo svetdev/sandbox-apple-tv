@@ -25,60 +25,6 @@
             </objects>
             <point key="canvasLocation" x="-4459" y="-75"/>
         </scene>
-        <!--LoginVC-->
-        <scene sceneID="mzw-sF-fWI">
-            <objects>
-                <viewController id="lVJ-QE-VJe" customClass="LoginVC" customModule="AndreySandbox" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cKX-Oy-nnI">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" id="9N7-7h-Dx1" userLabel="Login View">
-                                <rect key="frame" x="0.0" y="248" width="1920" height="832"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" id="TmD-m4-ojO" userLabel="User Name Text Field">
-                                        <rect key="frame" x="610" y="77" width="700" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
-                                    </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" id="QAd-yZ-yYe" userLabel="Password Text Field">
-                                        <rect key="frame" x="610" y="177" width="700" height="66"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3Uq-jT-zJf" userLabel="Login Button">
-                                        <rect key="frame" x="862" y="373" width="195" height="86"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ymo-Nf-SA3">
-                                        <rect key="frame" x="862" y="373" width="195" height="86"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" misplaced="YES" id="BwX-9T-aIb" userLabel="Logout View">
-                                <rect key="frame" x="0.0" y="248" width="1920" height="832"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                    </view>
-                    <navigationItem key="navigationItem" id="bia-fK-itN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0bt-Sd-pLW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-8647" y="1329"/>
-        </scene>
         <!--Search-->
         <scene sceneID="Wl3-IK-18H">
             <objects>
@@ -691,24 +637,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAL-HP-Y0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1241" y="1303"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="lQg-WO-5Cx">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3rC-ls-JAx" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4jz-7z-QgN">
-                        <rect key="frame" x="0.0" y="0.0" width="1920" height="145"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lVJ-QE-VJe" kind="relationship" relationship="rootViewController" id="rQN-Ef-jPV"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="82n-YB-4F1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-8681" y="-75"/>
         </scene>
     </scenes>
     <resources>
