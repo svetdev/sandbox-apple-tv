@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		47102CDC1ECBA02F0060AF02 /* AdProtocolDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47102CDB1ECBA02F0060AF02 /* AdProtocolDelegate.swift */; };
+		473C514A1EE8ACA40051FC6C /* InAppPurchaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473C51491EE8ACA40051FC6C /* InAppPurchaseManager.swift */; };
+		473C51501EE9A37B0051FC6C /* PurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473C514F1EE9A37B0051FC6C /* PurchaseVC.swift */; };
 		A161E9CA1DDBBAA800D01C70 /* DVPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A161E99F1DDBBAA800D01C70 /* DVPlayerView.m */; };
 		A161E9CB1DDBBAA800D01C70 /* DVIABPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A161E9A31DDBBAA800D01C70 /* DVIABPlayer.m */; };
 		A161E9CC1DDBBAA800D01C70 /* DVInlineVideoAd.m in Sources */ = {isa = PBXBuildFile; fileRef = A161E9A51DDBBAA800D01C70 /* DVInlineVideoAd.m */; };
@@ -75,6 +77,8 @@
 /* Begin PBXFileReference section */
 		28A1B0A9766255E45D8A6F76 /* Pods-AndreySandbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AndreySandbox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AndreySandbox/Pods-AndreySandbox.debug.xcconfig"; sourceTree = "<group>"; };
 		47102CDB1ECBA02F0060AF02 /* AdProtocolDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdProtocolDelegate.swift; sourceTree = "<group>"; };
+		473C51491EE8ACA40051FC6C /* InAppPurchaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseManager.swift; sourceTree = "<group>"; };
+		473C514F1EE9A37B0051FC6C /* PurchaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurchaseVC.swift; sourceTree = "<group>"; };
 		8A486B9044ECBA209379902E /* Pods_AndreySandbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AndreySandbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A161E99E1DDBBAA800D01C70 /* DVPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPlayerView.h; sourceTree = "<group>"; };
 		A161E99F1DDBBAA800D01C70 /* DVPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPlayerView.m; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 				F5582CD11BC818CA0089E5E7 /* ShowDetailsVC.swift */,
 				F5D98CE71BE3BFBB00C986B4 /* TabBarVC.swift */,
 				A1C0CF141E37CF8A007ED6C0 /* SplashScreenVC.swift */,
+				473C514F1EE9A37B0051FC6C /* PurchaseVC.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 				F55732131BDA4EBC00D323A0 /* Utils.swift */,
 				F55940381C048F2700A0ECFF /* FadeNavigationAnimationController.swift */,
 				47102CDB1ECBA02F0060AF02 /* AdProtocolDelegate.swift */,
+				473C51491EE8ACA40051FC6C /* InAppPurchaseManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -405,7 +411,7 @@
 				TargetAttributes = {
 					F553AD1F1BC660B400A093EF = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 6L5JC6ZK67;
+						DevelopmentTeam = 66JU87JGLE;
 					};
 				};
 			};
@@ -499,6 +505,7 @@
 				A161E9D91DDBBAA800D01C70 /* DDXMLDocument.m in Sources */,
 				F5582CD01BC7FA350089E5E7 /* ControllerCell.swift in Sources */,
 				F5582CD21BC818CA0089E5E7 /* ShowDetailsVC.swift in Sources */,
+				473C51501EE9A37B0051FC6C /* PurchaseVC.swift in Sources */,
 				A1C0CF171E37CFA1007ED6C0 /* ReplaceSegue.swift in Sources */,
 				F55957DB1BD7D1B2004A01A9 /* SDKHelpers.swift in Sources */,
 				F5534D271BCFEB8200BEA509 /* CollectionContainerVC.swift in Sources */,
@@ -509,6 +516,7 @@
 				F5D98CE81BE3BFBB00C986B4 /* TabBarVC.swift in Sources */,
 				A161E9D31DDBBAA800D01C70 /* DVWrapperVideoAd.m in Sources */,
 				F55940391C048F2700A0ECFF /* FadeNavigationAnimationController.swift in Sources */,
+				473C514A1EE8ACA40051FC6C /* InAppPurchaseManager.swift in Sources */,
 				A161E9CE1DDBBAA800D01C70 /* DVVideoAd.m in Sources */,
 				F5582CB81BC7DB8B0089E5E7 /* AppDelegate.swift in Sources */,
 				F559403C1C048F4200A0ECFF /* FocusableView.swift in Sources */,
@@ -664,12 +672,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 66JU87JGLE;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = Zype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zype.andreysandbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zype.sandbox;
 				PRODUCT_NAME = AndreySandbox;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
@@ -684,12 +693,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 66JU87JGLE;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = Zype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-lxml2";
-				PRODUCT_BUNDLE_IDENTIFIER = com.zype.andreysandbox;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zype.sandbox;
 				PRODUCT_NAME = AndreySandbox;
 				SDKROOT = appletvos;
 				SWIFT_VERSION = 3.0;
