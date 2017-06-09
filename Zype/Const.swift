@@ -26,8 +26,8 @@ class Const: NSObject {
                                            tokenDomain: "https://login.zype.com",
                                            userAgent: "zype tvos")
     
+    static let kNativeSubscriptionEnabled = true
     static let kLimitLivestreamEnabled = false
-    static let kNativeSubscriptionEnabled = false
     static let kAppStyleLight = true
     
     static let kBaseSectionInsets: UIEdgeInsets = UIEdgeInsets(top: 50, left: 90, bottom: 50, right: 90)

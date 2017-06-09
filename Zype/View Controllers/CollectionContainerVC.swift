@@ -87,11 +87,13 @@ extension UIViewController {
     func playVideo(_ model: VideoModel, playlist: Array<VideoModel>? = nil, isResuming: Bool = true) {
         if (model.onAir) {
             
-        } else {
-            //check for video with subscription
-            if (model.subscriptionRequired && !ZypeUtilities.isDeviceLinked()) {
-                ZypeUtilities.presentLoginVC(self)
-                return
+        }
+        else {
+            if Const.kNativeSubscriptionEnabled == false {
+                if (model.subscriptionRequired && !ZypeUtilities.isDeviceLinked()) {
+                    ZypeUtilities.presentLoginVC(self)
+                    return
+                }
             }
         }
         
@@ -147,20 +149,22 @@ class CollectionContainerVC: UIViewController {
     
     static fileprivate func modelsToCollectionItems(_ models: Array<BaseModel>?) -> Array<CollectionLabeledItem> {
         var result = [CollectionLabeledItem]()
-        if(models == nil) {
+        if models == nil {
             return result
         }
         for model in models! {
             var mapped: CollectionLabeledItem!
             
-            if(model is VideoModel) {
+            if model is VideoModel {
                 mapped = VideoCollectionItem(video: model as! VideoModel)
-            } else if(model is PlaylistModel) {
+            }
+            else if model is PlaylistModel {
                 mapped = ShowCollectionItem(value: model as! PlaylistModel)
-            } else if(model is ZobjectModel) {
+            }
+            else if model is ZobjectModel {
                 mapped = PagerCollectionItem(object: model as! ZobjectModel)
             }
-            if(mapped != nil) {
+            if mapped != nil {
                 result.append(mapped)
             }
         }

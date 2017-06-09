@@ -18,6 +18,7 @@ extension SKProduct {
     }
 }
 
+
 class RequestDelegate: NSObject, SKRequestDelegate {
     var callback: (_ data: AnyObject?, _ error: NSError?)->()
     
@@ -35,12 +36,12 @@ class RequestDelegate: NSObject, SKRequestDelegate {
     }
 }
 
+
 class ProductsRequestDelegate: RequestDelegate, SKProductsRequestDelegate {
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         for invalidIdentifier in response.invalidProductIdentifiers {
             print("Invalid Identifier \(invalidIdentifier)")
         }
-        
         self.callback(response.products as AnyObject, nil)
     }
     
@@ -57,6 +58,8 @@ class ProductsRequestDelegate: RequestDelegate, SKProductsRequestDelegate {
 
 class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
     
+    // MARK: - Properties
+    
     static let sharedInstance = InAppPurchaseManager()
     static let kPurchaseErrorDomain = "InAppPurchase"
     static let kPurchaseCompleted = "kPurchaseCompleted"
@@ -71,10 +74,14 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
     fileprivate var commonError = NSError(domain: InAppPurchaseManager.kPurchaseErrorDomain, code: 999, userInfo: nil)
     fileprivate var restoringCallback: ((Bool, NSError?)->()) = { _ in }
     
+    // MARK: - Lifecycle
+    
     override init() {
         super.init()
         SKPaymentQueue.default().add(self)
     }
+    
+    // MARK: - Get Subscription Options
     
     func requestProducts(_ callback: @escaping (NSError?)->()) {
         if(self.products != nil) {
@@ -103,19 +110,17 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
         productsRequest.start()
     }
     
-    func receiptURL() -> Data? {
-        guard let url = Bundle.main.appStoreReceiptURL else {
-            return nil
-        }
-        
-        do {
-            let data = try Data(contentsOf: url)
-            return data
-        }
-        catch {
-            print("Error loading receipt data: \(error.localizedDescription)")
-            return nil
-        }
+    // MARK: - Get Subscription Status
+    
+    func checkSubscription(_ callback: @escaping (_ isSubscripted: Bool, _ expirationDate: Date?, _ error: NSError?)->()) {
+        self.checkReceipt({ (error: NSError?) in
+            if(error == nil) {
+                self.sendExpirationRequest(callback)
+            } else {
+                self.lastSubscribeStatus = false
+                callback(false, nil, error)
+            }
+        })
     }
     
     func checkReceipt(_ callback: @escaping (_ error: NSError?)->()) {
@@ -136,85 +141,32 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
         }
     }
     
-    func checkSubscription(_ callback: @escaping (_ isSubscripted: Bool, _ expirationDate: Date?, _ error: NSError?)->()) {
-        //         callback(true, nil, nil)
-        //         return
+    func receiptURL() -> Data? {
+        guard let url = Bundle.main.appStoreReceiptURL else {
+            return nil
+        }
         
-        self.checkReceipt({ (error: NSError?) in
-            if(error == nil) {
-                self.sendExpirationRequest(callback)
-            } else {
-                self.lastSubscribeStatus = false
-                callback(false, nil, error)
-            }
+        do {
+            let data = try Data(contentsOf: url)
+            return data
+        }
+        catch {
+            print("Error loading receipt data: \(error.localizedDescription)")
+            return nil
+        }
+    }
+    
+    func refreshSubscriptionStatus() {
+        self.checkSubscription({ (isSubscripted: Bool, expirationDate: Date?, error: NSError?) in
+            self.setSubscriptionStatus(isSubscribed: isSubscripted)
         })
     }
     
-    
-    func restorePurchases(_ restoringCallback: ((Bool, NSError?)->())? = nil){
-        if let _ = restoringCallback {
-            self.restoringCallback = restoringCallback!
-        }
-        SKPaymentQueue.default().restoreCompletedTransactions()
+    func setSubscriptionStatus(isSubscribed: Bool) {
+        self.lastSubscribeStatus = isSubscribed
     }
     
-    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
-        self.restoringCallback(true, nil)
-        self.restoringCallback = {_ in}
-    }
-    
-    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        let error = error as NSError
-        self.restoringCallback(false, error)
-        self.restoringCallback = {_ in}
-    }
-    
-    
-    func purchase(_ productID: String) {
-        if SKPaymentQueue.canMakePayments() {
-            self.requestProducts({(error: NSError?) in
-                if let product: SKProduct = self.products![productID] {
-                    let payment = SKPayment(product: product)
-                    SKPaymentQueue.default().add(payment);
-                }
-            })
-        }
-    }
-    
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        for transaction: AnyObject in transactions {
-            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
-                switch trans.transactionState {
-                case .purchased, .restored, .failed:
-                    if(trans.transactionState != .failed){
-                        NotificationCenter.default.post(name: Notification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted), object: nil)
-                    }
-                    SKPaymentQueue.default().finishTransaction(trans)
-                    break
-                default:
-                    break
-                }
-            }
-        }
-    }
-    
-    func serializeJSON(_ dict: AnyObject) -> Data? {
-        var data: Data? = nil
-        do {
-            try data = JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-        }
-        catch {}
-        return data
-    }
-    
-    func deserializeJSON(_ json: Data) -> NSDictionary? {
-        var data: NSDictionary? = nil
-        do {
-            try data = JSONSerialization.jsonObject(with: json, options: .mutableContainers) as? NSDictionary
-        }
-        catch {}
-        return data
-    }
+    // MARK: - Subscription Status Helpers
     
     func sendExpirationRequest(_ callback: @escaping (_ isNotExpired: Bool, _ date: Date?, _ error: NSError?)->()) {
         if let receiptData = self.receiptURL() {
@@ -279,5 +231,74 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
         }
         return nil
     }
+
+    // MARK: - Payments
     
+    func restorePurchases(_ restoringCallback: ((Bool, NSError?)->())? = nil){
+        if let _ = restoringCallback {
+            self.restoringCallback = restoringCallback!
+        }
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        self.restoringCallback(true, nil)
+        self.restoringCallback = {_ in}
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        let error = error as NSError
+        self.restoringCallback(false, error)
+        self.restoringCallback = {_ in}
+    }
+    
+    
+    func purchase(_ productID: String) {
+        if SKPaymentQueue.canMakePayments() {
+            self.requestProducts({(error: NSError?) in
+                if let product: SKProduct = self.products![productID] {
+                    let payment = SKPayment(product: product)
+                    SKPaymentQueue.default().add(payment);
+                }
+            })
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction: AnyObject in transactions {
+            if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
+                switch trans.transactionState {
+                case .purchased, .restored, .failed:
+                    if trans.transactionState != .failed {
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted), object: nil)
+                        InAppPurchaseManager.sharedInstance.lastSubscribeStatus = true
+                    }
+                    SKPaymentQueue.default().finishTransaction(trans)
+                    break
+                default:
+                    break
+                }
+            }
+        }
+    }
+    
+    // MARK: - JSON Helpers
+    
+    func serializeJSON(_ dict: AnyObject) -> Data? {
+        var data: Data? = nil
+        do {
+            try data = JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
+        }
+        catch {}
+        return data
+    }
+    
+    func deserializeJSON(_ json: Data) -> NSDictionary? {
+        var data: NSDictionary? = nil
+        do {
+            try data = JSONSerialization.jsonObject(with: json, options: .mutableContainers) as? NSDictionary
+        }
+        catch {}
+        return data
+    }
 }
