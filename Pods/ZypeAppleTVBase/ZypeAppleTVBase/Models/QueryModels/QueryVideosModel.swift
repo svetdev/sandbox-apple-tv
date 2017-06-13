@@ -27,7 +27,7 @@ open class QueryVideosModel: QueryBaseModel {
     open var publishedDate: Date? = nil
     open var dpt: Bool = true
 //    public var sortBy: String = ""
-    open var onAir: Bool = false
+    open var onAir: String = ""
     open var sort: String?
     open var ascending: Bool = false
     open var anyQueryString: String = "" //something like &category[video_type]=Film

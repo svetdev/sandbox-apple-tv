@@ -88,7 +88,7 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
     
     func getLivestreamItem(_ callback: @escaping (_ result: CollectionLabeledItem?)->()) {
         let queryModel = QueryVideosModel()
-        queryModel.onAir = true
+        queryModel.onAir = "true"
         queryModel.sort = "published_at"
         queryModel.ascending = false
         ZypeAppleTVBase.sharedInstance.getVideos(queryModel, completion: {(videos: Array<VideoModel>?, error: NSError?) in
@@ -154,7 +154,7 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
                                         self.performSegue(withIdentifier: HomeVC.kShowDetailsSegueID, sender: section)
                                     } else {//load playlist with playlists
                                         let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-                                        let selectedPlaylist = item.object as! PlaylistModel
+                                        let selectedPlaylist = playlist as! PlaylistModel
                                         homeVC.playlistParent = selectedPlaylist
                                         self.navigationController?.pushViewController(homeVC, animated: true)
                                     }
