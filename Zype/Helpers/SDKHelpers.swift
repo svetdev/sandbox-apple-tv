@@ -59,27 +59,36 @@ func getPlaylistBannerImageURL(with model: PlaylistModel) -> URL {
     if !playlistBanner.isEmpty {
         return URL(string: playlistBanner[0].imageURL)!
     }
+    else if let thumbnail = findLargestThumbnail(with: model) {
+        return thumbnail
+    }
     else {
-        return getThumbnailImageURL(with: model)
+        return URL(string: "http://placehold.it/1740x700")!
     }
 }
 
 func getThumbnailImageURL(with model: PlaylistModel) -> URL {
-    var largest = model.thumbnails[0]
-    
-    for each in model.thumbnails {
-        if each.width > largest.width {
-            largest = each
-        }
-    }
-
-    if model.thumbnails.count > 0 {
-        return URL(string: model.thumbnails[0].imageURL)!
+    if let thumbnail = findLargestThumbnail(with: model) {
+        return thumbnail
     }
     else {
         return URL(string: "http://placehold.it/250x141")!
     }
 }
 
-
+private func findLargestThumbnail(with model: PlaylistModel) -> URL? {
+    if model.thumbnails.count > 0 {
+        var largest = model.thumbnails[0]
+        
+        for each in model.thumbnails {
+            if each.width > largest.width {
+                largest = each
+            }
+        }
+        return URL(string: largest.imageURL)!
+    }
+    else {
+        return nil
+    }
+}
 
