@@ -52,18 +52,21 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
     
     func reloadData() {
         self.hideErrorInfo()
-        
         let queryModel = QueryPlaylistsModel()
+        
         if self.playlistParent != nil {
             queryModel.parentId = self.playlistParent!.pId
-        } else {
+        }
+        else {
             if self.playlistParentAsId != nil {
                 queryModel.parentId = self.playlistParentAsId!
-            } else {
+            }
+            else {
                 let rootPlaylistId = UserDefaults.standard.object(forKey: Const.kDefaultsRootPlaylistId)
                 if rootPlaylistId != nil {
                     queryModel.parentId = (rootPlaylistId as? String)!
-                } else {
+                }
+                else {
                     // self.showErrorInfo("Booooooo. Can't find root_playlist_id in app settings. Please add it in the platform and relaunch the app.")
                     queryModel.parentId = ""
                 }
@@ -113,7 +116,7 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
     }
     
     func getFeaturedVideos(livestreamItem: CollectionLabeledItem?, callback: @escaping () -> Void) {
-        
+        print("\n\n--- HEY HERE --\n\n")
         if self.playlistParentAsId == nil {//use only for Home Screen
             let type = QueryZobjectsModel()
             type.zobjectType = "top_playlists"
@@ -139,41 +142,53 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
                         self.pagerVC.isInfinityScrolling = true
                         self.collectionVC.addChildViewController(self.pagerVC)
                         self.pagerVC.didMove(toParentViewController: self.collectionVC)
+                        
                         self.pagerVC.itemSelectedCallback = {[unowned self] (item: CollectionLabeledItem, section: CollectionSection) in
-                            
                             if item.object is VideoModel {
                                 self.playVideo(item.object as! VideoModel)
                                 return
                             }
+                            
                             let zObject = (item as! PagerCollectionItem).object as! ZobjectModel
+                            let playlistid = zObject.getStringValue("playlistid")
+                            print("\n\n-- Playlist ID: \(playlistid) --\n\n")
+                            
                             if let playlist = self.playlistForZObject(zObject) {
                                 playlist.getVideos(completion: {(videos: Array<VideoModel>?, error: NSError?) -> Void in
-                                    if((videos?.count)! > 0) {
+                                    if (videos?.count)! > 0 {
                                         self.selectedVideo = videos!.first!
                                         self.selectedShow = playlist
                                         self.performSegue(withIdentifier: HomeVC.kShowDetailsSegueID, sender: section)
-                                    } else {//load playlist with playlists
+                                    }
+                                    else {//load playlist with playlists
                                         let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-                                        let selectedPlaylist = playlist as! PlaylistModel
+                                        let selectedPlaylist = playlist
                                         homeVC.playlistParent = selectedPlaylist
+                                        homeVC.playlistParentAsId = selectedPlaylist.parentId
                                         self.navigationController?.pushViewController(homeVC, animated: true)
                                     }
                                 })
-                            } else {
+                            }
+                            else {
                                 //load playlist that is not on the screen with playlists
                                 let homeVC = self.storyboard?.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
                                 homeVC.playlistParentAsId = zObject.getStringValue("playlistid")
+                                let playlist = zObject.getStringValue("_id")
+                                //homeVC.playlistParent = playlist
+                                //ZypeAppleTVBase.get playlist from playlist id.
                                 self.navigationController?.pushViewController(homeVC, animated: true)
                             }
                         }
                         self.pagerVC.configWithSection(section)
-                    } else {
+                    }
+                    else {
                         self.pagerVC.update([section])
                     }
                 }
-                
                 callback()
-            }) } else {//configure header for child playlists
+            })
+        }
+        else {//configure header for child playlists
             self.addPager()
             callback()
         }
@@ -181,7 +196,8 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
     }
     
     func addPager() {
-        let objects : Array<PlaylistModel> = [self.playlistParent!]
+        guard let playlistParent = self.playlistParent else { return }
+        let objects : Array<PlaylistModel> = [playlistParent]
         let items = CollectionContainerVC.categoryValuesToCollectionItems(objects)
         
         for (index,zObject) in objects.enumerated() {
@@ -203,11 +219,9 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
             self.pagerVC.isInfinityScrolling = false
             self.collectionVC.addChildViewController(self.pagerVC)
             self.pagerVC.didMove(toParentViewController: self.collectionVC)
-//            self.pagerVC.itemSelectedCallback = {[unowned self] (item: CollectionLabeledItem, section: CollectionSection) in
-//                
-//            }
             self.pagerVC.configWithSection(section)
-        } else {
+        }
+        else {
             self.pagerVC.update([section])
         }
     }
