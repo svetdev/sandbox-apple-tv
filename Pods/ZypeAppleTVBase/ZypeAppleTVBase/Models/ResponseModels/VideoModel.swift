@@ -41,7 +41,6 @@ open class VideoModel: BaseModel {
     {
         super.init(json: fromJson)
         fullJson = fromJson
-        
         do {
             videoId = try SSUtils.stringFromDictionary(fromJson, key: kJSON_Id)
         }

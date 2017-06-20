@@ -53,23 +53,42 @@ extension VideoModel {
     
 }
 
-/// Returns a custom banner image for a playlist of playists. If it is a playlist of videos or there is no custom banner image, returns the thumbnail image if available. If both of the previous do not apply, returns a place holder image if network connection is available.
-///
-/// - Parameter model: PlaylistModel
-/// - Returns: URL for an imageURL
-func getThumbnailOrBannerImageURL(with model: PlaylistModel, banner: Bool) -> URL {
+func getPlaylistBannerImageURL(with model: PlaylistModel) -> URL {
     let playlistBanner = model.images.filter { $0.name == "appletv_playlist_banner" }
     
-    if banner {
-        if !playlistBanner.isEmpty {
-            return URL(string: playlistBanner[0].imageURL)!
-        }
+    if !playlistBanner.isEmpty {
+        return URL(string: playlistBanner[0].imageURL)!
     }
-    
-    if model.thumbnails.count > 0 {
-        return URL(string: model.thumbnails[0].imageURL)!
+    else if let thumbnail = findLargestThumbnail(with: model) {
+        return thumbnail
     }
     else {
         return URL(string: "http://placehold.it/1740x700")!
     }
 }
+
+func getThumbnailImageURL(with model: PlaylistModel) -> URL {
+    if let thumbnail = findLargestThumbnail(with: model) {
+        return thumbnail
+    }
+    else {
+        return URL(string: "http://placehold.it/250x141")!
+    }
+}
+
+private func findLargestThumbnail(with model: PlaylistModel) -> URL? {
+    if model.thumbnails.count > 0 {
+        var largest = model.thumbnails[0]
+        
+        for each in model.thumbnails {
+            if each.width > largest.width {
+                largest = each
+            }
+        }
+        return URL(string: largest.imageURL)!
+    }
+    else {
+        return nil
+    }
+}
+
