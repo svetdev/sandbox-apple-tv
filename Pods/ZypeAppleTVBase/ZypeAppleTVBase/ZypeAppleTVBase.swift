@@ -256,6 +256,11 @@ open class ZypeAppleTVBase: NSObject {
     }
     
     //MARK: play list
+    open func getPlaylist(with id: String, completion: @escaping (_ playlist: [PlaylistModel]?, _ error: NSError?) -> Void) {
+        dataManager == nil ? completion(nil, NSError(domain: kErrorDomaine, code: kErrorSDKNotInitialized, userInfo: nil)) :
+            dataManager?.getPlaylist(with: id, completion: completion)
+    }
+    
     open func getPlaylists(_ queryModel: QueryPlaylistsModel = QueryPlaylistsModel(), completion:@escaping (_ playlists: Array<PlaylistModel>?, _ error: NSError?) -> Void)
     {
         dataManager == nil ? completion(nil, NSError(domain: kErrorDomaine, code: kErrorSDKNotInitialized, userInfo: nil)) :

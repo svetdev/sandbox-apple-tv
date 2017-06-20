@@ -9,7 +9,7 @@
 import UIKit
 
 class VimeoUrl: BaseUrl, VideoUrl {
-
+    
     // add check here to see if user is logged in and if he is change url with access token
     
     fileprivate var kPlayerGetVideo:String {
@@ -20,9 +20,9 @@ class VimeoUrl: BaseUrl, VideoUrl {
         }
     }
     
-
-     func getVideoObject(_ video: VideoModel, completion:@escaping (_ playerObject: VideoObjectModel, _ error: NSError?) -> Void)
-     {
+    
+    func getVideoObject(_ video: VideoModel, completion:@escaping (_ playerObject: VideoObjectModel, _ error: NSError?) -> Void)
+    {
         if ((ZypeAppleTVBase.sharedInstance.consumer?.isLoggedIn) == true){
             //call with access token
             ZypeAppleTVBase.sharedInstance.getToken({
@@ -43,7 +43,7 @@ class VimeoUrl: BaseUrl, VideoUrl {
             let player = VideoObjectModel()
             player.json = jsonDic
             if let response = jsonDic?[kJSONResponse] as? NSDictionary
-            
+                
             {
                 if let jsonBody = response[kJSONBody] as? NSDictionary {
                     let outputs = jsonBody[kJSONOutputs] as? Array <Dictionary<String, String> >
