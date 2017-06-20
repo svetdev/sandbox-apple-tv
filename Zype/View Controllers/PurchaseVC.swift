@@ -36,8 +36,6 @@ class PurchaseVC: UIViewController {
     
     @IBAction func onPlanSelected(_ sender: UIButton) {
         self.purchase(Const.productIdentifiers[sender.tag])
-        print("\n\n HELLO PURCHASE WORLD \n\n")
-        print(sender.tag)
     }
     
     func purchase(_ productID: String) {

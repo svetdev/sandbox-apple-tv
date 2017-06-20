@@ -2,21 +2,15 @@ PODS:
   - ZypeAppleTVBase (0.4.4)
 
 DEPENDENCIES:
-  - ZypeAppleTVBase (from `https://github.com/zype/ZypeAppleTVBase.git`, tag `0.4.4`)
+  - ZypeAppleTVBase (from `../ZypeAppleTVBase`)
 
 EXTERNAL SOURCES:
   ZypeAppleTVBase:
-    :git: https://github.com/zype/ZypeAppleTVBase.git
-    :tag: 0.4.4
-
-CHECKOUT OPTIONS:
-  ZypeAppleTVBase:
-    :git: https://github.com/zype/ZypeAppleTVBase.git
-    :tag: 0.4.4
+    :path: ../ZypeAppleTVBase
 
 SPEC CHECKSUMS:
   ZypeAppleTVBase: 2d020ac3fb8059e140a7af25dcae6bcec2b3f629
 
-PODFILE CHECKSUM: 459c65257acbb25a512dd4cfa57cf010dea1be02
+PODFILE CHECKSUM: 42e5a1faa1b87fc9766b121f1594b92a7a2ded24
 
 COCOAPODS: 1.1.1
