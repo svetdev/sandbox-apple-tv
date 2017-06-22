@@ -50,8 +50,8 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
     var playlist: Array<VideoModel>? = nil
     var currentVideo: VideoModel!
     var adTimer: Timer!
-    
     var adsData: [adObject] = [adObject]()
+    var adsArrayIndex = 0
     
     var currentTime : CMTime!
     var userDefaults = UserDefaults.standard
@@ -159,13 +159,13 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
                 
                 self.adsArray = adsArray
                 self.url = url
-//                if adsArray.count == 0 {
-                if true {
+                
+                if adsArray.count == 0 {
                     self.currentVideo = model
                     self.setupVideoPlayer()
                 }
                 else {
-                    self.playAds(adsArray: adsArray, url: url)
+                    self.playAds(adsArray: self.adsArray!, url: url)
                 }
                 self.currentVideo = model
             }
@@ -191,7 +191,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         self.playerController.view.frame = self.view.frame
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player?.currentItem)
         
-        playAds(at: 2)
+        observeTimerForAds(at: 2)
         
         if isResuming {
             if !currentVideo.onAir {
@@ -204,20 +204,9 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         player?.play()
     }
     
-    func playVideo() {
-        if let viewWithTag = self.view.viewWithTag(1001) {
-            viewWithTag.removeFromSuperview()
-        }
-        if let viewWithTag = self.view.viewWithTag(1002) {
-            viewWithTag.removeFromSuperview()
-        }
-        player?.play()
-    }
-    
     func removeAdsAndPlayVideo() {
         self.removeAdPlayer()
-//        self.setupVideoPlayer()
-        self.playVideo()
+        self.setupVideoPlayer()
     }
     
     func contentDidFinishPlaying(_ notification: Notification) {
@@ -249,23 +238,75 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
             self.player?.removeTimeObserver(adTimerObserver)
         }
     }
-    func playAds(at seconds: Int64) {
+    func observeTimerForAds(at seconds: Int64) {
+        
         let adTimer = self.player?.addPeriodicTimeObserver(forInterval: CMTimeMake(seconds, 1), queue: DispatchQueue.main) { (time) in
-            let timeString = Int(CMTimeGetSeconds(time))
-            
-            print("time is \(timeString)")
-            
-            if timeString == 46 {
-                self.player?.pause()
-                let pauseTime = CMTimeMakeWithSeconds((self.player?.currentTime().seconds)!, 1)
-                self.player?.seek(to: pauseTime)
+            guard self.adsData.count > 0 else {
                 self.shouldRemoveObserver = true
+                return
+            }
+            
+            guard let offset = self.adsData[0].offset else { return }
+            if Int(offset) / 1000 == 0 {
+                self.adsData.remove(at: 0)
+                return
+            }
+
+            let timeString = Int(CMTimeGetSeconds(time))
+            if timeString > Int(offset) / 1000 {
+                self.adsData.remove(at: 0)
+            }
+            
+            else if timeString == Int(offset) / 1000 {
+                self.shouldRemoveObserver = true
+                if !self.currentVideo.onAir {
+                    let timeStamp = self.playerController.player?.currentTime().seconds
+                    self.userDefaults.setValue(timeStamp, forKey: "\(self.currentVideo.getId())")
+                }
+                
+                NotificationCenter.default.removeObserver(self)
+                if self.adPlayer != nil {
+                    self.removeAdPlayer()
+                    self.adPlayer = nil
+                }
+                if self.playerController.player != nil {
+                    self.playerController.player?.pause()
+                    self.playerController.removeFromParentViewController()
+                    self.playerController.view.removeFromSuperview()
+                    self.playerController.player?.replaceCurrentItem(with: nil)
+                }
+                self.playerItem = nil
+                
+                if let viewWithTag = self.view.viewWithTag(1001) {
+                    viewWithTag.removeFromSuperview()
+                }
+                if let viewWithTag = self.view.viewWithTag(1002) {
+                    viewWithTag.removeFromSuperview()
+                }
+
                 self.playAds(adsArray: self.adsArray!, url: self.url!)
-                print("Should be playing ads now")
+                self.adsData.remove(at: 0)
+                self.isResuming = true
             }
         }
         self.adTimerObserver = adTimer
     }
+    
+    
+    
+    /*
+     func takes one timer -> add periodic { 
+     
+     do stuff
+     if let adsArray[counter += 1] {
+        add periodic {
+            do stuff
+        }
+     }
+     
+     }
+ */
+    
     
     // MARK: - DVIABPlayerDelegate
     func player(_ player: DVIABPlayer!, shouldPauseForAdBreak playBreak: DVVideoPlayBreak!) -> Bool {

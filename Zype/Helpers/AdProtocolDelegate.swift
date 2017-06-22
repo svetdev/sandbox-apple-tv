@@ -27,7 +27,7 @@ extension PlayerVC: AdHelperProtocol {
             if let advertising = body["advertising"] as? NSDictionary{
                 let schedule = advertising["schedule"] as? NSArray
                 self.adsData = [adObject]()
-                
+
                 if (schedule != nil) {
                     for i in 0..<schedule!.count {
                         let adDict = schedule![i] as! NSDictionary
@@ -38,6 +38,8 @@ extension PlayerVC: AdHelperProtocol {
             }
         }
         
+        _ = self.adsData.sorted(by: { $0.offset! < $1.offset! })
+        
         if self.adsData.count > 0 {
             
             for i in 0..<self.adsData.count {
@@ -46,6 +48,10 @@ extension PlayerVC: AdHelperProtocol {
                 if ad.offset == 0 {
                     adsArray.add(DVVideoPlayBreak.playBreakBeforeStart(withAdTemplateURL: URL(string: ad.tag!)!))
                 }
+                
+//                for each in self.adsData where each.offset != 0 {
+//                    adsArray.add(DVVideoPlayBreak.playBreakAtTime(fromStart: CMTimeMake(Int64(each.offset!), 1), withAdTemplateURL: URL(string: each.tag!)))
+//                }
             }
         }
         else {
@@ -85,6 +91,8 @@ extension PlayerVC: AdHelperProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.removeAdsAndPlayVideo), name: NSNotification.Name(rawValue: "noAdsToPlay"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.adPlayer!.contentPlayerItem)
+        
+        self.adsArrayIndex += 1
     }
     
     func setupAdTimer() {
