@@ -18,6 +18,7 @@ protocol AdHelperProtocol: class {
     func removeAdTimer()
     func removeAdPlayer()
     func observeTimerForMidrollAds()
+    func shouldPlayMidrollAds()
     func removePeriodicTimeObserver()
 }
 
