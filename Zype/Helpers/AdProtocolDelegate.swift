@@ -17,6 +17,8 @@ protocol AdHelperProtocol: class {
     func nextAdPlayer()
     func removeAdTimer()
     func removeAdPlayer()
+    func observeTimerForMidrollAds()
+    func removePeriodicTimeObserver()
 }
 
 extension PlayerVC: AdHelperProtocol {
@@ -37,22 +39,12 @@ extension PlayerVC: AdHelperProtocol {
                 }
             }
         }
-        
         _ = self.adsData.sorted(by: { $0.offset! < $1.offset! })
         
         if self.adsData.count > 0 {
-            
-            for i in 0..<self.adsData.count {
-                let ad = self.adsData[i]
-                //preroll
-                if ad.offset == 0 {
-                    adsArray.add(DVVideoPlayBreak.playBreakBeforeStart(withAdTemplateURL: URL(string: ad.tag!)!))
-                }
-                
-//                for each in self.adsData where each.offset != 0 {
-//                    adsArray.add(DVVideoPlayBreak.playBreakAtTime(fromStart: CMTimeMake(Int64(each.offset!), 1), withAdTemplateURL: URL(string: each.tag!)))
-//                }
-            }
+            let prerollAds = self.adsData.filter({ $0.offset == 0 })
+            let prerollAd = prerollAds[0]
+            adsArray.add(DVVideoPlayBreak.playBreakBeforeStart(withAdTemplateURL: URL(string: prerollAd.tag!)))
         }
         else {
             adsArray = NSMutableArray()
@@ -91,8 +83,6 @@ extension PlayerVC: AdHelperProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.removeAdsAndPlayVideo), name: NSNotification.Name(rawValue: "noAdsToPlay"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.adPlayer!.contentPlayerItem)
-        
-        self.adsArrayIndex += 1
     }
     
     func setupAdTimer() {
@@ -211,6 +201,67 @@ extension PlayerVC: AdHelperProtocol {
         self.playerView!.removeFromSuperview()
         self.playerView = nil
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func observeTimerForMidrollAds() {
+        let adTimer = self.playerController.player?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue.main) { (time) in
+            guard self.adsData.count > 0 else {
+                self.removePeriodicTimeObserver()
+                return
+            }
+            
+            guard let offsetMSeconds = self.adsData[0].offset else { return }
+            let offset = Int(offsetMSeconds) / 1000
+            
+            if offset == 0 { // remove preroll
+                self.adsData.remove(at: 0)
+                return
+            }
+            
+            let currentTime = Int(CMTimeGetSeconds(time))
+            
+            if currentTime > offset + 4 { // remove ads user skipped passed
+                self.adsData.remove(at: 0)
+            }
+            else if currentTime == offset + 2 { // play midroll ad
+                if !self.currentVideo.onAir {
+                    let timeStamp = self.playerController.player?.currentTime().seconds
+                    self.userDefaults.setValue(timeStamp, forKey: "\(self.currentVideo.getId())")
+                }
+                
+                NotificationCenter.default.removeObserver(self)
+                if self.adPlayer != nil {
+                    self.removeAdPlayer()
+                    self.adPlayer = nil
+                }
+                if self.playerController.player != nil {
+                    self.playerController.player?.pause()
+                    self.playerItem = nil
+                    self.playerController.player?.replaceCurrentItem(with: nil)
+                    self.playerController.view.removeFromSuperview()
+                    self.playerController.removeFromParentViewController()
+                }
+                
+                if let viewWithTag = self.view.viewWithTag(1001) {
+                    viewWithTag.removeFromSuperview()
+                }
+                if let viewWithTag = self.view.viewWithTag(1002) {
+                    viewWithTag.removeFromSuperview()
+                }
+                
+                self.playAds(adsArray: self.adsArray!, url: self.url!)
+                self.adsData.remove(at: 0)
+                self.isResuming = true
+            }
+        }
+        self.timeObserverToken = adTimer
+    }
+    
+    func removePeriodicTimeObserver() {
+        if let token = timeObserverToken {
+            self.playerController.player?.removeTimeObserver(token)
+            timeObserverToken = nil
+        }
     }
     
 }
