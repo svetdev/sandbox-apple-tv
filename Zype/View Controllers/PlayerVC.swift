@@ -38,7 +38,6 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
     
     // MARK: - Properties
     var adPlayer: DVIABPlayer?
-//    var player: AVPlayer?
     var playerLayer = AVPlayerLayer()
     var playerItem: AVPlayerItem!
     var playerController = AVPlayerViewController()
@@ -51,17 +50,18 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
     var currentVideo: VideoModel!
     var adsData: [adObject] = [adObject]()
     var adTimer: Timer!
+    var currentTime: CMTime!
     
-    var currentTime : CMTime!
     var userDefaults = UserDefaults.standard
     var timeObserverToken: Any?
+    var adsArray: NSMutableArray?
+    var url: NSURL?
     
     // MARK: - View Lifecycle
     deinit {
         print("Destroying")
         
         NotificationCenter.default.removeObserver(self)
-        self.removePeriodicTimeObserver()
         
         if self.adPlayer != nil {
             self.removeAdPlayer()
@@ -125,6 +125,8 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
             if self.playerController.player != nil {
                 self.playerController.player?.pause()
             }
+            
+            self.removePeriodicTimeObserver()
         }
     }
     
@@ -150,8 +152,6 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         }
     }
     
-    var adsArray: NSMutableArray?
-    var url: NSURL?
     func play(_ model: VideoModel) {
         model.getVideoObject(.kVimeoHls, completion: {[unowned self] (playerObject: VideoObjectModel?, error: NSError?) in
             if let _ = playerObject, let videoURL = playerObject?.videoURL, let url = NSURL(string: videoURL), error == nil {
@@ -161,7 +161,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
                 
                 self.adsArray = adsArray
                 self.url = url
-                
+
                 if adsArray.count == 0 {
                     self.currentVideo = model
                     self.setupVideoPlayer()
