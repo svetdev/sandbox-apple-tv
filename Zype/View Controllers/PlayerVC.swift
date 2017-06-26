@@ -62,7 +62,6 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         print("Destroying")
         
         NotificationCenter.default.removeObserver(self)
-        
         if self.adPlayer != nil {
             self.removeAdPlayer()
             self.adPlayer = nil
@@ -125,7 +124,6 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
             if self.playerController.player != nil {
                 self.playerController.player?.pause()
             }
-            
             self.removePeriodicTimeObserver()
         }
     }
@@ -158,7 +156,6 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
                 
                 let adsArray = self.getAdsFromResponse(playerObject)
                 self.playerURL = url as URL!
-                
                 self.adsArray = adsArray
                 self.url = url
 
