@@ -190,6 +190,7 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
         self.playerController.view.frame = self.view.frame
         
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+        
         self.observeTimerForMidrollAds()
         
         if isResuming {
