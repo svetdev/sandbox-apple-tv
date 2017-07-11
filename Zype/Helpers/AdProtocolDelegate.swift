@@ -220,7 +220,7 @@ extension PlayerVC: AdHelperProtocol {
             guard let offsetMSeconds = self.adsData[self.currentAd].offset else { return }
             let offset = Int(offsetMSeconds) / 1000
             let currentTime = Int(CMTimeGetSeconds(time))
-
+            
             if currentTime > offset + 4 { // user seeked passed this ad - 4 seconds to compensate for the + 2 below
                 self.currentAd += 1
             }
