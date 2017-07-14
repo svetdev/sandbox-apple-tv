@@ -49,7 +49,9 @@ class Const: NSObject {
     static let kDefaultsRootPlaylistId = "root_playlist_id"
     static let kDefaultsBackgroundUrl = "background_url"
     
-    //Segues
+    // Segues
     static let kShowTabBarSegueId = "ShowTabBar"
     
+    // Version
+    static let kcurrentVersion = "v1.1.1"
 }
