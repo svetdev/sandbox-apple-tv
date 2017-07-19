@@ -75,6 +75,13 @@ class ShowDetailsVC: CollectionContainerVC {
         self.posterImage.shouldAnimate = true
         self.titleLabel.text = self.selectedShow.titleString
         self.loadVideos()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadCollection), name: NSNotification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
+    }
+    
+    func reloadCollection() {
+        self.collectionVC.isConfigurated = false
+        self.collectionVC.collectionView?.reloadData()
+        self.loadVideos()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,10 +89,13 @@ class ShowDetailsVC: CollectionContainerVC {
         if let path = self.indexPathForselectedVideo() {
             self.collectionVC.collectionView?.scrollToItem(at: path, at: .centeredHorizontally, animated: false)
         }
+        self.refreshButtons()
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted), object: nil)
-        InAppPurchaseManager.sharedInstance.refreshSubscriptionStatus()
-        self.refreshButtons()
+        
+        if Const.kNativeSubscriptionEnabled {
+            InAppPurchaseManager.sharedInstance.refreshSubscriptionStatus()
+        }
     }
     
     // MARK: - Layout & Focus
@@ -295,7 +305,7 @@ class ShowDetailsVC: CollectionContainerVC {
             
             if !self.selectedVideo.isInFavorites() {
                 ZypeAppleTVBase.sharedInstance.setFavorite(self.selectedVideo, shouldSet: true, completion: {(success: Bool, error: NSError?) -> Void in
-                    print("favorted")   
+                    print("favorted")
                 })
             }
             else {

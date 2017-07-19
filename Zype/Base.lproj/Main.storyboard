@@ -627,11 +627,16 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="shouldFade" value="YES"/>
                                             </userDefinedRuntimeAttributes>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="1Pu-Jq-LCS" userLabel="lockImage">
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="fuT-eh-Lml" id="WOb-um-8UA"/>
                                     <outlet property="label" destination="adT-Wt-FvD" id="eXl-Vc-TwH"/>
+                                    <outlet property="lockImage" destination="1Pu-Jq-LCS" id="fU6-2o-Qdz"/>
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ControllerCell" id="Adw-a8-YCY" customClass="ControllerCell" customModule="AndreySandbox" customModuleProvider="target">
