@@ -608,8 +608,12 @@ class ZypeDataManager : NSObject {
     }
     
     
-    fileprivate func loadFavorites(_ page: Int = kApiFirstPage)
-    {
+    fileprivate func loadFavorites(_ page: Int = kApiFirstPage) {
+        let defaults = UserDefaults.standard
+        if let favorites = defaults.object(forKey: "favoritesViaAPI") as? Bool {
+            guard favorites else { return }
+        }
+        
         tokenManager.accessToken({ (token) -> Void in
             self.serviceController.getFavorites(token, consumerId: self.consumer.ID, page: page, completion: { (jsonDic, error) -> Void in
                 let favorites = self.jsonToFavoriteArrayPrivate(jsonDic)
