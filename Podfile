@@ -7,9 +7,9 @@ target 'AndreySandbox' do
 
 
 # Uncomment for development
-#pod 'ZypeAppleTVBase', :path => '../ZypeAppleTVBase'
+pod 'ZypeAppleTVBase', :path => '../ZypeAppleTVBase'
 
 # Uncomment for release and update tag here as well as in ZypeAppleTVBase.podspec
-pod 'ZypeAppleTVBase', :git => 'https://github.com/zype/ZypeAppleTVBase.git', :tag => ‘0.4.6’
+#pod 'ZypeAppleTVBase', :git => 'https://github.com/zype/ZypeAppleTVBase.git', :tag => ‘0.4.6’
 
 end
