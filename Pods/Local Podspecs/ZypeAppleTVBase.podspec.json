@@ -5,7 +5,7 @@
   },
   "summary": "ZypeAppleTVBase lets a user use Zype tvOS SDK.",
   "requires_arc": true,
-  "version": "0.4.4",
+  "version": "0.4.6",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
@@ -16,7 +16,7 @@
   "homepage": "https://github.com/zype/ZypeAppleTVBase.git",
   "source": {
     "git": "https://github.com/zype/ZypeAppleTVBase.git",
-    "tag": "0.4.4"
+    "tag": "0.4.6"
   },
   "frameworks": "UIKit",
   "source_files": "ZypeAppleTVBase/**/*.{swift}",
