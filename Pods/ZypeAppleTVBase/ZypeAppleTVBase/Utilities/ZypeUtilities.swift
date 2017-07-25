@@ -182,35 +182,53 @@ open class ZypeUtilities {
         }
     }
     
+    open static func presentRegisterVC(_ caller: UIViewController) {
+        let podBundle = Bundle(for: ZypeAppleTVBase.self)
+        
+        guard let bundleURL = podBundle.url(forResource: "ZypeAppleTVBaseResources", withExtension: "bundle") else {
+            assertionFailure("Could not create a path to the bundle")
+            return
+        }
+        
+        guard let bundle = Bundle(url: bundleURL) else {
+            assertionFailure("Could not load the bundle")
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "DeviceLinking", bundle: bundle)
+        let vc = storyboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        caller.present(vc, animated: true, completion: nil)
+    }
+    
     open static func loginUser(_ completion: @escaping (_ result: String) -> Void) {
         let email =  UserDefaults.standard.object(forKey: kUserEmail) as! String?
         let password = UserDefaults.standard.object(forKey: kUserPassword) as! String?
 
-        if ((email == nil) || (password == nil)){
+        if email == nil || password == nil {
               UserDefaults.standard.set(false, forKey: kDeviceLinkedStatus)
-        } else {
-            ZypeAppleTVBase.sharedInstance.login(email!, passwd: password!, completion:{ (logedIn: Bool, error: NSError?) in
-                print(logedIn)
-                if (error != nil) {
+        }
+        else {
+            ZypeAppleTVBase.sharedInstance.login(email!, passwd: password!, completion:{ (loggedIn: Bool, error: NSError?) in
+                if error != nil {
                     completion("error")
                     return
                 }
                 
-                if (logedIn){
+                if loggedIn {
                     UserDefaults.standard.set(true, forKey: kDeviceLinkedStatus)
                     if ((ZypeAppleTVBase.sharedInstance.consumer?.isLoggedIn) == true){
                         print("YaY")
-                    } else {
+                    }
+                    else {
                         print("Nay :(")
                     }
-                    
-                } else {
+                }
+                else {
                     UserDefaults.standard.set(false, forKey: kDeviceLinkedStatus)
                 }
                 completion("Completed")
             })
         }
-       
     }
     
     open static func getLogoutVC() -> LogoutVC? {

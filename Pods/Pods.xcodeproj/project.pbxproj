@@ -7,62 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		03E640728CC9ADCE651F1BA12764B2C3 /* android_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 55A87FEB5CECFEBBA61BE933B006FD32 /* android_icon.png */; };
-		09E403B0BA47429F4842DD7DCDC1F1DD /* VideoObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32374E51003E737503DDAA42FD9E9C8B /* VideoObjectModel.swift */; };
-		14129025A227004D69F34E341FA766D9 /* ZypeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CCD52D20CB5485B1F9E109A0C97375 /* ZypeLog.swift */; };
-		18F695C29B7C2565ADA120F4903D33EE /* ConsumerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395E4F8CFACB8F87BBD00EB60DE7A379 /* ConsumerModel.swift */; };
-		19D17AB71DC1D2763D08FEEE809DA5A4 /* ZobjectTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8D97A8D8010E9FBABB71734EAA9FCB /* ZobjectTypeModel.swift */; };
-		1FB2EC880CEFB5BE662423356BB577E1 /* iconLocked_old.png in Resources */ = {isa = PBXBuildFile; fileRef = BCA23655A5EE60DC97F05DBACCECBB1E /* iconLocked_old.png */; };
-		249C14CDFFF4667ED793973B57F59F73 /* LogoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6100A7DF3B28AC3956AD3169F7847F27 /* LogoutVC.swift */; };
-		24EE8ED5D9C211238C3DC264330C6855 /* DeviceLinkingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0AB966CA68A2E9007B91BCE178709C /* DeviceLinkingVC.swift */; };
-		2DE73BF428D3994467E2ADAA6DE319F9 /* iconUnlocked_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E273028C27D096C53A6A0B006C22B33 /* iconUnlocked_old.png */; };
-		2F1451B0D78E1AFB1CA3201A711114FA /* QueryVideosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182A3E0269BB60683AA9605D5F3E0956 /* QueryVideosModel.swift */; };
-		2FCD5820A39B3C0CA5AAC3494B4C2DC7 /* iconLocked.png in Resources */ = {isa = PBXBuildFile; fileRef = 688AF3368E8D1792D06871B84C5DDE93 /* iconLocked.png */; };
-		327497F316556F8F31145CA394521611 /* ZypeAppleTVBase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BDE7371B862BF068751EFD37B1AABE71 /* ZypeAppleTVBase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		36D8856031438BB6CE3417065DF43975 /* ZypeErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FEEA6513914737672F8E4AE09A47B3 /* ZypeErrorConstants.swift */; };
-		452CC797FC986D3C8F5600A8F3BDEB09 /* ZypeAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4494A3FE8D68D1E05542B7F86C4A47ED /* ZypeAppSettings.swift */; };
-		476C44B9FD841AEF2EF1901EB8E01234 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB57A30133D7935F1E856A46A82A5CC8 /* BaseModel.swift */; };
-		539FA0DCF793635302DB23D37BF84CF4 /* QueryZobjectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FFC183C82BA76AC72ACFE5BF9A07B8 /* QueryZobjectsModel.swift */; };
-		5C9862783805EE6DD059BB46EE12639C /* iconUnlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = 74B640B5D212E0BE4455A0BF51F2A332 /* iconUnlocked.png */; };
-		6066CE113B6D8BD1B1100BA0FCDAAA56 /* ZypeTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7782B7FF3C5ED28C555E5A6687C8BAD /* ZypeTokenModel.swift */; };
-		61A30EA1B7D3BEF7BA0B47F0D1F6639E /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0A5C3808AB5972C994C9FA5F9AD8FF /* FavoriteModel.swift */; };
-		6507129BA44B8B0204C9624BFC7E062F /* QueryRetrieveVideosInPlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89FD7CC2A637D189679625B041EA7AA5 /* QueryRetrieveVideosInPlaylistModel.swift */; };
-		6D5605A892D4E24213713E9D741D7AF0 /* QueryCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6362515CDF7F52C205F9740E1B8D29DC /* QueryCategoriesModel.swift */; };
-		797DC78DED9BABD8518DE071C9C181B2 /* QueryPlaylistsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF14680B089117BA76024BE2A49ABD88 /* QueryPlaylistsModel.swift */; };
-		83C862D04B5DCEFC524ECB9AD85D2C28 /* ZypeRESTController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C9CCC5FD1AE1087F30B4D178B28058 /* ZypeRESTController.swift */; };
+		03E640728CC9ADCE651F1BA12764B2C3 /* android_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E93EB65C176B3D17C1E3498A83A8C542 /* android_icon.png */; };
+		063D902A144962C53E4334C0EBF99D71 /* QueryZobjectTypesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205EB95CDEEFDC56D6447E603ED363C2 /* QueryZobjectTypesModel.swift */; };
+		07C3C19080617D33A1DB8918F6288EBB /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F023C34402AB1B22F4748CDEE502FF /* SubscriptionModel.swift */; };
+		07EE1B86592AE255F03DBEE87D0F6A31 /* ThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D452935A628C717B05A8555F033F00A6 /* ThumbnailModel.swift */; };
+		0F23065EE1167D6D7CBF4BD628F3C21A /* QueryZobjectsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA2BEDFB7B3F49822A586EDFBCE78A8 /* QueryZobjectsModel.swift */; };
+		1137962A0AE18D081A5342D1BD51436F /* LogoutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A95341CCB044AB07D1D3EDF5217C3D /* LogoutVC.swift */; };
+		1812E9E3F1FE58177FD236C3143189A3 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C07150F64C1FE5F80451F3CF82CB7 /* ContentModel.swift */; };
+		1AC6466A79B9503FBA12251E3FAD4D99 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBDE5EC6C599B8874F7B8448810A4CA /* BaseUrl.swift */; };
+		1DE76F5ED772A7800C68B4859764AD4D /* QueryRetrieveVideosInPlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477A7BBEB7301527983A837810119DCF /* QueryRetrieveVideosInPlaylistModel.swift */; };
+		1FB2EC880CEFB5BE662423356BB577E1 /* iconLocked_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B41FFEE3D3135F54FF300A9D48043C8 /* iconLocked_old.png */; };
+		28337138A421042A205DAC6E10C02927 /* QueryPlaylistsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791F9F532B83AD0E8A75C8DC6A0C3E52 /* QueryPlaylistsModel.swift */; };
+		28BC0F2B4882C146F2CF7A719569A099 /* DeviceLinkingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FED2BDBB367F1C52124B673752A73B2 /* DeviceLinkingVC.swift */; };
+		2BDF7D5AB93A5E1DD866B7068AEA9202 /* ZypeAppleTVBase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 612938199B4BF796D07995A4B50C1BBD /* ZypeAppleTVBase-dummy.m */; };
+		2DE73BF428D3994467E2ADAA6DE319F9 /* iconUnlocked_old.png in Resources */ = {isa = PBXBuildFile; fileRef = 6DE6DC886CB04493F11B6A3189E635AD /* iconUnlocked_old.png */; };
+		2FCD5820A39B3C0CA5AAC3494B4C2DC7 /* iconLocked.png in Resources */ = {isa = PBXBuildFile; fileRef = 13A5ADB25F0395AB98034E765109ADB2 /* iconLocked.png */; };
+		327497F316556F8F31145CA394521611 /* ZypeAppleTVBase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 374A2C06C4CF588DAF922FCF0A39AD4C /* ZypeAppleTVBase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32B432F9F2E402F35C576FBFFD679F81 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B936B38250ABEA36DB6693A52BA8AD7 /* FavoriteModel.swift */; };
+		3C12EC29ACCD4C0F45EF47343AFCD5CE /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B99B308C7A3D16C8C8F8FC74F0DF793 /* RegisterVC.swift */; };
+		3E225ED74B68D9F4F0BB6742E17777B0 /* VimeoUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910C902D8202C134A19700C7B91D1C1 /* VimeoUrl.swift */; };
+		42EA557F03E3ED5E28BE4F04FB40DD6B /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC3CF51D28195DE37CC2823821DDE9C /* VideoModel.swift */; };
+		48D182409B12E22A2296292D09C4D463 /* VideoObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41779C5EF8222829B2B650586EBCCD9 /* VideoObjectModel.swift */; };
+		4E0727F9FCCAA147AAA27DDF3504EC90 /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AB0C1808C856586548C754E2D540F9 /* PlaylistModel.swift */; };
+		563A93E67E2733B9F31FC5AB4AA628AE /* ZypeCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46790CF9A8C3C1F4E02F57BCEA881724 /* ZypeCacheManager.swift */; };
+		5B919B082925D16AD0ADF057B3E558F1 /* ZypeLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB432C047D714EAE96BBAB1C2CBFC574 /* ZypeLog.swift */; };
+		5C8A3DC747750FD5092E9506568BE136 /* QueryBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98486C0B1F60BCC0D878407B6D2E530 /* QueryBaseModel.swift */; };
+		5C9862783805EE6DD059BB46EE12639C /* iconUnlocked.png in Resources */ = {isa = PBXBuildFile; fileRef = CDD09E38C0419C9CD577702BA802409D /* iconUnlocked.png */; };
+		68C9EB4201227E4F50859FCB45F71223 /* ZypeAppleTVBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78A7325278E84285A102AC3BE15D266 /* ZypeAppleTVBase.swift */; };
+		6B12DB5105A08367FA8C463E43A98B27 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934C310F6CBABC6B068886E02633F625 /* BaseModel.swift */; };
+		77D9BAE588B6BB7C70B7472D8C13DC4B /* ZypeUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0ED78275B03290025E8A5E25CBD820 /* ZypeUtilities.swift */; };
+		7829FEA1898562956BFFF505C2B2AF5A /* QueryVideosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52DAC99C8583EC2E8CA071DB82C1E24 /* QueryVideosModel.swift */; };
 		885570EE3830B1A41C6E1B50BEAB905B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD302BA31CA52C22598677C29AEC7BD /* Foundation.framework */; };
-		9723DEE54CC9149B2CF28DCA0A1CDAD7 /* ZypeApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852F37BA035FE0DDCE62723984B1445F /* ZypeApiConstants.swift */; };
-		97DAF8B3D8DD15AB54AAD4CF1ADCAD86 /* ZypeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4413519173DFF4DC6258C8EE9B4707 /* ZypeFactory.swift */; };
-		97DBD0AAA9E25CF564E8107F4F570908 /* SSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D44F9BF09973F34A3EEA020B43F3789 /* SSUtils.swift */; };
-		980D2E70796DE88E7D6413DA63CD4BDA /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E82731235AE0B9C0049021821587A5A /* LoginVC.swift */; };
+		91C1768F962CE8C332C13B935CFBF723 /* ZypeTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD491B8A2EC23B13BFE2FEDC88233B5 /* ZypeTokenModel.swift */; };
+		93E1035ECF3F6C778CBF67C18282719F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37AF805C13C9F2F0C1E83A60BF45C59 /* LoginVC.swift */; };
+		96B7BF40ECF61388DB98F46BB897736A /* ZobjectTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB814D8329FA762E189B64EAE4DCD05 /* ZobjectTypeModel.swift */; };
+		978CBBE1A2C8B81AF69C8D51479FFD28 /* ZobjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2D9CD1F82BC1BF3059738D7B6FD350 /* ZobjectModel.swift */; };
 		984F9EF290B13681D6A23D4DD403DD43 /* Pods-AndreySandbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F90DD2CB7B5C7BA08E4397C1689B0A8A /* Pods-AndreySandbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9C285CFAF449FDC849BB0D1C8FD5B58C /* ZypeCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A62E8CB3994E318A7D98397CFC6BA59 /* ZypeCacheManager.swift */; };
-		A067B054B36EC5CC380E288CF2FFFD55 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9271ED709E6FA514B254242D38B24D19 /* VideoModel.swift */; };
-		A77CE48691DADE8B6DE31E6F88485FB9 /* ZypeAppleTVBase-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9095C28E3C53B0C65A34E3DCA58BB59E /* ZypeAppleTVBase-dummy.m */; };
-		B0987C22E8D691019A6C75E807EF0801 /* ZypeJSONConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79B1CFDB9B0399105AE4F62349983A /* ZypeJSONConstants.swift */; };
-		B27E7711305A757DBB0B1988FF6738A9 /* ZypeAppleTVBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5AA3AECA7D62F5A68DC0378556ABEE /* ZypeAppleTVBase.swift */; };
-		B2C4B927DC5AD66BDE8827E3732EE445 /* ZypeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9C9CFA953756D3C98D1087B27B36F5 /* ZypeDataManager.swift */; };
+		98CAE64DCA226C099B6E2C7FD438EE16 /* ZypeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119AB40E9D9FD65DB65CA73EDC241E2C /* ZypeConstants.swift */; };
+		9CB5E12E5FB95C899C527130B17017BE /* ZypeRESTController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B2566FACF0F4D21F6C83B7D932F657 /* ZypeRESTController.swift */; };
+		A4E520236A84FB608B6E44CB78BB53F4 /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61DB231827F26A4175415A454CD3F8F8 /* SettingsModel.swift */; };
+		B20F1E9158F3E0A2464319CF887B03BF /* ZypeJSONConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD5527B12021606E65387CCC9CDC54B /* ZypeJSONConstants.swift */; };
 		B46AEA460374E7BD065FED018788E218 /* Pods-AndreySandbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD6FE22FE57E83DF34D8C7F583149EB /* Pods-AndreySandbox-dummy.m */; };
 		B4D9D6E22CDDFF6ED2E00179CC1F8AAE /* ZypeAppleTVBaseResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 008247E65402BE3B06CEA303E5B74409 /* ZypeAppleTVBaseResources.bundle */; };
-		B5CB78EBF0D50103290743FA93510D3E /* QueryZobjectTypesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224751D05989F7016395176CDB73968A /* QueryZobjectTypesModel.swift */; };
-		BD9F72A73ADC6A5CFB0F40D559D52966 /* QueryBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A162DC0105E95C0923E1569BB2D43E36 /* QueryBaseModel.swift */; };
-		BED6E238C23509C26550FD7594FFC1AE /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D20AA50B3639784B5621C0E35D4499 /* SettingsModel.swift */; };
-		C51E5E54A8812EBBAEAA52D0656BA6AB /* ZypeTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54CB30C2C38F771C52B7C063A66E2B6 /* ZypeTokenManager.swift */; };
-		C580B1E389868C19F9C9117F3277FB9A /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58676DA53B7ACCF7E7AD98EE2845A053 /* CategoryModel.swift */; };
-		D1232E5B7F049F05812C250EF3E9BDD4 /* CategoryValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E69070C2F71898F4E4F367C2CEDA8F /* CategoryValueModel.swift */; };
-		D367DE7D2E5B123BA47BC862EB7F080B /* ZobjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A887305E72B099AE054DC0DA6C35C498 /* ZobjectModel.swift */; };
+		B9857C6BE346409DBFA3FAE0474179A5 /* ZypeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9585FD4AFD6D1124B13E7965153F2393 /* ZypeFactory.swift */; };
+		C48C581B5C0E97AAE81A1130383AAA68 /* ZypeApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D20029361664CDBEB5BA2CA73F1E003 /* ZypeApiConstants.swift */; };
+		D1DF498D53E8985927A3BE45962E82C8 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57CBDBCB0845ED21961351FB088FD0F1 /* CategoryModel.swift */; };
+		D1E80EE5E2E7E66BB163E106409C960D /* ZypeAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BDA9680B7E8D0C0251F26199967468 /* ZypeAppSettings.swift */; };
 		D375853181FC8C6B3DDEE8D2469034E0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9007AF4BA9E200F9154E7B1DB0BEA9CB /* UIKit.framework */; };
-		D830C464F607D59D9B4613618ED9D0E4 /* BaseUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1517742DDAEEAC97CFEB39C3C68E5653 /* BaseUrl.swift */; };
-		DAE620D32399BE9CC8C9608DEB593A98 /* QuerySubscriptionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D08ECF84D576E021D8D17AA4EAE160 /* QuerySubscriptionsModel.swift */; };
-		DCB443AF9FC09E3F890E6869263EB6DA /* ZypeConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EDCFBBB47109EACE568B446EC872443 /* ZypeConstants.swift */; };
-		E5877C7E8AEA2BCE9BCA5B01A45DAAB6 /* ThumbnailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CBDB5AAEC86A66BE845593A929AADC /* ThumbnailModel.swift */; };
-		E993EDEB38FAD677B887848DC2EB85A1 /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADBF6380A83BF54E2ED93AFBBC05F3C /* ContentModel.swift */; };
-		EB27084DFC346C3010CDF0BFFD814ECA /* PlaylistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97125474504973E78C74D6B9E5D928D4 /* PlaylistModel.swift */; };
+		D6CF8055CCE3002F39B8BC72011CE29D /* ConsumerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDD1648FDA73D8983EE248F58BA7A94 /* ConsumerModel.swift */; };
+		D6F1B07A476D8993FC4CE6A8BFD31F70 /* CategoryValueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DE81D042E72BEEC401D861F2FE0D241 /* CategoryValueModel.swift */; };
+		DBCCC7942F994B28D6F66A669A9A07E2 /* SSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B1A48A609AF2FD573BD50B0BDBF759 /* SSUtils.swift */; };
+		DF354AFE693D5A8C3414040A442AFE5E /* ZypeErrorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788C85C1B5D35176BFDCA4FAEE4DAE2E /* ZypeErrorConstants.swift */; };
+		DFF9523F020AA0142476443BC1F302BE /* ZypeTokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033F0873020F3701A5F1895779C333C4 /* ZypeTokenManager.swift */; };
+		E95A34CCDC1F0366900B8F6D91A4CD0D /* QueryCategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BF325C6EF6CA26E2ED08FA61D5F8D91 /* QueryCategoriesModel.swift */; };
+		EBEAE1FCDF4C0321780925D6930445E7 /* ZypeDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E544B5F06A10F65BFEE115B3F5987871 /* ZypeDataManager.swift */; };
 		ED164761104F98A3CA78D3620D0E572B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD302BA31CA52C22598677C29AEC7BD /* Foundation.framework */; };
-		F22FDE0CB57437CF2CACF2A90545A570 /* ZypeUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118FC14B9041B0CB41DA46D364C40C1D /* ZypeUtilities.swift */; };
-		F707E745AE7EBA9366663275F327272A /* VimeoUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED2D0FAB57A39037FA6BF17E2332CCB /* VimeoUrl.swift */; };
-		FCB5E1FDC5686BB69D2E39B2EA7CD2C3 /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADDCA81435EA0B65BE132DCF8396079 /* SubscriptionModel.swift */; };
-		FE63860E624D2B5DC130DD219EADC782 /* DeviceLinking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B18AD553332ECE54F2EE44041FB19270 /* DeviceLinking.storyboard */; };
+		FDAA5154A6C6F305DEBCD5AEE9E44DC9 /* QuerySubscriptionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DE171BF8F95515167121F97DBCBA21 /* QuerySubscriptionsModel.swift */; };
+		FE63860E624D2B5DC130DD219EADC782 /* DeviceLinking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA02CB53BF1135B7C0AEDBD2C2522A65 /* DeviceLinking.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,75 +85,76 @@
 
 /* Begin PBXFileReference section */
 		008247E65402BE3B06CEA303E5B74409 /* ZypeAppleTVBaseResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ZypeAppleTVBaseResources.bundle; path = ZypeAppleTVBaseResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		033F0873020F3701A5F1895779C333C4 /* ZypeTokenManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeTokenManager.swift; path = ZypeAppleTVBase/Managers/ZypeTokenManager.swift; sourceTree = "<group>"; };
 		0950980E7F87ADA21B8AA7305948A260 /* Pods-AndreySandbox-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AndreySandbox-resources.sh"; sourceTree = "<group>"; };
-		0A79B1CFDB9B0399105AE4F62349983A /* ZypeJSONConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeJSONConstants.swift; path = ZypeAppleTVBase/Constants/ZypeJSONConstants.swift; sourceTree = "<group>"; };
-		0E82731235AE0B9C0049021821587A5A /* LoginVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = ZypeAppleTVBase/ViewControllers/LoginVC.swift; sourceTree = "<group>"; };
-		118FC14B9041B0CB41DA46D364C40C1D /* ZypeUtilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeUtilities.swift; path = ZypeAppleTVBase/Utilities/ZypeUtilities.swift; sourceTree = "<group>"; };
-		1517742DDAEEAC97CFEB39C3C68E5653 /* BaseUrl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseUrl.swift; path = ZypeAppleTVBase/Factories/BaseUrl.swift; sourceTree = "<group>"; };
-		16CCD52D20CB5485B1F9E109A0C97375 /* ZypeLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeLog.swift; path = ZypeAppleTVBase/Utilities/ZypeLog.swift; sourceTree = "<group>"; };
-		177E6E63974E633B1BA36EBB36E506BA /* ZypeAppleTVBase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZypeAppleTVBase-prefix.pch"; sourceTree = "<group>"; };
-		182A3E0269BB60683AA9605D5F3E0956 /* QueryVideosModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryVideosModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryVideosModel.swift; sourceTree = "<group>"; };
+		0B41FFEE3D3135F54FF300A9D48043C8 /* iconLocked_old.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = iconLocked_old.png; path = ZypeAppleTVBaseResources/Images/iconLocked_old.png; sourceTree = "<group>"; };
+		0B936B38250ABEA36DB6693A52BA8AD7 /* FavoriteModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavoriteModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/FavoriteModel.swift; sourceTree = "<group>"; };
+		0E0ED78275B03290025E8A5E25CBD820 /* ZypeUtilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeUtilities.swift; path = ZypeAppleTVBase/Utilities/ZypeUtilities.swift; sourceTree = "<group>"; };
+		119AB40E9D9FD65DB65CA73EDC241E2C /* ZypeConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeConstants.swift; path = ZypeAppleTVBase/Constants/ZypeConstants.swift; sourceTree = "<group>"; };
+		13A5ADB25F0395AB98034E765109ADB2 /* iconLocked.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = iconLocked.png; path = ZypeAppleTVBaseResources/Images/iconLocked.png; sourceTree = "<group>"; };
 		1884C2446E1A17C11D7ED6EF405E860D /* Pods_AndreySandbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AndreySandbox.framework; path = "Pods-AndreySandbox.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		224751D05989F7016395176CDB73968A /* QueryZobjectTypesModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryZobjectTypesModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryZobjectTypesModel.swift; sourceTree = "<group>"; };
-		2B0AB966CA68A2E9007B91BCE178709C /* DeviceLinkingVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DeviceLinkingVC.swift; path = ZypeAppleTVBase/ViewControllers/DeviceLinkingVC.swift; sourceTree = "<group>"; };
-		2FC55953668D26DCF05B8862A371179E /* ZypeAppleTVBase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ZypeAppleTVBase.modulemap; sourceTree = "<group>"; };
-		32374E51003E737503DDAA42FD9E9C8B /* VideoObjectModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoObjectModel.swift; path = ZypeAppleTVBase/Models/VideoObjectModel.swift; sourceTree = "<group>"; };
-		395E4F8CFACB8F87BBD00EB60DE7A379 /* ConsumerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsumerModel.swift; path = ZypeAppleTVBase/Models/ConsumerModel.swift; sourceTree = "<group>"; };
+		1D20029361664CDBEB5BA2CA73F1E003 /* ZypeApiConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeApiConstants.swift; path = ZypeAppleTVBase/Constants/ZypeApiConstants.swift; sourceTree = "<group>"; };
+		1DC3CF51D28195DE37CC2823821DDE9C /* VideoModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/VideoModel.swift; sourceTree = "<group>"; };
+		205EB95CDEEFDC56D6447E603ED363C2 /* QueryZobjectTypesModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryZobjectTypesModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryZobjectTypesModel.swift; sourceTree = "<group>"; };
+		23B2566FACF0F4D21F6C83B7D932F657 /* ZypeRESTController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeRESTController.swift; path = ZypeAppleTVBase/API/ZypeRESTController.swift; sourceTree = "<group>"; };
+		374A2C06C4CF588DAF922FCF0A39AD4C /* ZypeAppleTVBase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZypeAppleTVBase-umbrella.h"; sourceTree = "<group>"; };
+		37A95341CCB044AB07D1D3EDF5217C3D /* LogoutVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogoutVC.swift; path = ZypeAppleTVBase/ViewControllers/LogoutVC.swift; sourceTree = "<group>"; };
+		3A4C07150F64C1FE5F80451F3CF82CB7 /* ContentModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentModel.swift; path = ZypeAppleTVBase/Models/ContentModel.swift; sourceTree = "<group>"; };
+		3BDD1648FDA73D8983EE248F58BA7A94 /* ConsumerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConsumerModel.swift; path = ZypeAppleTVBase/Models/ConsumerModel.swift; sourceTree = "<group>"; };
+		3FBDE5EC6C599B8874F7B8448810A4CA /* BaseUrl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseUrl.swift; path = ZypeAppleTVBase/Factories/BaseUrl.swift; sourceTree = "<group>"; };
 		447CF420843181FE6A5A297C6D465720 /* ZypeAppleTVBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZypeAppleTVBase.framework; path = ZypeAppleTVBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4494A3FE8D68D1E05542B7F86C4A47ED /* ZypeAppSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeAppSettings.swift; path = ZypeAppleTVBase/Helpers/ZypeAppSettings.swift; sourceTree = "<group>"; };
-		55A87FEB5CECFEBBA61BE933B006FD32 /* android_icon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = android_icon.png; path = ZypeAppleTVBaseResources/Images/android_icon.png; sourceTree = "<group>"; };
-		58676DA53B7ACCF7E7AD98EE2845A053 /* CategoryModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/CategoryModel.swift; sourceTree = "<group>"; };
-		6100A7DF3B28AC3956AD3169F7847F27 /* LogoutVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LogoutVC.swift; path = ZypeAppleTVBase/ViewControllers/LogoutVC.swift; sourceTree = "<group>"; };
-		6362515CDF7F52C205F9740E1B8D29DC /* QueryCategoriesModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryCategoriesModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryCategoriesModel.swift; sourceTree = "<group>"; };
-		64E69070C2F71898F4E4F367C2CEDA8F /* CategoryValueModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryValueModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/CategoryValueModel.swift; sourceTree = "<group>"; };
-		688AF3368E8D1792D06871B84C5DDE93 /* iconLocked.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = iconLocked.png; path = ZypeAppleTVBaseResources/Images/iconLocked.png; sourceTree = "<group>"; };
-		6BA1F06351DF53183BB54D6B0120A132 /* ZypeAppleTVBase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZypeAppleTVBase.xcconfig; sourceTree = "<group>"; };
-		6EDCFBBB47109EACE568B446EC872443 /* ZypeConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeConstants.swift; path = ZypeAppleTVBase/Constants/ZypeConstants.swift; sourceTree = "<group>"; };
+		46790CF9A8C3C1F4E02F57BCEA881724 /* ZypeCacheManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeCacheManager.swift; path = ZypeAppleTVBase/Managers/ZypeCacheManager.swift; sourceTree = "<group>"; };
+		477A7BBEB7301527983A837810119DCF /* QueryRetrieveVideosInPlaylistModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryRetrieveVideosInPlaylistModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryRetrieveVideosInPlaylistModel.swift; sourceTree = "<group>"; };
+		4FD491B8A2EC23B13BFE2FEDC88233B5 /* ZypeTokenModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeTokenModel.swift; path = ZypeAppleTVBase/Models/ZypeTokenModel.swift; sourceTree = "<group>"; };
+		57CBDBCB0845ED21961351FB088FD0F1 /* CategoryModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/CategoryModel.swift; sourceTree = "<group>"; };
+		5E53578A21E4C2EEDC44C894A6595D0A /* ZypeAppleTVBase.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZypeAppleTVBase.xcconfig; sourceTree = "<group>"; };
+		612938199B4BF796D07995A4B50C1BBD /* ZypeAppleTVBase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZypeAppleTVBase-dummy.m"; sourceTree = "<group>"; };
+		61DB231827F26A4175415A454CD3F8F8 /* SettingsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SettingsModel.swift; path = ZypeAppleTVBase/Models/SettingsModel.swift; sourceTree = "<group>"; };
+		68BDA9680B7E8D0C0251F26199967468 /* ZypeAppSettings.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeAppSettings.swift; path = ZypeAppleTVBase/Helpers/ZypeAppSettings.swift; sourceTree = "<group>"; };
+		6910C902D8202C134A19700C7B91D1C1 /* VimeoUrl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VimeoUrl.swift; path = ZypeAppleTVBase/Factories/VimeoUrl.swift; sourceTree = "<group>"; };
+		6DE6DC886CB04493F11B6A3189E635AD /* iconUnlocked_old.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = iconUnlocked_old.png; path = ZypeAppleTVBaseResources/Images/iconUnlocked_old.png; sourceTree = "<group>"; };
 		6EE5456ED2CFCF4987C252573F2F914D /* Pods-AndreySandbox-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AndreySandbox-frameworks.sh"; sourceTree = "<group>"; };
-		74B640B5D212E0BE4455A0BF51F2A332 /* iconUnlocked.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = iconUnlocked.png; path = ZypeAppleTVBaseResources/Images/iconUnlocked.png; sourceTree = "<group>"; };
-		77D08ECF84D576E021D8D17AA4EAE160 /* QuerySubscriptionsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuerySubscriptionsModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QuerySubscriptionsModel.swift; sourceTree = "<group>"; };
-		79FD208371772FECFFFADA604920A9F7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7ADBF6380A83BF54E2ED93AFBBC05F3C /* ContentModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContentModel.swift; path = ZypeAppleTVBase/Models/ContentModel.swift; sourceTree = "<group>"; };
-		7ADDCA81435EA0B65BE132DCF8396079 /* SubscriptionModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubscriptionModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/SubscriptionModel.swift; sourceTree = "<group>"; };
-		7E273028C27D096C53A6A0B006C22B33 /* iconUnlocked_old.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = iconUnlocked_old.png; path = ZypeAppleTVBaseResources/Images/iconUnlocked_old.png; sourceTree = "<group>"; };
+		6FD5527B12021606E65387CCC9CDC54B /* ZypeJSONConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeJSONConstants.swift; path = ZypeAppleTVBase/Constants/ZypeJSONConstants.swift; sourceTree = "<group>"; };
+		788C85C1B5D35176BFDCA4FAEE4DAE2E /* ZypeErrorConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeErrorConstants.swift; path = ZypeAppleTVBase/Constants/ZypeErrorConstants.swift; sourceTree = "<group>"; };
+		78B1A48A609AF2FD573BD50B0BDBF759 /* SSUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSUtils.swift; path = ZypeAppleTVBase/Utilities/SSUtils.swift; sourceTree = "<group>"; };
+		791F9F532B83AD0E8A75C8DC6A0C3E52 /* QueryPlaylistsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryPlaylistsModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryPlaylistsModel.swift; sourceTree = "<group>"; };
+		7BF325C6EF6CA26E2ED08FA61D5F8D91 /* QueryCategoriesModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryCategoriesModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryCategoriesModel.swift; sourceTree = "<group>"; };
+		7FED2BDBB367F1C52124B673752A73B2 /* DeviceLinkingVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DeviceLinkingVC.swift; path = ZypeAppleTVBase/ViewControllers/DeviceLinkingVC.swift; sourceTree = "<group>"; };
+		80DE171BF8F95515167121F97DBCBA21 /* QuerySubscriptionsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuerySubscriptionsModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QuerySubscriptionsModel.swift; sourceTree = "<group>"; };
 		84C42C1E4DED9EE447C8F77AEF7092B1 /* Pods-AndreySandbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AndreySandbox.debug.xcconfig"; sourceTree = "<group>"; };
-		852F37BA035FE0DDCE62723984B1445F /* ZypeApiConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeApiConstants.swift; path = ZypeAppleTVBase/Constants/ZypeApiConstants.swift; sourceTree = "<group>"; };
-		88CBDB5AAEC86A66BE845593A929AADC /* ThumbnailModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThumbnailModel.swift; path = ZypeAppleTVBase/Models/ThumbnailModel.swift; sourceTree = "<group>"; };
-		89FD7CC2A637D189679625B041EA7AA5 /* QueryRetrieveVideosInPlaylistModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryRetrieveVideosInPlaylistModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryRetrieveVideosInPlaylistModel.swift; sourceTree = "<group>"; };
-		8D44F9BF09973F34A3EEA020B43F3789 /* SSUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSUtils.swift; path = ZypeAppleTVBase/Utilities/SSUtils.swift; sourceTree = "<group>"; };
-		8D8D97A8D8010E9FBABB71734EAA9FCB /* ZobjectTypeModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZobjectTypeModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/ZobjectTypeModel.swift; sourceTree = "<group>"; };
 		9007AF4BA9E200F9154E7B1DB0BEA9CB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		9095C28E3C53B0C65A34E3DCA58BB59E /* ZypeAppleTVBase-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZypeAppleTVBase-dummy.m"; sourceTree = "<group>"; };
-		9271ED709E6FA514B254242D38B24D19 /* VideoModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/VideoModel.swift; sourceTree = "<group>"; };
+		934C310F6CBABC6B068886E02633F625 /* BaseModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/BaseModel.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		97125474504973E78C74D6B9E5D928D4 /* PlaylistModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlaylistModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/PlaylistModel.swift; sourceTree = "<group>"; };
-		9A62E8CB3994E318A7D98397CFC6BA59 /* ZypeCacheManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeCacheManager.swift; path = ZypeAppleTVBase/Managers/ZypeCacheManager.swift; sourceTree = "<group>"; };
-		A162DC0105E95C0923E1569BB2D43E36 /* QueryBaseModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryBaseModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryBaseModel.swift; sourceTree = "<group>"; };
-		A887305E72B099AE054DC0DA6C35C498 /* ZobjectModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZobjectModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/ZobjectModel.swift; sourceTree = "<group>"; };
+		9585FD4AFD6D1124B13E7965153F2393 /* ZypeFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeFactory.swift; path = ZypeAppleTVBase/Factories/ZypeFactory.swift; sourceTree = "<group>"; };
+		9B99B308C7A3D16C8C8F8FC74F0DF793 /* RegisterVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RegisterVC.swift; path = ZypeAppleTVBase/ViewControllers/RegisterVC.swift; sourceTree = "<group>"; };
+		9DE81D042E72BEEC401D861F2FE0D241 /* CategoryValueModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CategoryValueModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/CategoryValueModel.swift; sourceTree = "<group>"; };
 		A9A541C7B207216F43059E711605CA17 /* Pods-AndreySandbox-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AndreySandbox-acknowledgements.markdown"; sourceTree = "<group>"; };
+		AA02CB53BF1135B7C0AEDBD2C2522A65 /* DeviceLinking.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DeviceLinking.storyboard; path = ZypeAppleTVBaseResources/Layouts/DeviceLinking.storyboard; sourceTree = "<group>"; };
 		ABD6FE22FE57E83DF34D8C7F583149EB /* Pods-AndreySandbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AndreySandbox-dummy.m"; sourceTree = "<group>"; };
-		AC0A5C3808AB5972C994C9FA5F9AD8FF /* FavoriteModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavoriteModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/FavoriteModel.swift; sourceTree = "<group>"; };
 		ACBFE1ECACC3958159EF22003108022E /* Pods-AndreySandbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AndreySandbox.modulemap"; sourceTree = "<group>"; };
-		AE4413519173DFF4DC6258C8EE9B4707 /* ZypeFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeFactory.swift; path = ZypeAppleTVBase/Factories/ZypeFactory.swift; sourceTree = "<group>"; };
-		B18AD553332ECE54F2EE44041FB19270 /* DeviceLinking.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = DeviceLinking.storyboard; path = ZypeAppleTVBaseResources/Layouts/DeviceLinking.storyboard; sourceTree = "<group>"; };
-		BCA23655A5EE60DC97F05DBACCECBB1E /* iconLocked_old.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = iconLocked_old.png; path = ZypeAppleTVBaseResources/Images/iconLocked_old.png; sourceTree = "<group>"; };
-		BDE7371B862BF068751EFD37B1AABE71 /* ZypeAppleTVBase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZypeAppleTVBase-umbrella.h"; sourceTree = "<group>"; };
-		BE5AA3AECA7D62F5A68DC0378556ABEE /* ZypeAppleTVBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeAppleTVBase.swift; path = ZypeAppleTVBase/ZypeAppleTVBase.swift; sourceTree = "<group>"; };
-		C54CB30C2C38F771C52B7C063A66E2B6 /* ZypeTokenManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeTokenManager.swift; path = ZypeAppleTVBase/Managers/ZypeTokenManager.swift; sourceTree = "<group>"; };
-		C8C9CCC5FD1AE1087F30B4D178B28058 /* ZypeRESTController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeRESTController.swift; path = ZypeAppleTVBase/API/ZypeRESTController.swift; sourceTree = "<group>"; };
+		AFA2BEDFB7B3F49822A586EDFBCE78A8 /* QueryZobjectsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryZobjectsModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryZobjectsModel.swift; sourceTree = "<group>"; };
+		B1F023C34402AB1B22F4748CDEE502FF /* SubscriptionModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SubscriptionModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/SubscriptionModel.swift; sourceTree = "<group>"; };
+		B9459FDA1FD46A97472127BB8AC604E2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B994A850392B15F91E6625A57AA506EE /* ZypeAppleTVBase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ZypeAppleTVBase.modulemap; sourceTree = "<group>"; };
+		C37AF805C13C9F2F0C1E83A60BF45C59 /* LoginVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoginVC.swift; path = ZypeAppleTVBase/ViewControllers/LoginVC.swift; sourceTree = "<group>"; };
+		C41779C5EF8222829B2B650586EBCCD9 /* VideoObjectModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VideoObjectModel.swift; path = ZypeAppleTVBase/Models/VideoObjectModel.swift; sourceTree = "<group>"; };
+		C52DAC99C8583EC2E8CA071DB82C1E24 /* QueryVideosModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryVideosModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryVideosModel.swift; sourceTree = "<group>"; };
 		C9D40F9006A007AF71881A6B3C55B07F /* Pods-AndreySandbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AndreySandbox.release.xcconfig"; sourceTree = "<group>"; };
 		CAD302BA31CA52C22598677C29AEC7BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CF14680B089117BA76024BE2A49ABD88 /* QueryPlaylistsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryPlaylistsModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryPlaylistsModel.swift; sourceTree = "<group>"; };
-		DC9C9CFA953756D3C98D1087B27B36F5 /* ZypeDataManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeDataManager.swift; path = ZypeAppleTVBase/Managers/ZypeDataManager.swift; sourceTree = "<group>"; };
-		E2FEEA6513914737672F8E4AE09A47B3 /* ZypeErrorConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeErrorConstants.swift; path = ZypeAppleTVBase/Constants/ZypeErrorConstants.swift; sourceTree = "<group>"; };
-		E4D20AA50B3639784B5621C0E35D4499 /* SettingsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SettingsModel.swift; path = ZypeAppleTVBase/Models/SettingsModel.swift; sourceTree = "<group>"; };
-		EB57A30133D7935F1E856A46A82A5CC8 /* BaseModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/BaseModel.swift; sourceTree = "<group>"; };
-		EED2D0FAB57A39037FA6BF17E2332CCB /* VimeoUrl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = VimeoUrl.swift; path = ZypeAppleTVBase/Factories/VimeoUrl.swift; sourceTree = "<group>"; };
+		CB2D9CD1F82BC1BF3059738D7B6FD350 /* ZobjectModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZobjectModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/ZobjectModel.swift; sourceTree = "<group>"; };
+		CDD09E38C0419C9CD577702BA802409D /* iconUnlocked.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = iconUnlocked.png; path = ZypeAppleTVBaseResources/Images/iconUnlocked.png; sourceTree = "<group>"; };
+		D452935A628C717B05A8555F033F00A6 /* ThumbnailModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThumbnailModel.swift; path = ZypeAppleTVBase/Models/ThumbnailModel.swift; sourceTree = "<group>"; };
+		D78A7325278E84285A102AC3BE15D266 /* ZypeAppleTVBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeAppleTVBase.swift; path = ZypeAppleTVBase/ZypeAppleTVBase.swift; sourceTree = "<group>"; };
+		D98486C0B1F60BCC0D878407B6D2E530 /* QueryBaseModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryBaseModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryBaseModel.swift; sourceTree = "<group>"; };
+		DF5AFEB4CFEDC2DF4F690BE7CE801BA5 /* ResourceBundle-ZypeAppleTVBaseResources-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ZypeAppleTVBaseResources-Info.plist"; sourceTree = "<group>"; };
+		E0AB0C1808C856586548C754E2D540F9 /* PlaylistModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PlaylistModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/PlaylistModel.swift; sourceTree = "<group>"; };
+		E544B5F06A10F65BFEE115B3F5987871 /* ZypeDataManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeDataManager.swift; path = ZypeAppleTVBase/Managers/ZypeDataManager.swift; sourceTree = "<group>"; };
+		E64D883A2AD14C38356B74344E0855A5 /* ZypeAppleTVBase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZypeAppleTVBase-prefix.pch"; sourceTree = "<group>"; };
+		E93EB65C176B3D17C1E3498A83A8C542 /* android_icon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = android_icon.png; path = ZypeAppleTVBaseResources/Images/android_icon.png; sourceTree = "<group>"; };
 		F45BDC8A7B94C15C335FC1D1F0DE0EAF /* Pods-AndreySandbox-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AndreySandbox-acknowledgements.plist"; sourceTree = "<group>"; };
-		F7782B7FF3C5ED28C555E5A6687C8BAD /* ZypeTokenModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeTokenModel.swift; path = ZypeAppleTVBase/Models/ZypeTokenModel.swift; sourceTree = "<group>"; };
-		F8FFC183C82BA76AC72ACFE5BF9A07B8 /* QueryZobjectsModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QueryZobjectsModel.swift; path = ZypeAppleTVBase/Models/QueryModels/QueryZobjectsModel.swift; sourceTree = "<group>"; };
 		F90DD2CB7B5C7BA08E4397C1689B0A8A /* Pods-AndreySandbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AndreySandbox-umbrella.h"; sourceTree = "<group>"; };
-		FABD8301A4C9C7A3548E353713AD50B6 /* ResourceBundle-ZypeAppleTVBaseResources-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ZypeAppleTVBaseResources-Info.plist"; sourceTree = "<group>"; };
+		FB432C047D714EAE96BBAB1C2CBFC574 /* ZypeLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZypeLog.swift; path = ZypeAppleTVBase/Utilities/ZypeLog.swift; sourceTree = "<group>"; };
+		FDB814D8329FA762E189B64EAE4DCD05 /* ZobjectTypeModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZobjectTypeModel.swift; path = ZypeAppleTVBase/Models/ResponseModels/ZobjectTypeModel.swift; sourceTree = "<group>"; };
 		FED25C1B18FF90F626C5BD4DACDF25EA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,27 +186,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A703217975D5D5083E12DE3029831E3 /* Pods */ = {
+		06FE47592694DA765EB4824A476D82F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				80ADA1521CE09DE30285F314B5973306 /* ZypeAppleTVBase */,
+				E93EB65C176B3D17C1E3498A83A8C542 /* android_icon.png */,
+				AA02CB53BF1135B7C0AEDBD2C2522A65 /* DeviceLinking.storyboard */,
+				13A5ADB25F0395AB98034E765109ADB2 /* iconLocked.png */,
+				0B41FFEE3D3135F54FF300A9D48043C8 /* iconLocked_old.png */,
+				CDD09E38C0419C9CD577702BA802409D /* iconUnlocked.png */,
+				6DE6DC886CB04493F11B6A3189E635AD /* iconUnlocked_old.png */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		623CF8041D011B88ECF04468A6C2B7BA /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				79FD208371772FECFFFADA604920A9F7 /* Info.plist */,
-				FABD8301A4C9C7A3548E353713AD50B6 /* ResourceBundle-ZypeAppleTVBaseResources-Info.plist */,
-				2FC55953668D26DCF05B8862A371179E /* ZypeAppleTVBase.modulemap */,
-				6BA1F06351DF53183BB54D6B0120A132 /* ZypeAppleTVBase.xcconfig */,
-				9095C28E3C53B0C65A34E3DCA58BB59E /* ZypeAppleTVBase-dummy.m */,
-				177E6E63974E633B1BA36EBB36E506BA /* ZypeAppleTVBase-prefix.pch */,
-				BDE7371B862BF068751EFD37B1AABE71 /* ZypeAppleTVBase-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/ZypeAppleTVBase";
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		6EC461C1435A31577346ED4ADA0BD5A9 /* Frameworks */ = {
@@ -220,62 +212,10 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				6EC461C1435A31577346ED4ADA0BD5A9 /* Frameworks */,
-				3A703217975D5D5083E12DE3029831E3 /* Pods */,
+				8A75CEFC32430918DC222BBA261BB265 /* Pods */,
 				DBE24EF1076359E45A2E58AF51C0174F /* Products */,
 				A25316C2C899146E9A0F2C5677BA8EF8 /* Targets Support Files */,
 			);
-			sourceTree = "<group>";
-		};
-		80ADA1521CE09DE30285F314B5973306 /* ZypeAppleTVBase */ = {
-			isa = PBXGroup;
-			children = (
-				EB57A30133D7935F1E856A46A82A5CC8 /* BaseModel.swift */,
-				1517742DDAEEAC97CFEB39C3C68E5653 /* BaseUrl.swift */,
-				58676DA53B7ACCF7E7AD98EE2845A053 /* CategoryModel.swift */,
-				64E69070C2F71898F4E4F367C2CEDA8F /* CategoryValueModel.swift */,
-				395E4F8CFACB8F87BBD00EB60DE7A379 /* ConsumerModel.swift */,
-				7ADBF6380A83BF54E2ED93AFBBC05F3C /* ContentModel.swift */,
-				2B0AB966CA68A2E9007B91BCE178709C /* DeviceLinkingVC.swift */,
-				AC0A5C3808AB5972C994C9FA5F9AD8FF /* FavoriteModel.swift */,
-				0E82731235AE0B9C0049021821587A5A /* LoginVC.swift */,
-				6100A7DF3B28AC3956AD3169F7847F27 /* LogoutVC.swift */,
-				97125474504973E78C74D6B9E5D928D4 /* PlaylistModel.swift */,
-				A162DC0105E95C0923E1569BB2D43E36 /* QueryBaseModel.swift */,
-				6362515CDF7F52C205F9740E1B8D29DC /* QueryCategoriesModel.swift */,
-				CF14680B089117BA76024BE2A49ABD88 /* QueryPlaylistsModel.swift */,
-				89FD7CC2A637D189679625B041EA7AA5 /* QueryRetrieveVideosInPlaylistModel.swift */,
-				77D08ECF84D576E021D8D17AA4EAE160 /* QuerySubscriptionsModel.swift */,
-				182A3E0269BB60683AA9605D5F3E0956 /* QueryVideosModel.swift */,
-				F8FFC183C82BA76AC72ACFE5BF9A07B8 /* QueryZobjectsModel.swift */,
-				224751D05989F7016395176CDB73968A /* QueryZobjectTypesModel.swift */,
-				E4D20AA50B3639784B5621C0E35D4499 /* SettingsModel.swift */,
-				8D44F9BF09973F34A3EEA020B43F3789 /* SSUtils.swift */,
-				7ADDCA81435EA0B65BE132DCF8396079 /* SubscriptionModel.swift */,
-				88CBDB5AAEC86A66BE845593A929AADC /* ThumbnailModel.swift */,
-				9271ED709E6FA514B254242D38B24D19 /* VideoModel.swift */,
-				32374E51003E737503DDAA42FD9E9C8B /* VideoObjectModel.swift */,
-				EED2D0FAB57A39037FA6BF17E2332CCB /* VimeoUrl.swift */,
-				A887305E72B099AE054DC0DA6C35C498 /* ZobjectModel.swift */,
-				8D8D97A8D8010E9FBABB71734EAA9FCB /* ZobjectTypeModel.swift */,
-				852F37BA035FE0DDCE62723984B1445F /* ZypeApiConstants.swift */,
-				BE5AA3AECA7D62F5A68DC0378556ABEE /* ZypeAppleTVBase.swift */,
-				4494A3FE8D68D1E05542B7F86C4A47ED /* ZypeAppSettings.swift */,
-				9A62E8CB3994E318A7D98397CFC6BA59 /* ZypeCacheManager.swift */,
-				6EDCFBBB47109EACE568B446EC872443 /* ZypeConstants.swift */,
-				DC9C9CFA953756D3C98D1087B27B36F5 /* ZypeDataManager.swift */,
-				E2FEEA6513914737672F8E4AE09A47B3 /* ZypeErrorConstants.swift */,
-				AE4413519173DFF4DC6258C8EE9B4707 /* ZypeFactory.swift */,
-				0A79B1CFDB9B0399105AE4F62349983A /* ZypeJSONConstants.swift */,
-				16CCD52D20CB5485B1F9E109A0C97375 /* ZypeLog.swift */,
-				C8C9CCC5FD1AE1087F30B4D178B28058 /* ZypeRESTController.swift */,
-				C54CB30C2C38F771C52B7C063A66E2B6 /* ZypeTokenManager.swift */,
-				F7782B7FF3C5ED28C555E5A6687C8BAD /* ZypeTokenModel.swift */,
-				118FC14B9041B0CB41DA46D364C40C1D /* ZypeUtilities.swift */,
-				F7E1B52247776FC6730B88E2BE6AF1A9 /* Resources */,
-				623CF8041D011B88ECF04468A6C2B7BA /* Support Files */,
-			);
-			name = ZypeAppleTVBase;
-			path = ZypeAppleTVBase;
 			sourceTree = "<group>";
 		};
 		887B1B6CDF41E00C4B18A35B7D6C3E84 /* Pods-AndreySandbox */ = {
@@ -296,6 +236,29 @@
 			path = "Target Support Files/Pods-AndreySandbox";
 			sourceTree = "<group>";
 		};
+		8A75CEFC32430918DC222BBA261BB265 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C2A1CEB247FD05AB86B157B0D4D36004 /* ZypeAppleTVBase */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A0DB650FBA6BBA0807F07A48BD431A1E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B9459FDA1FD46A97472127BB8AC604E2 /* Info.plist */,
+				DF5AFEB4CFEDC2DF4F690BE7CE801BA5 /* ResourceBundle-ZypeAppleTVBaseResources-Info.plist */,
+				B994A850392B15F91E6625A57AA506EE /* ZypeAppleTVBase.modulemap */,
+				5E53578A21E4C2EEDC44C894A6595D0A /* ZypeAppleTVBase.xcconfig */,
+				612938199B4BF796D07995A4B50C1BBD /* ZypeAppleTVBase-dummy.m */,
+				E64D883A2AD14C38356B74344E0855A5 /* ZypeAppleTVBase-prefix.pch */,
+				374A2C06C4CF588DAF922FCF0A39AD4C /* ZypeAppleTVBase-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ZypeAppleTVBase";
+			sourceTree = "<group>";
+		};
 		A25316C2C899146E9A0F2C5677BA8EF8 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +276,59 @@
 			name = tvOS;
 			sourceTree = "<group>";
 		};
+		C2A1CEB247FD05AB86B157B0D4D36004 /* ZypeAppleTVBase */ = {
+			isa = PBXGroup;
+			children = (
+				934C310F6CBABC6B068886E02633F625 /* BaseModel.swift */,
+				3FBDE5EC6C599B8874F7B8448810A4CA /* BaseUrl.swift */,
+				57CBDBCB0845ED21961351FB088FD0F1 /* CategoryModel.swift */,
+				9DE81D042E72BEEC401D861F2FE0D241 /* CategoryValueModel.swift */,
+				3BDD1648FDA73D8983EE248F58BA7A94 /* ConsumerModel.swift */,
+				3A4C07150F64C1FE5F80451F3CF82CB7 /* ContentModel.swift */,
+				7FED2BDBB367F1C52124B673752A73B2 /* DeviceLinkingVC.swift */,
+				0B936B38250ABEA36DB6693A52BA8AD7 /* FavoriteModel.swift */,
+				C37AF805C13C9F2F0C1E83A60BF45C59 /* LoginVC.swift */,
+				37A95341CCB044AB07D1D3EDF5217C3D /* LogoutVC.swift */,
+				E0AB0C1808C856586548C754E2D540F9 /* PlaylistModel.swift */,
+				D98486C0B1F60BCC0D878407B6D2E530 /* QueryBaseModel.swift */,
+				7BF325C6EF6CA26E2ED08FA61D5F8D91 /* QueryCategoriesModel.swift */,
+				791F9F532B83AD0E8A75C8DC6A0C3E52 /* QueryPlaylistsModel.swift */,
+				477A7BBEB7301527983A837810119DCF /* QueryRetrieveVideosInPlaylistModel.swift */,
+				80DE171BF8F95515167121F97DBCBA21 /* QuerySubscriptionsModel.swift */,
+				C52DAC99C8583EC2E8CA071DB82C1E24 /* QueryVideosModel.swift */,
+				AFA2BEDFB7B3F49822A586EDFBCE78A8 /* QueryZobjectsModel.swift */,
+				205EB95CDEEFDC56D6447E603ED363C2 /* QueryZobjectTypesModel.swift */,
+				9B99B308C7A3D16C8C8F8FC74F0DF793 /* RegisterVC.swift */,
+				61DB231827F26A4175415A454CD3F8F8 /* SettingsModel.swift */,
+				78B1A48A609AF2FD573BD50B0BDBF759 /* SSUtils.swift */,
+				B1F023C34402AB1B22F4748CDEE502FF /* SubscriptionModel.swift */,
+				D452935A628C717B05A8555F033F00A6 /* ThumbnailModel.swift */,
+				1DC3CF51D28195DE37CC2823821DDE9C /* VideoModel.swift */,
+				C41779C5EF8222829B2B650586EBCCD9 /* VideoObjectModel.swift */,
+				6910C902D8202C134A19700C7B91D1C1 /* VimeoUrl.swift */,
+				CB2D9CD1F82BC1BF3059738D7B6FD350 /* ZobjectModel.swift */,
+				FDB814D8329FA762E189B64EAE4DCD05 /* ZobjectTypeModel.swift */,
+				1D20029361664CDBEB5BA2CA73F1E003 /* ZypeApiConstants.swift */,
+				D78A7325278E84285A102AC3BE15D266 /* ZypeAppleTVBase.swift */,
+				68BDA9680B7E8D0C0251F26199967468 /* ZypeAppSettings.swift */,
+				46790CF9A8C3C1F4E02F57BCEA881724 /* ZypeCacheManager.swift */,
+				119AB40E9D9FD65DB65CA73EDC241E2C /* ZypeConstants.swift */,
+				E544B5F06A10F65BFEE115B3F5987871 /* ZypeDataManager.swift */,
+				788C85C1B5D35176BFDCA4FAEE4DAE2E /* ZypeErrorConstants.swift */,
+				9585FD4AFD6D1124B13E7965153F2393 /* ZypeFactory.swift */,
+				6FD5527B12021606E65387CCC9CDC54B /* ZypeJSONConstants.swift */,
+				FB432C047D714EAE96BBAB1C2CBFC574 /* ZypeLog.swift */,
+				23B2566FACF0F4D21F6C83B7D932F657 /* ZypeRESTController.swift */,
+				033F0873020F3701A5F1895779C333C4 /* ZypeTokenManager.swift */,
+				4FD491B8A2EC23B13BFE2FEDC88233B5 /* ZypeTokenModel.swift */,
+				0E0ED78275B03290025E8A5E25CBD820 /* ZypeUtilities.swift */,
+				06FE47592694DA765EB4824A476D82F8 /* Resources */,
+				A0DB650FBA6BBA0807F07A48BD431A1E /* Support Files */,
+			);
+			name = ZypeAppleTVBase;
+			path = ZypeAppleTVBase;
+			sourceTree = "<group>";
+		};
 		DBE24EF1076359E45A2E58AF51C0174F /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,19 +337,6 @@
 				008247E65402BE3B06CEA303E5B74409 /* ZypeAppleTVBaseResources.bundle */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F7E1B52247776FC6730B88E2BE6AF1A9 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				55A87FEB5CECFEBBA61BE933B006FD32 /* android_icon.png */,
-				B18AD553332ECE54F2EE44041FB19270 /* DeviceLinking.storyboard */,
-				688AF3368E8D1792D06871B84C5DDE93 /* iconLocked.png */,
-				BCA23655A5EE60DC97F05DBACCECBB1E /* iconLocked_old.png */,
-				74B640B5D212E0BE4455A0BF51F2A332 /* iconUnlocked.png */,
-				7E273028C27D096C53A6A0B006C22B33 /* iconUnlocked_old.png */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,7 +382,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 863DDC8B76FF30463A08C661F6007BE3 /* Build configuration list for PBXNativeTarget "ZypeAppleTVBase" */;
 			buildPhases = (
-				821E9C512B150356A49B21F00CD191D6 /* Sources */,
+				F193B73CC2F8C0199734D6EC6CC33030 /* Sources */,
 				2C4AD8AD08D31733A05E4D41A4B2A443 /* Frameworks */,
 				DF10EF3D9714B9A2AFC1B7744769CBB8 /* Resources */,
 				99B0DDF86EE0B62D3B270DE9532ACA89 /* Headers */,
@@ -473,53 +476,54 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		821E9C512B150356A49B21F00CD191D6 /* Sources */ = {
+		F193B73CC2F8C0199734D6EC6CC33030 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				476C44B9FD841AEF2EF1901EB8E01234 /* BaseModel.swift in Sources */,
-				D830C464F607D59D9B4613618ED9D0E4 /* BaseUrl.swift in Sources */,
-				C580B1E389868C19F9C9117F3277FB9A /* CategoryModel.swift in Sources */,
-				D1232E5B7F049F05812C250EF3E9BDD4 /* CategoryValueModel.swift in Sources */,
-				18F695C29B7C2565ADA120F4903D33EE /* ConsumerModel.swift in Sources */,
-				E993EDEB38FAD677B887848DC2EB85A1 /* ContentModel.swift in Sources */,
-				24EE8ED5D9C211238C3DC264330C6855 /* DeviceLinkingVC.swift in Sources */,
-				61A30EA1B7D3BEF7BA0B47F0D1F6639E /* FavoriteModel.swift in Sources */,
-				980D2E70796DE88E7D6413DA63CD4BDA /* LoginVC.swift in Sources */,
-				249C14CDFFF4667ED793973B57F59F73 /* LogoutVC.swift in Sources */,
-				EB27084DFC346C3010CDF0BFFD814ECA /* PlaylistModel.swift in Sources */,
-				BD9F72A73ADC6A5CFB0F40D559D52966 /* QueryBaseModel.swift in Sources */,
-				6D5605A892D4E24213713E9D741D7AF0 /* QueryCategoriesModel.swift in Sources */,
-				797DC78DED9BABD8518DE071C9C181B2 /* QueryPlaylistsModel.swift in Sources */,
-				6507129BA44B8B0204C9624BFC7E062F /* QueryRetrieveVideosInPlaylistModel.swift in Sources */,
-				DAE620D32399BE9CC8C9608DEB593A98 /* QuerySubscriptionsModel.swift in Sources */,
-				2F1451B0D78E1AFB1CA3201A711114FA /* QueryVideosModel.swift in Sources */,
-				539FA0DCF793635302DB23D37BF84CF4 /* QueryZobjectsModel.swift in Sources */,
-				B5CB78EBF0D50103290743FA93510D3E /* QueryZobjectTypesModel.swift in Sources */,
-				BED6E238C23509C26550FD7594FFC1AE /* SettingsModel.swift in Sources */,
-				97DBD0AAA9E25CF564E8107F4F570908 /* SSUtils.swift in Sources */,
-				FCB5E1FDC5686BB69D2E39B2EA7CD2C3 /* SubscriptionModel.swift in Sources */,
-				E5877C7E8AEA2BCE9BCA5B01A45DAAB6 /* ThumbnailModel.swift in Sources */,
-				A067B054B36EC5CC380E288CF2FFFD55 /* VideoModel.swift in Sources */,
-				09E403B0BA47429F4842DD7DCDC1F1DD /* VideoObjectModel.swift in Sources */,
-				F707E745AE7EBA9366663275F327272A /* VimeoUrl.swift in Sources */,
-				D367DE7D2E5B123BA47BC862EB7F080B /* ZobjectModel.swift in Sources */,
-				19D17AB71DC1D2763D08FEEE809DA5A4 /* ZobjectTypeModel.swift in Sources */,
-				9723DEE54CC9149B2CF28DCA0A1CDAD7 /* ZypeApiConstants.swift in Sources */,
-				A77CE48691DADE8B6DE31E6F88485FB9 /* ZypeAppleTVBase-dummy.m in Sources */,
-				B27E7711305A757DBB0B1988FF6738A9 /* ZypeAppleTVBase.swift in Sources */,
-				452CC797FC986D3C8F5600A8F3BDEB09 /* ZypeAppSettings.swift in Sources */,
-				9C285CFAF449FDC849BB0D1C8FD5B58C /* ZypeCacheManager.swift in Sources */,
-				DCB443AF9FC09E3F890E6869263EB6DA /* ZypeConstants.swift in Sources */,
-				B2C4B927DC5AD66BDE8827E3732EE445 /* ZypeDataManager.swift in Sources */,
-				36D8856031438BB6CE3417065DF43975 /* ZypeErrorConstants.swift in Sources */,
-				97DAF8B3D8DD15AB54AAD4CF1ADCAD86 /* ZypeFactory.swift in Sources */,
-				B0987C22E8D691019A6C75E807EF0801 /* ZypeJSONConstants.swift in Sources */,
-				14129025A227004D69F34E341FA766D9 /* ZypeLog.swift in Sources */,
-				83C862D04B5DCEFC524ECB9AD85D2C28 /* ZypeRESTController.swift in Sources */,
-				C51E5E54A8812EBBAEAA52D0656BA6AB /* ZypeTokenManager.swift in Sources */,
-				6066CE113B6D8BD1B1100BA0FCDAAA56 /* ZypeTokenModel.swift in Sources */,
-				F22FDE0CB57437CF2CACF2A90545A570 /* ZypeUtilities.swift in Sources */,
+				6B12DB5105A08367FA8C463E43A98B27 /* BaseModel.swift in Sources */,
+				1AC6466A79B9503FBA12251E3FAD4D99 /* BaseUrl.swift in Sources */,
+				D1DF498D53E8985927A3BE45962E82C8 /* CategoryModel.swift in Sources */,
+				D6F1B07A476D8993FC4CE6A8BFD31F70 /* CategoryValueModel.swift in Sources */,
+				D6CF8055CCE3002F39B8BC72011CE29D /* ConsumerModel.swift in Sources */,
+				1812E9E3F1FE58177FD236C3143189A3 /* ContentModel.swift in Sources */,
+				28BC0F2B4882C146F2CF7A719569A099 /* DeviceLinkingVC.swift in Sources */,
+				32B432F9F2E402F35C576FBFFD679F81 /* FavoriteModel.swift in Sources */,
+				93E1035ECF3F6C778CBF67C18282719F /* LoginVC.swift in Sources */,
+				1137962A0AE18D081A5342D1BD51436F /* LogoutVC.swift in Sources */,
+				4E0727F9FCCAA147AAA27DDF3504EC90 /* PlaylistModel.swift in Sources */,
+				5C8A3DC747750FD5092E9506568BE136 /* QueryBaseModel.swift in Sources */,
+				E95A34CCDC1F0366900B8F6D91A4CD0D /* QueryCategoriesModel.swift in Sources */,
+				28337138A421042A205DAC6E10C02927 /* QueryPlaylistsModel.swift in Sources */,
+				1DE76F5ED772A7800C68B4859764AD4D /* QueryRetrieveVideosInPlaylistModel.swift in Sources */,
+				FDAA5154A6C6F305DEBCD5AEE9E44DC9 /* QuerySubscriptionsModel.swift in Sources */,
+				7829FEA1898562956BFFF505C2B2AF5A /* QueryVideosModel.swift in Sources */,
+				0F23065EE1167D6D7CBF4BD628F3C21A /* QueryZobjectsModel.swift in Sources */,
+				063D902A144962C53E4334C0EBF99D71 /* QueryZobjectTypesModel.swift in Sources */,
+				3C12EC29ACCD4C0F45EF47343AFCD5CE /* RegisterVC.swift in Sources */,
+				A4E520236A84FB608B6E44CB78BB53F4 /* SettingsModel.swift in Sources */,
+				DBCCC7942F994B28D6F66A669A9A07E2 /* SSUtils.swift in Sources */,
+				07C3C19080617D33A1DB8918F6288EBB /* SubscriptionModel.swift in Sources */,
+				07EE1B86592AE255F03DBEE87D0F6A31 /* ThumbnailModel.swift in Sources */,
+				42EA557F03E3ED5E28BE4F04FB40DD6B /* VideoModel.swift in Sources */,
+				48D182409B12E22A2296292D09C4D463 /* VideoObjectModel.swift in Sources */,
+				3E225ED74B68D9F4F0BB6742E17777B0 /* VimeoUrl.swift in Sources */,
+				978CBBE1A2C8B81AF69C8D51479FFD28 /* ZobjectModel.swift in Sources */,
+				96B7BF40ECF61388DB98F46BB897736A /* ZobjectTypeModel.swift in Sources */,
+				C48C581B5C0E97AAE81A1130383AAA68 /* ZypeApiConstants.swift in Sources */,
+				2BDF7D5AB93A5E1DD866B7068AEA9202 /* ZypeAppleTVBase-dummy.m in Sources */,
+				68C9EB4201227E4F50859FCB45F71223 /* ZypeAppleTVBase.swift in Sources */,
+				D1E80EE5E2E7E66BB163E106409C960D /* ZypeAppSettings.swift in Sources */,
+				563A93E67E2733B9F31FC5AB4AA628AE /* ZypeCacheManager.swift in Sources */,
+				98CAE64DCA226C099B6E2C7FD438EE16 /* ZypeConstants.swift in Sources */,
+				EBEAE1FCDF4C0321780925D6930445E7 /* ZypeDataManager.swift in Sources */,
+				DF354AFE693D5A8C3414040A442AFE5E /* ZypeErrorConstants.swift in Sources */,
+				B9857C6BE346409DBFA3FAE0474179A5 /* ZypeFactory.swift in Sources */,
+				B20F1E9158F3E0A2464319CF887B03BF /* ZypeJSONConstants.swift in Sources */,
+				5B919B082925D16AD0ADF057B3E558F1 /* ZypeLog.swift in Sources */,
+				9CB5E12E5FB95C899C527130B17017BE /* ZypeRESTController.swift in Sources */,
+				DFF9523F020AA0142476443BC1F302BE /* ZypeTokenManager.swift in Sources */,
+				91C1768F962CE8C332C13B935CFBF723 /* ZypeTokenModel.swift in Sources */,
+				77D9BAE588B6BB7C70B7472D8C13DC4B /* ZypeUtilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +554,7 @@
 /* Begin XCBuildConfiguration section */
 		0DA28E3331897B15A84F2A5BFCEF7C3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BA1F06351DF53183BB54D6B0120A132 /* ZypeAppleTVBase.xcconfig */;
+			baseConfigurationReference = 5E53578A21E4C2EEDC44C894A6595D0A /* ZypeAppleTVBase.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -584,7 +588,7 @@
 		};
 		307E9B51C282E5C0E2FA8BDAE9982656 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BA1F06351DF53183BB54D6B0120A132 /* ZypeAppleTVBase.xcconfig */;
+			baseConfigurationReference = 5E53578A21E4C2EEDC44C894A6595D0A /* ZypeAppleTVBase.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ZypeAppleTVBase";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -732,7 +736,7 @@
 		};
 		9BEBF0A480BE5D332532CE231CB8A816 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BA1F06351DF53183BB54D6B0120A132 /* ZypeAppleTVBase.xcconfig */;
+			baseConfigurationReference = 5E53578A21E4C2EEDC44C894A6595D0A /* ZypeAppleTVBase.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -767,7 +771,7 @@
 		};
 		A21F842A92D4802C0BB660FB94A2BF12 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6BA1F06351DF53183BB54D6B0120A132 /* ZypeAppleTVBase.xcconfig */;
+			baseConfigurationReference = 5E53578A21E4C2EEDC44C894A6595D0A /* ZypeAppleTVBase.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ZypeAppleTVBase";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
