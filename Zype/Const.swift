@@ -52,7 +52,4 @@ class Const: NSObject {
     
     // Segues
     static let kShowTabBarSegueId = "ShowTabBar"
-    
-    // Version
-    static let kcurrentVersion = "v1.1.1"
 }

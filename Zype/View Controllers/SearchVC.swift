@@ -25,12 +25,9 @@ class SearchVC: UISearchContainerViewController, UISearchControllerDelegate, UIS
     var collectionVC: BaseCollectionVC!
     var cachedVC: UISearchController!
     
-    @IBOutlet weak var versionLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.bringSubview(toFront: versionLabel)
-        self.versionLabel.text = Const.kcurrentVersion
         self.versionLabel.backgroundColor = .black
     }
     
