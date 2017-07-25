@@ -27,8 +27,6 @@ class SearchVC: UISearchContainerViewController, UISearchControllerDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.bringSubview(toFront: versionLabel)
-        self.versionLabel.backgroundColor = .black
     }
     
     override internal var searchController: UISearchController {
