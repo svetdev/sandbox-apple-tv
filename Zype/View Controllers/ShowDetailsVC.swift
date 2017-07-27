@@ -355,7 +355,7 @@ extension ShowDetailsVC {
     fileprivate func getPlaySubscribeButton() -> ButtonType {
         if selectedVideo.subscriptionRequired {
             if Const.kNativeSubscriptionEnabled {
-                if InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
+                if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
                     return .subscribe
                 }
             }
@@ -376,12 +376,17 @@ extension ShowDetailsVC {
         }
         return false
     }
-    
+
     fileprivate func requiresSwafButton() -> Bool {
-        guard !Const.kNativeSubscriptionEnabled else { return false }
-        guard Const.kSubscribeToWatchAdFree else { return false }
-        guard !ZypeUtilities.isDeviceLinked() else { return false }
-        return true
+        if Const.kNativeSubscriptionEnabled {
+            return false
+        }
+        
+        if ZypeUtilities.isDeviceLinked() {
+            return false
+        }
+        
+        return Const.kSubscribeToWatchAdFree
     }
 
 }
