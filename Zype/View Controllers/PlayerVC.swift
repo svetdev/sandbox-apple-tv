@@ -156,7 +156,6 @@ class PlayerVC: UIViewController, DVIABPlayerDelegate {
             if let _ = playerObject, let videoURL = playerObject?.videoURL, let url = NSURL(string: videoURL), error == nil {
                 
                 self.validateEntitlement(for: playerObject)
-                
                 let adsArray = self.getAdsFromResponse(playerObject)
                 self.playerURL = url as URL!
                 self.adsArray = adsArray
