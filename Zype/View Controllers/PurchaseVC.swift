@@ -10,12 +10,13 @@ import UIKit
 
 class PurchaseVC: UIViewController {
     
-    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var subscriptionButtons: [UIButton]!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for button in buttons {
+        for button in subscriptionButtons {
             let productID = Const.productIdentifiers[button.tag]
             if let product = InAppPurchaseManager.sharedInstance.products?[productID] {
                 button.setTitle(String(format: localized("Subscription.ButtonFormat"), arguments: [product.localizedTitle, product.localizedPrice(), self.getDuration(productID)]), for: .normal)

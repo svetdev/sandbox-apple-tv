@@ -25,13 +25,14 @@ class Const: NSObject {
                                            tokenDomain: "https://login.zype.com",
                                            userAgent: "zype tvos")
     
-    static let kNativeSubscriptionEnabled = false
     static let kStoreURL = URL(string: "https://buy.itunes.apple.com/verifyReceipt")!
     //static let kStoreURL = URL(string: "https://sandbox.itunes.apple.com/verifyReceipt")! // for testing only
+    static let kNativeSubscriptionEnabled = true
     static let kLimitLivestreamEnabled = false
     static let kFavoritesViaAPI = false
     static let kLockIcons = false
     static let kSubscribeToWatchAdFree = false
+    static let kNativeToUniversal = true
     static let kAppStyleLight = true
     
     static let kBaseSectionInsets: UIEdgeInsets = UIEdgeInsets(top: 50, left: 90, bottom: 50, right: 90)
