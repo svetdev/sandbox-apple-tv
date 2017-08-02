@@ -29,12 +29,7 @@ class PurchaseVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if ZypeUtilities.isDeviceLinked() {
-            setupLoggedInUser()
-        }
-        else {
-            setupDefaults()
-        }
+        setupUserLogin()
     }
     
     // MARK: - Get & Setup
@@ -50,7 +45,16 @@ class PurchaseVC: UIViewController {
         return duration
     }
     
-    func setupLoggedInUser() {
+    fileprivate func setupUserLogin() {
+        if ZypeUtilities.isDeviceLinked() {
+            setupLoggedInUser()
+        }
+        else {
+            setupLoggedOutUser()
+        }
+    }
+    
+    fileprivate func setupLoggedInUser() {
         let defaults = UserDefaults.standard
         let kEmail = defaults.object(forKey: kUserEmail)
         guard let email = kEmail else { return }
@@ -65,7 +69,7 @@ class PurchaseVC: UIViewController {
         loginButton.isHidden = true
     }
     
-    func setupDefaults() {
+    fileprivate func setupLoggedOutUser() {
         accountLabel.attributedText = NSMutableAttributedString(string: "Already have an account?")
         loginButton.isHidden = false
     }
