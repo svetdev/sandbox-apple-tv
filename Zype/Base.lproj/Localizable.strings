@@ -52,7 +52,7 @@
 
 "Subscription.Success" = "You are successfully subscripted!";
 "Subscription.NotPurchased" = "Please subscribe before watching this video!";
-"Subscription.ButtonFormat" = "%@ %@";
+"Subscription.ButtonFormat" = "%@ \n %@";
 "Subscription.ExpirationStatus" = "Your subscription expires on %@";
 "Subscription.NotSubscribed" = "You are not subscibed";
 "Subscription.ExpirationInfoError" = "Cannot get info about you subscription status";

@@ -259,9 +259,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Already have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sNZ-bI-uix">
-                                        <rect key="frame" x="320" y="41" width="465" height="46"/>
+                                        <rect key="frame" x="376" y="41" width="695" height="46"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -270,21 +270,23 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="Sign in"/>
+                                        <connections>
+                                            <action selector="onSignIn:" destination="Mez-m6-YQ6" eventType="primaryActionTriggered" id="XCb-Ke-VwV"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="LOGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qIa-10-rsY">
-                                <rect key="frame" x="914" y="94" width="104" height="46"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Logo" id="mtX-1i-Maj">
+                                <rect key="frame" x="860" y="30" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="accountLabel" destination="sNZ-bI-uix" id="uDh-jl-diT"/>
                         <outlet property="loginButton" destination="mpw-3x-8Th" id="bGC-sm-bea"/>
+                        <outlet property="logoImageView" destination="mtX-1i-Maj" id="6kd-K3-414"/>
                         <outletCollection property="subscriptionButtons" destination="rDA-bl-jZa" collectionClass="NSMutableArray" id="1c3-qJ-COA"/>
                         <outletCollection property="subscriptionButtons" destination="89L-rZ-SoH" collectionClass="NSMutableArray" id="bKL-EY-zE9"/>
                     </connections>
@@ -711,6 +713,7 @@
     </scenes>
     <resources>
         <image name="FavoritesAdd" width="180" height="100"/>
+        <image name="Logo" width="134" height="133"/>
         <image name="Subscribe" width="180" height="100"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
