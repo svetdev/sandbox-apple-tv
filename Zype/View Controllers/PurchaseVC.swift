@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import ZypeAppleTVBase
 
 class PurchaseVC: UIViewController {
     
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet var subscriptionButtons: [UIButton]!
+    @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
@@ -24,6 +27,18 @@ class PurchaseVC: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if ZypeUtilities.isDeviceLinked() {
+            setupLoggedInUser()
+        }
+        else {
+            setupDefaults()
+        }
+    }
+    
+    // MARK: - Get & Setup
+    
     // since the duration for a SKProduct is not available
     // we need a custtom mapper function to handle that
     func getDuration(_ productID: String) -> String {
@@ -35,8 +50,32 @@ class PurchaseVC: UIViewController {
         return duration
     }
     
+    func setupLoggedInUser() {
+        let defaults = UserDefaults.standard
+        let kEmail = defaults.object(forKey: kUserEmail)
+        guard let email = kEmail else { return }
+        
+        let loggedInString = NSMutableAttributedString(string: "Logged in as: \(String(describing: email))", attributes: nil)
+        let buttonRange = (loggedInString.string as NSString).range(of: "\(String(describing: email))")
+        loggedInString.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFont(ofSize: 38.0), range: buttonRange)
+        
+        accountLabel.attributedText = loggedInString
+        accountLabel.textAlignment = .center
+        
+        loginButton.isHidden = true
+    }
+    
+    func setupDefaults() {
+        accountLabel.attributedText = NSMutableAttributedString(string: "Already have an account?")
+        loginButton.isHidden = false
+    }
+    
     @IBAction func onPlanSelected(_ sender: UIButton) {
         self.purchase(Const.productIdentifiers[sender.tag])
+    }
+    
+    @IBAction func onSignIn(_ sender: UIButton) {
+        ZypeUtilities.presentLoginVC(self)
     }
     
     func purchase(_ productID: String) {
