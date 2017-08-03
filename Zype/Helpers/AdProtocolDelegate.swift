@@ -7,6 +7,7 @@
 //
 
 import ZypeAppleTVBase
+import AdSupport
 
 protocol AdHelperProtocol: class {
     func getAdsFromResponse(_ playerObject: VideoObjectModel?) -> NSMutableArray
@@ -31,15 +32,13 @@ extension PlayerVC: AdHelperProtocol {
                 let schedule = advertising["schedule"] as? NSArray
                 self.adsData = [adObject]()
                 
-                /*
-                 http://search.spotxchange.com/vast/2.00/85394?VPI=MP4&app[bundle]=[REPLACE_ME]&app[name]=[REPLACE_ME]&app[cat]=[REPLACE_ME]&app[domain]=[REPLACE_ME]&app[privacypolicy]=[REPLACE_ME]&app[storeurl]=[REPLACE_ME]&app[ver]=[REPLACE_ME]&cb=[REPLACE_ME]&device[devicetype]=[REPLACE_ME]&device[ifa]=[REPLACE_ME]&device[make]=[REPLACE_ME]&device[model]=[REPLACE_ME]&device[dnt]=[REPLACE_ME]&player_height=[REPLACE_ME]&player_width=[REPLACE_ME]&ip_addr=[REPLACE_ME]&device[ua]=[REPLACE_ME]
-                 */
-                
-                
                 if (schedule != nil) {
                     for i in 0..<schedule!.count {
                         let adDict = schedule![i] as! NSDictionary
-                        let ad = adObject(offset: adDict["offset"] as? Double, tag:adDict["tag"] as? String)
+                        
+                        let tag = replaceAdMacros((adDict["tag"] as? String)!)
+                        let ad = adObject(offset: adDict["offset"] as? Double, tag: tag)
+                        
                         self.adsData.append(ad)
                     }
                 }
@@ -56,6 +55,37 @@ extension PlayerVC: AdHelperProtocol {
             adsArray = NSMutableArray()
         }
         return adsArray
+    }
+    
+    fileprivate func replaceAdMacros(_ tag: String) -> String {
+        var string = tag
+        
+        let uuid = ZypeAppSettings.sharedInstance.deviceId()
+        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        let appBundle = Bundle.main.bundleIdentifier
+        let deviceType = 7
+        let deviceMake = "Apple"
+        let deviceModel = "AppleTV"
+        let deviceIfa = ASIdentifierManager.shared().advertisingIdentifier
+        let vpi = "mp4"
+        let appId = ZypeAppSettings.sharedInstance.deviceId()
+        
+        string = (string as NSString).replacingOccurrences(of: "[uuid]", with: "\(uuid)")
+        string = (string as NSString).replacingOccurrences(of: "[app_name]", with: "\(appName)")
+        if let bundle = appBundle {
+            string = (string as NSString).replacingOccurrences(of: "[app_bundle]", with: "\(bundle)")
+            string = (string as NSString).replacingOccurrences(of: "[app_domain]", with: "\(bundle)")
+        }
+        string = (string as NSString).replacingOccurrences(of: "[device_type]", with: "\(deviceType)")
+        string = (string as NSString).replacingOccurrences(of: "[device_make]", with: "\(deviceMake)")
+        string = (string as NSString).replacingOccurrences(of: "[device_model]", with: "\(deviceModel)")
+        if let ifa = deviceIfa {
+            string = (string as NSString).replacingOccurrences(of: "[device_ifa]", with: "\(ifa)")
+        }
+        string = (string as NSString).replacingOccurrences(of: "[vpi]", with: "\(vpi)")
+        string = (string as NSString).replacingOccurrences(of: "[app_id]", with: "\(appId)")
+        
+        return string
     }
     
     func playAds(adsArray: NSMutableArray, url: NSURL) {
