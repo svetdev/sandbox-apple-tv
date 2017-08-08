@@ -74,7 +74,13 @@ class PurchaseVC: UIViewController {
         loginButton.isHidden = false
     }
     
+    // MARK: - Actions
+    
     @IBAction func onPlanSelected(_ sender: UIButton) {
+        if !ZypeUtilities.isDeviceLinked() {
+            ZypeUtilities.presentRegisterVC(self)
+        }
+        
         self.purchase(Const.productIdentifiers[sender.tag])
     }
     
