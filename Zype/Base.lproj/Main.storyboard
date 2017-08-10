@@ -271,7 +271,7 @@
                                         <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                         <state key="normal" title="Sign in"/>
                                         <connections>
-                                            <action selector="onSignIn:" destination="Mez-m6-YQ6" eventType="primaryActionTriggered" id="XCb-Ke-VwV"/>
+                                            <action selector="onLogin:" destination="Mez-m6-YQ6" eventType="primaryActionTriggered" id="aIW-CY-Udf"/>
                                         </connections>
                                     </button>
                                 </subviews>

@@ -266,6 +266,9 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
         for transaction: AnyObject in transactions {
             if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
                 switch trans.transactionState {
+                case .purchasing:
+                    handlePurchasingState(for: trans, in: queue)
+                    
                 case .purchased, .restored, .failed:
                     if trans.transactionState != .failed {
                         NotificationCenter.default.post(name: Notification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted), object: nil)
@@ -278,6 +281,32 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
                 }
             }
         }
+    }
+    
+    fileprivate func handlePurchasingState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        /* API Call - https://bifrost.stg.zype.com/api/v1/subscribe
+         consumer_id
+         site_id
+         subscription_plan_id
+         device_type = ios
+         receipt
+         shared_key
+         
+         let receiptDictionary = ["receipt-data" : receiptData.base64EncodedString(),
+         "password" : Const.appstorePassword]
+         let requestData = try! JSONSerialization.data(withJSONObject: receiptDictionary, options: [])
+         var storeRequest = URLRequest(url: Const.kStoreURL)
+         storeRequest.httpMethod = "POST"
+         storeRequest.httpBody = requestData
+         let session = URLSession(configuration: URLSessionConfiguration.default)
+         
+         let task = session.dataTask(with: storeRequest) { (data, response, error) in
+         DispatchQueue.main.async(execute: {() in
+
+         task.resume()
+         */
+        
+        
     }
     
     // MARK: - JSON Helpers

@@ -12,7 +12,6 @@ class RegisterVC: UIViewController {
     
     // MARK: - Properties
     
-    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -21,9 +20,6 @@ class RegisterVC: UIViewController {
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        logoImageView.image = UIImage(named: "Logo")
-        
-        //#imageLiteral(resourceName: "Logo")
     }
     
     // MARK: - Actions
@@ -38,10 +34,6 @@ class RegisterVC: UIViewController {
         ZypeAppleTVBase.sharedInstance.createConsumer(consumer) { (success, error) in
             
             if success {
-                //store inputs in NSUserDefaults. We will be checking them on each app launch
-                UserDefaults.standard.set(self.emailTextField.text!, forKey: kUserEmail)
-                UserDefaults.standard.set(self.passwordTextField.text!, forKey: kUserPassword)
-                
                 ZypeAppleTVBase.sharedInstance.login(consumer.emailString, passwd: consumer.passwordString, completion: { (loggedIn, error) in
                     if loggedIn {
                         UserDefaults.standard.set(true, forKey: kDeviceLinkedStatus)
@@ -69,10 +61,6 @@ class RegisterVC: UIViewController {
                 }
             }
         }
-    }
-    
-    @IBAction func onLogin(_ sender: UIButton) {
-        ZypeUtilities.presentLoginVC(self)
     }
     
     // MARK: - Utilities

@@ -78,14 +78,7 @@ class LoginVC: UIViewController {
                 if loggedIn {
                      UserDefaults.standard.set(true, forKey: kDeviceLinkedStatus)
                       NotificationCenter.default.post(name: Notification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
-                    if let vc = self.presentingViewController as? RegisterVC {
-                        self.dismiss(animated: true, completion: {
-                            vc.dismiss(animated: true, completion: nil)
-                        })
-                    }
-                    else {
-                        self.dismiss(animated: true, completion: nil)
-                    }
+                    self.dismiss(animated: true, completion: { _ in })
                 }
                 else {
                     UserDefaults.standard.set(false, forKey: kDeviceLinkedStatus)

@@ -79,6 +79,10 @@ class ShowDetailsVC: CollectionContainerVC {
         self.titleLabel.text = self.selectedShow.titleString
         self.loadVideos()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCollection), name: NSNotification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
+        
+        if Const.kNativeSubscriptionEnabled {
+            InAppPurchaseManager.sharedInstance.refreshSubscriptionStatus()
+        }
     }
     
     func reloadCollection() {
@@ -95,10 +99,6 @@ class ShowDetailsVC: CollectionContainerVC {
         self.refreshButtons()
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted), object: nil)
-        
-        if Const.kNativeSubscriptionEnabled {
-            InAppPurchaseManager.sharedInstance.refreshSubscriptionStatus()
-        }
     }
     
     // MARK: - Layout & Focus
@@ -267,20 +267,29 @@ class ShowDetailsVC: CollectionContainerVC {
     fileprivate func handleSubscribe() {
         if Const.kNativeSubscriptionEnabled {
             if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
-                let purchaseVC = self.storyboard?.instantiateViewController(withIdentifier: "PurchaseVC") as! PurchaseVC
-                
-                InAppPurchaseManager.sharedInstance.requestProducts({ _ in
-                    NotificationCenter.default.addObserver(self,
-                                                           selector: #selector(ShowDetailsVC.onPurchased),
-                                                           name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted),
-                                                           object: nil)
-                    self.navigationController?.present(purchaseVC, animated: true, completion: nil)
-                })
+                presentPurchaseVC()
+            }
+        }
+        if Const.kNativeToUniversal {
+            if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
+                presentPurchaseVC()
             }
         }
         else {
             ZypeUtilities.presentLoginVC(self)
         }
+    }
+    
+    fileprivate func presentPurchaseVC() {
+        let purchaseVC = self.storyboard?.instantiateViewController(withIdentifier: "PurchaseVC") as! PurchaseVC
+        
+        InAppPurchaseManager.sharedInstance.requestProducts({ _ in
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(ShowDetailsVC.onPurchased),
+                                                   name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted),
+                                                   object: nil)
+            self.navigationController?.present(purchaseVC, animated: true, completion: nil)
+        })
     }
     
     fileprivate func handleFavorites() {
@@ -304,6 +313,7 @@ class ShowDetailsVC: CollectionContainerVC {
         self.selectedVideo.toggleFavorite()
         self.refreshButtons()
     }
+    
 }
 
 
@@ -355,6 +365,11 @@ extension ShowDetailsVC {
     fileprivate func getPlaySubscribeButton() -> ButtonType {
         if selectedVideo.subscriptionRequired {
             if Const.kNativeSubscriptionEnabled {
+                if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
+                    return .subscribe
+                }
+            }
+            else if Const.kNativeToUniversal {
                 if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
                     return .subscribe
                 }

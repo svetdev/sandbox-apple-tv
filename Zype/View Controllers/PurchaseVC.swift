@@ -84,8 +84,8 @@ class PurchaseVC: UIViewController {
         self.purchase(Const.productIdentifiers[sender.tag])
     }
     
-    @IBAction func onSignIn(_ sender: UIButton) {
-        ZypeUtilities.presentLoginVC(self)
+    @IBAction func onLogin(_ sender: UIButton) {
+        ZypeUtilities.presentLoginMethodVC(self)
     }
     
     func purchase(_ productID: String) {
