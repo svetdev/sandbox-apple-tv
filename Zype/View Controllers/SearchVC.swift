@@ -20,6 +20,8 @@ class SearchController: UISearchController {
 
 class SearchVC: UISearchContainerViewController, UISearchControllerDelegate, UISearchResultsUpdating {
     
+    @IBOutlet weak var versionLabel: UILabel!
+    
     var lastSearchString: String!
     var isFirstSearch: Bool = true
     var collectionVC: BaseCollectionVC!
@@ -27,6 +29,7 @@ class SearchVC: UISearchContainerViewController, UISearchControllerDelegate, UIS
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupVersionLabel()
     }
     
     override internal var searchController: UISearchController {
@@ -69,6 +72,12 @@ class SearchVC: UISearchContainerViewController, UISearchControllerDelegate, UIS
                 }
             })
         }
+    }
+    
+    fileprivate func setupVersionLabel() {
+        versionLabel.text = Const.kAppVersion
+        versionLabel.bringSubview(toFront: self.view)
+        versionLabel.textColor = .gray
     }
     
 }
