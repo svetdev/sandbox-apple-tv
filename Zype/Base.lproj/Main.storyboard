@@ -50,8 +50,20 @@
                     <view key="view" contentMode="scaleToFill" id="8yg-r8-s7K">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="W4A-eb-tga">
+                                <rect key="frame" x="1783" y="997" width="117" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="yU1-Dv-iKT"/>
+                    <connections>
+                        <outlet property="versionLabel" destination="W4A-eb-tga" id="aZu-ON-2Nr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Clz-nT-YZp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
