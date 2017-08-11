@@ -73,6 +73,7 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
     fileprivate var requestDelegate: RequestDelegate?
     fileprivate var commonError = NSError(domain: InAppPurchaseManager.kPurchaseErrorDomain, code: 999, userInfo: nil)
     fileprivate var restoringCallback: ((Bool, NSError?)->()) = { _ in }
+    fileprivate var currentProductID: String = ""
     
     // MARK: - Lifecycle
     
@@ -84,6 +85,15 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
     // MARK: - Get Subscription Options
     
     func requestProducts(_ callback: @escaping (NSError?)->()) {
+        
+        print("--------")
+        print("--------")
+        print("--------")
+        print("--------")
+        print("--------")
+        print("--------")
+        print(receiptURL())
+        
         if(self.products != nil) {
             callback(nil)
             return
@@ -252,6 +262,8 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
     
     
     func purchase(_ productID: String) {
+        self.currentProductID = productID
+        
         if SKPaymentQueue.canMakePayments() {
             self.requestProducts({(error: NSError?) in
                 if let product: SKProduct = self.products![productID] {
@@ -285,12 +297,12 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
     
     fileprivate func handlePurchasingState(for transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         /* API Call - https://bifrost.stg.zype.com/api/v1/subscribe
-         consumer_id
-         site_id
-         subscription_plan_id
+         consumer_id - UserDefaults - kConsumerId
+         site_id 
+         subscription_plan_id - self.currentProductID
          device_type = ios
-         receipt
-         shared_key
+         receipt - receiptURL()    [receipt base64EncodedStringWithOptions:0]
+         shared_key - Const.appStorePassword
          
          let receiptDictionary = ["receipt-data" : receiptData.base64EncodedString(),
          "password" : Const.appstorePassword]
@@ -306,6 +318,43 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
          task.resume()
          */
         
+        let biFrost: URL = URL(string: "https://bifrost.stg.zype.com/api/v1/subscribe")!
+        let consumerId = UserDefaults.standard.object(forKey: "kConsumerId")
+        let siteId = ""
+        let subscriptionPlanId = self.currentProductID
+        let deviceType = "ios"
+        let receipt = receiptURL()
+        let sharedKey = Const.appstorePassword
+        
+        let biFrostDict = ["consumer_id" : consumerId,
+                           "site_id" : siteId,
+                           "subscription_plan_id" : subscriptionPlanId,
+                           "device_type" : deviceType,
+                           "receipt" : receipt,
+                           "shared_key" : sharedKey]
+        let requestData = try! JSONSerialization.data(withJSONObject: biFrostDict, options: [])
+        var storeRequest = URLRequest(url: biFrost)
+        storeRequest.httpMethod = "POST"
+        storeRequest.httpBody = requestData
+        let session = URLSession(configuration: .default)
+        
+        let task = session.dataTask(with: storeRequest) { (data, response, error) in
+            if error != nil {
+                print(error?.localizedDescription ?? "- BiFrost - \n Something went wrong \n- BiFrost -")
+            }
+            if data != nil {
+                print("-----------")
+                print("-----------")
+                print("-----------")
+                print("-----------")
+                print("-----------")
+                print("-----------")
+                print("-----------")
+                print("-----------")
+                dump(data)
+            }
+        }
+        task.resume()
         
     }
     

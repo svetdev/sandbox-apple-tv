@@ -127,7 +127,7 @@
 		0B4E911A115CF396F7A6A2AB54DF9A6B /* QueryZobjectTypesModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QueryZobjectTypesModel.swift; sourceTree = "<group>"; };
 		0C51B29C947000AD942C9387B2B8B3CF /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/AnimatedImageView.swift; sourceTree = "<group>"; };
 		0EB6BFE552F3F757140374287B8F7D82 /* LoginVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		1509C77EDF7DEE437D367B809D9F90C8 /* Pods_AndreySandbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AndreySandbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1509C77EDF7DEE437D367B809D9F90C8 /* Pods_AndreySandbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AndreySandbox.framework; path = "Pods-AndreySandbox.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		181F8A332E336771B370A9D07CCA85CD /* ImageDownloader.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageDownloader.swift; path = Sources/ImageDownloader.swift; sourceTree = "<group>"; };
 		2022C621B07AAD18AC9502EEA236AF95 /* ImageView+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "ImageView+Kingfisher.swift"; path = "Sources/ImageView+Kingfisher.swift"; sourceTree = "<group>"; };
 		2A8B4D1ECB7D4D3FB69AE0B59D8F1395 /* ThumbnailModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ThumbnailModel.swift; sourceTree = "<group>"; };
@@ -166,7 +166,7 @@
 		6EE5456ED2CFCF4987C252573F2F914D /* Pods-AndreySandbox-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AndreySandbox-frameworks.sh"; sourceTree = "<group>"; };
 		6F3B54DE16C5C6D51E31DFD540F9B72E /* iconLocked_old.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; path = iconLocked_old.png; sourceTree = "<group>"; };
 		704CDE861A212FEEEB8D21D8EE04903A /* VideoObjectModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VideoObjectModel.swift; sourceTree = "<group>"; };
-		751CA516C0B1EB28F917151ED6C4A973 /* ZypeAppleTVBase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = ZypeAppleTVBase.modulemap; sourceTree = "<group>"; };
+		751CA516C0B1EB28F917151ED6C4A973 /* ZypeAppleTVBase.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ZypeAppleTVBase.modulemap; sourceTree = "<group>"; };
 		76E6FA316A2FB5ED31C7DF3946FC075A /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/ImageTransition.swift; sourceTree = "<group>"; };
 		79FDFB0308E31EAF93AB33823341383B /* ThreadHelper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ThreadHelper.swift; path = Sources/ThreadHelper.swift; sourceTree = "<group>"; };
 		7FB4658274E2B7DBFD35AE53503F1A82 /* BaseUrl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BaseUrl.swift; sourceTree = "<group>"; };
@@ -175,28 +175,28 @@
 		84C42C1E4DED9EE447C8F77AEF7092B1 /* Pods-AndreySandbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AndreySandbox.debug.xcconfig"; sourceTree = "<group>"; };
 		85AE360AD42AB480ACFCA5F95CA417F9 /* ZypeJSONConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ZypeJSONConstants.swift; sourceTree = "<group>"; };
 		86AAEE33323985C90D9A7CA4F1156839 /* CacheSerializer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CacheSerializer.swift; path = Sources/CacheSerializer.swift; sourceTree = "<group>"; };
-		87BA92803A5ACA344F2052197E8F98B7 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Kingfisher.modulemap; sourceTree = "<group>"; };
+		87BA92803A5ACA344F2052197E8F98B7 /* Kingfisher.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Kingfisher.modulemap; sourceTree = "<group>"; };
 		89715C4EEF276E23657A4DA5DC4477F2 /* ZobjectModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ZobjectModel.swift; sourceTree = "<group>"; };
 		9052257C4622C54A3A563AAFF4F29C26 /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Box.swift; sourceTree = "<group>"; };
 		93082353ABCA86FF4291AF30B563DA04 /* DeviceLinkingVC.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DeviceLinkingVC.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		958C3A66B57F20434FE3464B1BA9AC9F /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
 		A57C7872709BC38DD43CEE3DFD0D2AFC /* Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Kingfisher.swift; path = Sources/Kingfisher.swift; sourceTree = "<group>"; };
 		A65786D40A834DC4284F9286D8127934 /* ConsumerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ConsumerModel.swift; sourceTree = "<group>"; };
 		A6A99EF9CC6C96C5330B14C12F68BF61 /* ZypeAppleTVBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ZypeAppleTVBase.swift; sourceTree = "<group>"; };
 		A9A541C7B207216F43059E711605CA17 /* Pods-AndreySandbox-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AndreySandbox-acknowledgements.markdown"; sourceTree = "<group>"; };
 		ABD6FE22FE57E83DF34D8C7F583149EB /* Pods-AndreySandbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AndreySandbox-dummy.m"; sourceTree = "<group>"; };
-		ACBFE1ECACC3958159EF22003108022E /* Pods-AndreySandbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AndreySandbox.modulemap"; sourceTree = "<group>"; };
+		ACBFE1ECACC3958159EF22003108022E /* Pods-AndreySandbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-AndreySandbox.modulemap"; sourceTree = "<group>"; };
 		AED80C6FCFAB800DF9D6068A836F744B /* QueryCategoriesModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QueryCategoriesModel.swift; sourceTree = "<group>"; };
 		AF4408F5D23E31AD1697BAA488321D1A /* ZypeCacheManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ZypeCacheManager.swift; sourceTree = "<group>"; };
 		B056F6C813382BD2206ED1E7D3BF39A6 /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
 		B25A824639A1ECCBEE271565BC6B8015 /* SubscriptionModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
 		B67C57E323361BC1F1E745176D641D7F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		B7275C5A8E7946367AA0613E491156C3 /* CategoryValueModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CategoryValueModel.swift; sourceTree = "<group>"; };
-		BB5C5B43897D665714E1C040B9B916DB /* ZypeAppleTVBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZypeAppleTVBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB5C5B43897D665714E1C040B9B916DB /* ZypeAppleTVBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZypeAppleTVBase.framework; path = ZypeAppleTVBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCCFC0F863F892E259DC55E9991F558 /* ZypeFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ZypeFactory.swift; sourceTree = "<group>"; };
 		BCC93F53262E7A340D55CBE1DFF2F007 /* Resource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Sources/Resource.swift; sourceTree = "<group>"; };
-		C34DF1B3D63D8FD67A6AD6C428FF8385 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C34DF1B3D63D8FD67A6AD6C428FF8385 /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51749310FF2872C2E44DF0A3A659311 /* Kingfisher-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Kingfisher-dummy.m"; sourceTree = "<group>"; };
 		C89B09332A2137501B15814A7E7DE235 /* FavoriteModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
 		C8ABF0BC0210176290EEB91DFDFC91F5 /* ZypeLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ZypeLog.swift; sourceTree = "<group>"; };
@@ -219,7 +219,7 @@
 		F90DD2CB7B5C7BA08E4397C1689B0A8A /* Pods-AndreySandbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AndreySandbox-umbrella.h"; sourceTree = "<group>"; };
 		F90F7E845F15DC6AB7A55762EA95D872 /* VimeoUrl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = VimeoUrl.swift; sourceTree = "<group>"; };
 		FC52969CA13D7216D21E957EB9CF87C3 /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/KingfisherManager.swift; sourceTree = "<group>"; };
-		FE54D7B3831EF7173FA3750AE53EC865 /* ZypeAppleTVBaseResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZypeAppleTVBaseResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE54D7B3831EF7173FA3750AE53EC865 /* ZypeAppleTVBaseResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ZypeAppleTVBaseResources.bundle; path = ZypeAppleTVBaseResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		FED25C1B18FF90F626C5BD4DACDF25EA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -273,6 +273,7 @@
 				D4CD2FEE4D25ABE2B872FEEFEFDFE151 /* Utilities */,
 				E3470DDDD04D674F89BCF2FCE0650A38 /* ViewControllers */,
 			);
+			name = ZypeAppleTVBase;
 			path = ZypeAppleTVBase;
 			sourceTree = "<group>";
 		};
@@ -289,6 +290,7 @@
 				89715C4EEF276E23657A4DA5DC4477F2 /* ZobjectModel.swift */,
 				F0A2A74466EAF978BC30AA223B087E20 /* ZobjectTypeModel.swift */,
 			);
+			name = ResponseModels;
 			path = ResponseModels;
 			sourceTree = "<group>";
 		};
@@ -314,6 +316,7 @@
 				D7030D681A4DE2E4CDDC258E873FEAA3 /* ZypeDataManager.swift */,
 				577707B74F02DECEAE01D17C597D8ACB /* ZypeTokenManager.swift */,
 			);
+			name = Managers;
 			path = Managers;
 			sourceTree = "<group>";
 		};
@@ -333,6 +336,7 @@
 			children = (
 				581EF34658BA1A8CF981AA0EE14FA106 /* ZypeAppSettings.swift */,
 			);
+			name = Helpers;
 			path = Helpers;
 			sourceTree = "<group>";
 		};
@@ -348,6 +352,7 @@
 				793B78C6B05240147D59717DD8F27FB1 /* QueryModels */,
 				17902DDD3E602D331EC6729B25A12E90 /* ResponseModels */,
 			);
+			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -356,6 +361,7 @@
 			children = (
 				31B672FC988884475D73AAE2FD5F7CF2 /* DeviceLinking.storyboard */,
 			);
+			name = Layouts;
 			path = Layouts;
 			sourceTree = "<group>";
 		};
@@ -366,6 +372,7 @@
 				F90F7E845F15DC6AB7A55762EA95D872 /* VimeoUrl.swift */,
 				BBCCFC0F863F892E259DC55E9991F558 /* ZypeFactory.swift */,
 			);
+			name = Factories;
 			path = Factories;
 			sourceTree = "<group>";
 		};
@@ -396,6 +403,7 @@
 				B056F6C813382BD2206ED1E7D3BF39A6 /* UIButton+Kingfisher.swift */,
 				ABE013B9AA796E399C5FB3C7EB9373F5 /* Support Files */,
 			);
+			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -411,6 +419,7 @@
 				5BC352D466B6DE9D704034712AEA66B5 /* QueryZobjectsModel.swift */,
 				0B4E911A115CF396F7A6A2AB54DF9A6B /* QueryZobjectTypesModel.swift */,
 			);
+			name = QueryModels;
 			path = QueryModels;
 			sourceTree = "<group>";
 		};
@@ -460,6 +469,7 @@
 			children = (
 				CCBEBD56159AE4035EC84D16CAE8C46B /* ZypeRESTController.swift */,
 			);
+			name = API;
 			path = API;
 			sourceTree = "<group>";
 		};
@@ -469,6 +479,7 @@
 				D01E1CC7DDD32E8A8F21C2399B98D01B /* Images */,
 				68551AA8AB3BBE94BA0AA06A7A23B24A /* Layouts */,
 			);
+			name = ZypeAppleTVBaseResources;
 			path = ZypeAppleTVBaseResources;
 			sourceTree = "<group>";
 		};
@@ -527,6 +538,7 @@
 				2B8E6D752FB3814073066FB896270A22 /* iconUnlocked.png */,
 				33CABE3D66E3006DE092298F6D4F193C /* iconUnlocked_old.png */,
 			);
+			name = Images;
 			path = Images;
 			sourceTree = "<group>";
 		};
@@ -537,6 +549,7 @@
 				C8ABF0BC0210176290EEB91DFDFC91F5 /* ZypeLog.swift */,
 				6E6733EDF44B8C2F437FCFF76BD58AFA /* ZypeUtilities.swift */,
 			);
+			name = Utilities;
 			path = Utilities;
 			sourceTree = "<group>";
 		};
@@ -567,6 +580,7 @@
 				DA19A0C4FFA29C9C15E99D77661FAE67 /* LogoutVC.swift */,
 				4EB816465262617402673AE89093211D /* RegisterVC.swift */,
 			);
+			name = ViewControllers;
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
@@ -578,6 +592,7 @@
 				D5881F0C88A0E93CC390581FB97E153A /* ZypeErrorConstants.swift */,
 				85AE360AD42AB480ACFCA5F95CA417F9 /* ZypeJSONConstants.swift */,
 			);
+			name = Constants;
 			path = Constants;
 			sourceTree = "<group>";
 		};
