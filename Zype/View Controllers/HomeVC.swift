@@ -90,15 +90,13 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
         }
         
         ZypeAppleTVBase.sharedInstance.getPlaylists(queryModel, completion: {[unowned self] (playlists: Array<PlaylistModel>?, error: NSError?) in
-            if(error == nil && playlists != nil) {
+            if error == nil && playlists != nil {
                 self.playlists = playlists!
-                
                 self.getFeaturedVideos(callback: {[unowned self] in
                     self.fillSections()
                 })
-                
-                
-            } else {
+            }
+            else {
                 self.fillSections()
                 self.showErrorInfo(error?.localizedDescription)
             }
