@@ -80,8 +80,9 @@ class PurchaseVC: UIViewController {
         if !ZypeUtilities.isDeviceLinked() {
             ZypeUtilities.presentRegisterVC(self)
         }
-        
-        self.purchase(Const.productIdentifiers[sender.tag])
+        else {
+            self.purchase(Const.productIdentifiers[sender.tag])
+        }
     }
     
     @IBAction func onLogin(_ sender: UIButton) {

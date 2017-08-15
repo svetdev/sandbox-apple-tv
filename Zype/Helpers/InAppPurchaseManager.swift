@@ -279,6 +279,7 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
             if let trans:SKPaymentTransaction = transaction as? SKPaymentTransaction {
                 switch trans.transactionState {
                 case .purchasing:
+                    
                     handlePurchasingState(for: trans, in: queue)
                     
                 case .purchased, .restored, .failed:
@@ -305,7 +306,7 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
          shared_key - Const.appStorePassword
          
          let receiptDictionary = ["receipt-data" : receiptData.base64EncodedString(),
-         "password" : Const.appstorePassword]
+         "password" : Const.appstorePassword
          let requestData = try! JSONSerialization.data(withJSONObject: receiptDictionary, options: [])
          var storeRequest = URLRequest(url: Const.kStoreURL)
          storeRequest.httpMethod = "POST"
@@ -326,12 +327,12 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
         let receipt = receiptURL()
         let sharedKey = Const.appstorePassword
         
-        let biFrostDict = ["consumer_id" : consumerId,
-                           "site_id" : siteId,
-                           "subscription_plan_id" : subscriptionPlanId,
-                           "device_type" : deviceType,
-                           "receipt" : receipt,
-                           "shared_key" : sharedKey]
+        let biFrostDict: [String : Any] = ["consumer_id" : consumerId ?? "",
+                                           "site_id" : siteId,
+                                           "subscription_plan_id" : subscriptionPlanId,
+                                           "device_type" : deviceType,
+                                           "receipt" : receipt ?? "",
+                                           "shared_key" : sharedKey]
         let requestData = try! JSONSerialization.data(withJSONObject: biFrostDict, options: [])
         var storeRequest = URLRequest(url: biFrost)
         storeRequest.httpMethod = "POST"
@@ -340,7 +341,7 @@ class InAppPurchaseManager: NSObject, SKPaymentTransactionObserver {
         
         let task = session.dataTask(with: storeRequest) { (data, response, error) in
             if error != nil {
-                print(error?.localizedDescription ?? "- BiFrost - \n Something went wrong \n- BiFrost -")
+                print(error?.localizedDescription ?? "-❄️ BiFrost ❄️- \n Something went wrong \n-❄️ BiFrost ❄️-")
             }
             if data != nil {
                 print("-----------")
