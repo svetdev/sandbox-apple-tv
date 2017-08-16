@@ -15,7 +15,10 @@ class SplashScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-         loadAppInfo()
+        ZypeUtilities.loginUser() {
+            (result: String) in
+            self.loadAppInfo()
+        }
     }
     
     
@@ -50,15 +53,13 @@ class SplashScreenVC: UIViewController {
                 self.parseResponse(tvOSSettings: tvOSSettings)
             }
         })
-        
-        ZypeUtilities.loginUser() {
-            (result: String) in
-            NotificationCenter.default.post(name: Notification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
-        }
 
         if Const.kLimitLivestreamEnabled {
             ZypeUtilities.loadLimitLivestreamZObject()
         }
+        
+        let defaults = UserDefaults.standard
+        defaults.setValue(Const.kFavoritesViaAPI, forKey: "favoritesViaAPI")
     }
     
     func parseResponse(tvOSSettings: ZobjectModel) {
