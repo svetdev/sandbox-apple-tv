@@ -15,8 +15,7 @@ class SplashScreenVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ZypeUtilities.loginUser() {
-            (result: String) in
+        ZypeUtilities.loginUser() { (result: String) in
             self.loadAppInfo()
         }
     }
