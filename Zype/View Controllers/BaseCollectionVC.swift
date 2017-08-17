@@ -171,7 +171,7 @@ class BaseCollectionVC: UICollectionViewController {
         self.isHorizontal = true
         self.collectionView?.clipsToBounds = false
         self.configWithSections([section])
-        if(self.isInfinityScrolling) {
+        if self.isInfinityScrolling {
             self.collectionView?.scrollToItem(at: IndexPath(row: BaseCollectionVC.maxCellIndex / 2, section: 0), at: .centeredHorizontally, animated: false)
         }
         return section
