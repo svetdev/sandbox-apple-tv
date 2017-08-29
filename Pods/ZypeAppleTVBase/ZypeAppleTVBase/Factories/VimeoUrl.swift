@@ -13,10 +13,11 @@ class VimeoUrl: BaseUrl, VideoUrl {
     // add check here to see if user is logged in and if he is change url with access token
     
     fileprivate var kPlayerGetVideo:String {
+        let uuid = ZypeAppSettings.sharedInstance.deviceId()
         if ((ZypeAppleTVBase.sharedInstance.consumer?.isLoggedIn) == true){
-            return "%@/embed/%@.json?access_token=%@&dvr=false"
+            return "%@/embed/%@.json?access_token=%@&dvr=false&uuid=\(uuid)"
         } else {
-            return "%@/embed/%@.json?app_key=%@&dvr=false"
+            return "%@/embed/%@.json?app_key=%@&dvr=false&uuid=\(uuid)"
         }
     }
     

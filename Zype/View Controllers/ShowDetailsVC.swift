@@ -79,10 +79,6 @@ class ShowDetailsVC: CollectionContainerVC {
         self.titleLabel.text = self.selectedShow.titleString
         self.loadVideos()
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCollection), name: NSNotification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
-        
-        if Const.kNativeSubscriptionEnabled {
-            InAppPurchaseManager.sharedInstance.refreshSubscriptionStatus()
-        }
     }
     
     func reloadCollection() {
@@ -96,9 +92,10 @@ class ShowDetailsVC: CollectionContainerVC {
         if let path = self.indexPathForselectedVideo() {
             self.collectionVC.collectionView?.scrollToItem(at: path, at: .centeredHorizontally, animated: false)
         }
-        self.refreshButtons()
         
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted), object: nil)
+        InAppPurchaseManager.sharedInstance.refreshSubscriptionStatus()
+        self.refreshButtons()
     }
     
     // MARK: - Layout & Focus
@@ -252,7 +249,7 @@ class ShowDetailsVC: CollectionContainerVC {
         case .watchAdFree:
             self.handleSubscribe()
         case .favorite:
-            self.handleFavorites()
+            self.handleFavorite()
         }
     }
     
@@ -292,7 +289,7 @@ class ShowDetailsVC: CollectionContainerVC {
         })
     }
     
-    fileprivate func handleFavorites() {
+    fileprivate func handleFavorite() {
         if Const.kFavoritesViaAPI {
             guard ZypeAppleTVBase.sharedInstance.consumer?.isLoggedIn == true else {
                 ZypeUtilities.presentLoginVC(self)
@@ -364,12 +361,7 @@ extension ShowDetailsVC {
     
     fileprivate func getPlaySubscribeButton() -> ButtonType {
         if selectedVideo.subscriptionRequired {
-            if Const.kNativeSubscriptionEnabled {
-                if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
-                    return .subscribe
-                }
-            }
-            else if Const.kNativeToUniversal {
+            if Const.kNativeSubscriptionEnabled || Const.kNativeToUniversal {
                 if !InAppPurchaseManager.sharedInstance.lastSubscribeStatus {
                     return .subscribe
                 }

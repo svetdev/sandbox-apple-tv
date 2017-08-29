@@ -1,19 +1,25 @@
 PODS:
   - Kingfisher (3.10.3)
-  - ZypeAppleTVBase (0.4.9)
+  - ZypeAppleTVBase (0.5.1)
 
 DEPENDENCIES:
   - Kingfisher (~> 3.0)
-  - ZypeAppleTVBase (from `../ZypeAppleTVBase`)
+  - ZypeAppleTVBase (from `https://github.com/zype/ZypeAppleTVBase.git`, tag `0.5.1`)
 
 EXTERNAL SOURCES:
   ZypeAppleTVBase:
-    :path: ../ZypeAppleTVBase
+    :git: https://github.com/zype/ZypeAppleTVBase.git
+    :tag: 0.5.1
+
+CHECKOUT OPTIONS:
+  ZypeAppleTVBase:
+    :git: https://github.com/zype/ZypeAppleTVBase.git
+    :tag: 0.5.1
 
 SPEC CHECKSUMS:
   Kingfisher: a0ac82dc5bcf0388dd74b294cf2cc13730c63436
-  ZypeAppleTVBase: 1e7cce83e0032a938a536898a2921e5fdc5d8586
+  ZypeAppleTVBase: ce3bc129dcd93be3506d6abc24b35691e6ba621d
 
-PODFILE CHECKSUM: 5554bdcee1e8a6f6c7a6218f333614bbe1970625
+PODFILE CHECKSUM: b4e75930e1b896b3127ec13ad5aa105e6bfef4d3
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

@@ -36,9 +36,7 @@ class HomeVC: CollectionContainerVC, UINavigationControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: "ready_to_load_playlists"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadCollection), name: NSNotification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
         
-        if Const.kNativeSubscriptionEnabled {
-            InAppPurchaseManager.sharedInstance.refreshSubscriptionStatus()
-        }
+        InAppPurchaseManager.sharedInstance.refreshSubscriptionStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {

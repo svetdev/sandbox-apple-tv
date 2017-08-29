@@ -15,6 +15,7 @@ class PurchaseVC: UIViewController {
     @IBOutlet var subscriptionButtons: [UIButton]!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +26,22 @@ class PurchaseVC: UIViewController {
                 button.setTitle(String(format: localized("Subscription.ButtonFormat"), arguments: [product.localizedTitle, product.localizedPrice(), self.getDuration(productID)]), for: .normal)
             }
         }
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(spinForPurchase),
+                                               name: NSNotification.Name(rawValue: "kSpinForPurchase"),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(unspinForPurchase),
+                                               name: NSNotification.Name(rawValue: "kUnspinForPurchase"),
+                                               object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUserLogin()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "kDismissRegister"), object: nil)
+        unspinForPurchase()
     }
     
     // MARK: - Get & Setup
@@ -78,6 +90,10 @@ class PurchaseVC: UIViewController {
     
     @IBAction func onPlanSelected(_ sender: UIButton) {
         if !ZypeUtilities.isDeviceLinked() {
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(onPurchased),
+                                                   name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted),
+                                                   object: nil)
             ZypeUtilities.presentRegisterVC(self)
         }
         else {
@@ -86,10 +102,35 @@ class PurchaseVC: UIViewController {
     }
     
     @IBAction func onLogin(_ sender: UIButton) {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onPurchased),
+                                               name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted),
+                                               object: nil)
         ZypeUtilities.presentLoginMethodVC(self)
     }
     
     func purchase(_ productID: String) {
         InAppPurchaseManager.sharedInstance.purchase(productID)
+    }
+    
+    func onPurchased() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func spinForPurchase() {
+        self.activityIndicator.transform = CGAffineTransform(scaleX: 3, y: 3)
+        self.activityIndicator.startAnimating()
+        
+        for view in self.view.subviews {
+            view.isUserInteractionEnabled = false
+        }
+    }
+    
+    func unspinForPurchase() {
+        self.activityIndicator.stopAnimating()
+        
+        for view in self.view.subviews {
+            view.isUserInteractionEnabled = true
+        }
     }
 }
