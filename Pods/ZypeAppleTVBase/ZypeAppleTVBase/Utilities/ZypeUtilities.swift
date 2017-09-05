@@ -10,23 +10,23 @@ import Foundation
 
 open class ZypeUtilities {
     
-    //MARK: - Device Linking zObject. 
+    //MARK: - Device Linking zObject.
     //Needs to be configured in admin panel for device linking to work
-
+    
     open static func loadDeviceLinkingZObject() {
         let type = QueryZobjectsModel()
         type.zobjectType = "device_linking"
         ZypeAppleTVBase.sharedInstance.getZobjects(type, completion: {(objects: Array<ZobjectModel>?, error: NSError?) in
             if let _ = objects, objects!.count > 0 {
-               //enable device linking in the app
-                 ZypeAppSettings.sharedInstance.deviceLinking.isEnabled = true
+                //enable device linking in the app
+                ZypeAppSettings.sharedInstance.deviceLinking.isEnabled = true
                 
                 //load url for the client
-                 let dLinking = objects?.first
+                let dLinking = objects?.first
                 ZypeAppSettings.sharedInstance.deviceLinking.linkUrl =  (dLinking?.getStringValue("link_url"))!
                 
                 //check if device is linked
-                 ZypeUtilities.checkDeviceLinkingWithServer()
+                ZypeUtilities.checkDeviceLinkingWithServer()
                 
             } else {
                 print("no zObject Device Linking")
@@ -48,7 +48,7 @@ open class ZypeUtilities {
                 caller.present(vc, animated: true, completion: nil)
             }else {
                 assertionFailure("Could not load the bundle")
-                }
+            }
         }else {
             assertionFailure("Could not create a path to the bundle")
             
@@ -130,9 +130,9 @@ open class ZypeUtilities {
                     ZypeAppSettings.sharedInstance.limitLivestream.isSet = true
                 }
                 catch _ {
-                     ZypeLog.error("Exception: ZobjectModel - Limit")
+                    ZypeLog.error("Exception: ZobjectModel - Limit")
                 }
-                 ZypeAppSettings.sharedInstance.limitLivestream.refreshRate = Int((limitLivestream?.getStringValue("refresh_rate"))!)!
+                ZypeAppSettings.sharedInstance.limitLivestream.refreshRate = Int((limitLivestream?.getStringValue("refresh_rate"))!)!
                 
                 ZypeAppSettings.sharedInstance.limitLivestream.message =  (limitLivestream?.getStringValue("message"))!
             }
@@ -145,12 +145,12 @@ open class ZypeUtilities {
     
     open static func livestreamStopped() {
         let playedForDuration = Int(Date().timeIntervalSince1970 - ZypeAppSettings.sharedInstance.limitLivestream.starts)
-         ZypeAppSettings.sharedInstance.limitLivestream.played = ZypeAppSettings.sharedInstance.limitLivestream.played + playedForDuration
+        ZypeAppSettings.sharedInstance.limitLivestream.played = ZypeAppSettings.sharedInstance.limitLivestream.played + playedForDuration
         print("stopped playing: \(ZypeAppSettings.sharedInstance.limitLivestream.played)")
     }
     
     open static func livestreamLimitReached() -> Bool {
-       //if limit livestream not set return false
+        //if limit livestream not set return false
         if (!ZypeAppSettings.sharedInstance.limitLivestream.isSet){
             return false
         }
@@ -162,7 +162,8 @@ open class ZypeUtilities {
         }
     }
     
-    //MARK: - Login
+    // MARK: - Login
+    
     open static func presentLoginVC(_ caller: UIViewController) {
         let podBundle = Bundle(for: ZypeAppleTVBase.self)
         
@@ -182,35 +183,54 @@ open class ZypeUtilities {
         }
     }
     
+    open static func presentRegisterVC(_ caller: UIViewController) {
+        let podBundle = Bundle(for: ZypeAppleTVBase.self)
+        
+        guard let bundleURL = podBundle.url(forResource: "ZypeAppleTVBaseResources", withExtension: "bundle") else {
+            assertionFailure("Could not create a path to the bundle")
+            return
+        }
+        
+        guard let bundle = Bundle(url: bundleURL) else {
+            assertionFailure("Could not load the bundle")
+            return
+        }
+        
+        let storyboard = UIStoryboard(name: "DeviceLinking", bundle: bundle)
+        let vc = storyboard.instantiateViewController(withIdentifier: "RegisterVC") as! RegisterVC
+        caller.present(vc, animated: true, completion: nil)
+    }
+    
     open static func loginUser(_ completion: @escaping (_ result: String) -> Void) {
         let email =  UserDefaults.standard.object(forKey: kUserEmail) as! String?
         let password = UserDefaults.standard.object(forKey: kUserPassword) as! String?
-
-        if ((email == nil) || (password == nil)){
-              UserDefaults.standard.set(false, forKey: kDeviceLinkedStatus)
-        } else {
-            ZypeAppleTVBase.sharedInstance.login(email!, passwd: password!, completion:{ (logedIn: Bool, error: NSError?) in
-                print(logedIn)
-                if (error != nil) {
+        
+        if email == nil || password == nil {
+            completion("Not logged in")
+            UserDefaults.standard.set(false, forKey: kDeviceLinkedStatus)
+        }
+        else {
+            ZypeAppleTVBase.sharedInstance.login(email!, passwd: password!, completion:{ (loggedIn: Bool, error: NSError?) in
+                if error != nil {
                     completion("error")
                     return
                 }
                 
-                if (logedIn){
+                if loggedIn {
                     UserDefaults.standard.set(true, forKey: kDeviceLinkedStatus)
-                    if ((ZypeAppleTVBase.sharedInstance.consumer?.isLoggedIn) == true){
+                    if (ZypeAppleTVBase.sharedInstance.consumer?.isLoggedIn) == true {
                         print("YaY")
-                    } else {
+                    }
+                    else {
                         print("Nay :(")
                     }
-                    
-                } else {
+                }
+                else {
                     UserDefaults.standard.set(false, forKey: kDeviceLinkedStatus)
                 }
                 completion("Completed")
             })
         }
-       
     }
     
     open static func getLogoutVC() -> LogoutVC? {

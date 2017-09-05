@@ -7,6 +7,7 @@
 //
 
 import ZypeAppleTVBase
+import AdSupport
 
 protocol AdHelperProtocol: class {
     func getAdsFromResponse(_ playerObject: VideoObjectModel?) -> NSMutableArray
@@ -17,12 +18,15 @@ protocol AdHelperProtocol: class {
     func nextAdPlayer()
     func removeAdTimer()
     func removeAdPlayer()
+    func observeTimerForMidrollAds()
+    func playMidrollAds()
+    func removePeriodicTimeObserver()
 }
 
 extension PlayerVC: AdHelperProtocol {
     
     func getAdsFromResponse(_ playerObject: VideoObjectModel?) -> NSMutableArray {
-        var adsArray = NSMutableArray()
+        let adsArray = NSMutableArray()
         if let body = playerObject?.json?["response"]?["body"] as? NSDictionary {
             if let advertising = body["advertising"] as? NSDictionary{
                 let schedule = advertising["schedule"] as? NSArray
@@ -31,27 +35,53 @@ extension PlayerVC: AdHelperProtocol {
                 if (schedule != nil) {
                     for i in 0..<schedule!.count {
                         let adDict = schedule![i] as! NSDictionary
-                        let ad = adObject(offset: adDict["offset"] as? Double, tag:adDict["tag"] as? String)
+                        
+                        let tag = replaceAdMacros((adDict["tag"] as? String)!)
+                        let ad = adObject(offset: adDict["offset"] as? Double, tag: tag)
+                        
                         self.adsData.append(ad)
                     }
                 }
             }
         }
+        self.adsData = self.adsData.sorted(by: { $0.offset! > $1.offset! }) // sort for midroll
         
-        if self.adsData.count > 0 {
-            
-            for i in 0..<self.adsData.count {
-                let ad = self.adsData[i]
-                //preroll
-                if ad.offset == 0 {
-                    adsArray.add(DVVideoPlayBreak.playBreakBeforeStart(withAdTemplateURL: URL(string: ad.tag!)!))
-                }
-            }
-        }
-        else {
-            adsArray = NSMutableArray()
-        }
+        guard adsData.count > 0 else { return adsArray }
+        
+        adsArray.add(DVVideoPlayBreak.playBreakBeforeStart(withAdTemplateURL: URL(string: adsData[0].tag!)))
+        
         return adsArray
+    }
+    
+    fileprivate func replaceAdMacros(_ tag: String) -> String {
+        var string = tag
+        
+        let uuid = ZypeAppSettings.sharedInstance.deviceId()
+        let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as! String
+        let appBundle = Bundle.main.bundleIdentifier
+        let deviceType = 7
+        let deviceMake = "Apple"
+        let deviceModel = "AppleTV"
+        let deviceIfa = ASIdentifierManager.shared().advertisingIdentifier
+        let vpi = "mp4"
+        let appId = ZypeAppSettings.sharedInstance.deviceId()
+        
+        string = (string as NSString).replacingOccurrences(of: "[uuid]", with: "\(uuid)")
+        string = (string as NSString).replacingOccurrences(of: "[app_name]", with: "\(appName)")
+        if let bundle = appBundle {
+            string = (string as NSString).replacingOccurrences(of: "[app_bundle]", with: "\(bundle)")
+            string = (string as NSString).replacingOccurrences(of: "[app_domain]", with: "\(bundle)")
+        }
+        string = (string as NSString).replacingOccurrences(of: "[device_type]", with: "\(deviceType)")
+        string = (string as NSString).replacingOccurrences(of: "[device_make]", with: "\(deviceMake)")
+        string = (string as NSString).replacingOccurrences(of: "[device_model]", with: "\(deviceModel)")
+        if let ifa = deviceIfa {
+            string = (string as NSString).replacingOccurrences(of: "[device_ifa]", with: "\(ifa)")
+        }
+        string = (string as NSString).replacingOccurrences(of: "[vpi]", with: "\(vpi)")
+        string = (string as NSString).replacingOccurrences(of: "[app_id]", with: "\(appId)")
+        
+        return string
     }
     
     func playAds(adsArray: NSMutableArray, url: NSURL) {
@@ -82,7 +112,7 @@ extension PlayerVC: AdHelperProtocol {
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.addAdLabel), name: NSNotification.Name(rawValue: "adPlaying"), object: nil)
         
         //this is called when there are ad tags, but they don't return any ads
-        NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.removeAdsAndPlayVideo), name: NSNotification.Name(rawValue: "noAdsToPlay"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.resumePlayingFromAds), name: NSNotification.Name(rawValue: "noAdsToPlay"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(PlayerVC.contentDidFinishPlaying(_:)), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.adPlayer!.contentPlayerItem)
     }
@@ -93,7 +123,7 @@ extension PlayerVC: AdHelperProtocol {
                                             selector: #selector(PlayerVC.adTimerDidFire),
                                             userInfo: nil, repeats: false)
     }
-
+    
     func adTimerDidFire() {
         self.isSkippable = false
         if let viewWithTag = self.view.viewWithTag(1001) {
@@ -165,10 +195,15 @@ extension PlayerVC: AdHelperProtocol {
         }
         else {
             self.removeAdPlayer()
-            self.setupVideoPlayer()
+            if let player = self.playerController.player {
+                player.play()
+            }
+            else {
+                self.setupVideoPlayer()
+            }
         }
     }
-
+    
     func removeAdTimer() {
         self.isSkippable = false
         if let viewWithTag = self.view.viewWithTag(1001) {
@@ -182,7 +217,7 @@ extension PlayerVC: AdHelperProtocol {
             self.adTimer.invalidate()
         }
     }
-
+    
     func removeAdPlayer() {
         self.isSkippable = false
         if let viewWithTag = self.view.viewWithTag(1001) {
@@ -203,6 +238,41 @@ extension PlayerVC: AdHelperProtocol {
         self.playerView!.removeFromSuperview()
         self.playerView = nil
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    func observeTimerForMidrollAds() {
+        let adTimer = self.playerController.player?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: DispatchQueue.main) { (time) in
+            guard self.adsData.count > 0 else {
+                self.removePeriodicTimeObserver()
+                return
+            }
+            
+            guard let offsetMSeconds = self.adsData.last!.offset else { return }
+            let offset = Int(offsetMSeconds) / 1000
+            let currentTime = Int(CMTimeGetSeconds(time))
+            
+            if currentTime > offset + 2 { // user seeked passed this ad - 4 seconds to compensate for the + 2 below
+                _ = self.adsData.popLast()
+            }
+            if currentTime == offset + 1 { // 2 seconds added to offset to save most relevant 10 second chunk
+                self.playMidrollAds()
+            }
+        }
+        self.timeObserverToken = adTimer
+    }
+
+    func playMidrollAds() {
+        self.playerController.player?.pause()
+        self.playAds(adsArray: self.adsArray!, url: self.url!)
+        _ = self.adsData.popLast()
+    }
+    
+    func removePeriodicTimeObserver() {
+        if let token = timeObserverToken {
+            self.playerController.player?.removeTimeObserver(token)
+            timeObserverToken = nil
+        }
     }
     
 }

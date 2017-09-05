@@ -472,6 +472,24 @@ class ZypeDataManager : NSObject {
     }
 
     //MARK: play list
+    func getPlaylist(with id: String, toPlaylist: [PlaylistModel] = [PlaylistModel](), completion: @escaping (_ playlist: [PlaylistModel], _ error: NSError?) -> Void) {
+        var playlist = toPlaylist
+        self.serviceController.getPlaylist(with: id) { (jsonDic, error) in
+            var err = error
+            if jsonDic != nil {
+                err = self.isServiceError(jsonDic!)
+                if err == nil {
+                    let dict = jsonDic![kJSONResponse]
+                    playlist.append(PlaylistModel(fromJson: dict as! [String: AnyObject]))
+                    
+                }
+            }
+            DispatchQueue.main.async(execute: {
+                completion(self.cacheManager.synchronizePlaylists(playlist), err)
+            })
+        }
+    }
+    
     func getPlaylists(_ queryModel: QueryPlaylistsModel, toArray: Array<PlaylistModel> = Array<PlaylistModel>(),
         completion:@escaping (_ playlists: Array<PlaylistModel>, _ error: NSError?) -> Void)
     {
@@ -590,8 +608,12 @@ class ZypeDataManager : NSObject {
     }
     
     
-    fileprivate func loadFavorites(_ page: Int = kApiFirstPage)
-    {
+    fileprivate func loadFavorites(_ page: Int = kApiFirstPage) {
+        let defaults = UserDefaults.standard
+        if let favorites = defaults.object(forKey: "favoritesViaAPI") as? Bool {
+            guard favorites else { return }
+        }
+        
         tokenManager.accessToken({ (token) -> Void in
             self.serviceController.getFavorites(token, consumerId: self.consumer.ID, page: page, completion: { (jsonDic, error) -> Void in
                 let favorites = self.jsonToFavoriteArrayPrivate(jsonDic)

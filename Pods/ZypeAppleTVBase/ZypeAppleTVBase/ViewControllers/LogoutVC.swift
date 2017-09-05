@@ -9,8 +9,8 @@
 import Foundation
 
 open class LogoutVC: UIViewController {
-
- 
+    
+    
     @IBOutlet weak var logoutButton: UIButton!
     
     @IBOutlet weak var logoutTitle: UILabel!
@@ -22,17 +22,16 @@ open class LogoutVC: UIViewController {
         //self.configureView()
         self.setupText()
     }
-
+    
     func setupText() {
         let pageHeaderText = UserDefaults.standard.object(forKey: kLogoutPageHeader)
         if (pageHeaderText != nil) {
-           self.logoutTitle.text = pageHeaderText as? String
+            self.logoutTitle.text = pageHeaderText as? String
         }
         let pageFooterText = UserDefaults.standard.object(forKey: kLogoutPageFooter)
         if (pageFooterText != nil) {
             self.logoutFooter.text = pageFooterText as? String
         }
-
     }
     
     @IBAction func logoutClicked(_ sender: UIButton) {
@@ -43,10 +42,15 @@ open class LogoutVC: UIViewController {
         UserDefaults.standard.removeObject(forKey: kUserPassword)
         
         let defaults = UserDefaults.standard
-        let favorites = [String]()
-        defaults.set(favorites, forKey: kFavoritesKey)
-        defaults.synchronize()
         
-         NotificationCenter.default.post(name: Notification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
+        if let favorites = defaults.object(forKey: "favoritesViaAPI") as? Bool {
+            if favorites {
+                let favorites = [String]()
+                defaults.set(favorites, forKey: kFavoritesKey)
+                defaults.synchronize()
+            }
+        }
+        
+        NotificationCenter.default.post(name: Notification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
     }
 }

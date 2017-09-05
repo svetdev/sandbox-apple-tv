@@ -30,6 +30,7 @@ class ZypeRESTController: NSObject, URLSessionDelegate {
     fileprivate let kCreateSubscription = "%@/subscriptions/?app_key=%@&subscription[%@]=&@"
 
     //playlists
+    fileprivate let kGetPlaylist = "%@/playlists/%@?app_key=%@"
     fileprivate let kGetPlaylists = "%@/playlists?app_key=%@&page=%d&per_page=%d&active=%@&keyword=%@&category[%@]=%@&sort=priority&order=%@&parent_id=%@"
     fileprivate let kGetRetrieveVideosInPlaylist = "%@/playlists/%@/videos?app_key=%@&page=%d&per_page=%d"
 
@@ -242,6 +243,12 @@ class ZypeRESTController: NSObject, URLSessionDelegate {
     }
 
     //MARK: Playlist
+    func getPlaylist(with id: String, completion: @escaping ([String : AnyObject]?, NSError?) -> Void) {
+        let urlAsString = String(format: kGetPlaylist, self.keys.apiDomain, id, keys.appKey)
+        print("\n\n\n -- URL: \(urlAsString) -- \n\n\n")
+        getQuery(urlAsString, withCompletion: completion)
+    }
+    
     func getPlaylists(_ queryModel: QueryPlaylistsModel, completion:@escaping (Dictionary<String, AnyObject>?, NSError?) -> Void)
     {
         let perPage = queryModel.perPage == 0 ? kApiMaxItems : queryModel.perPage

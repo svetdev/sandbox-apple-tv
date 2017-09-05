@@ -26,12 +26,12 @@ class LoginVC: UIViewController {
 
     func setupText() {
         let pageHeaderText = UserDefaults.standard.object(forKey: kLoginPageHeader)
-        if (pageHeaderText != nil) {
-           self.loginTitle.text = (pageHeaderText as! String)
+        if pageHeaderText != nil {
+           self.loginTitle.text = pageHeaderText as? String
         }
         let pageFooterText = UserDefaults.standard.object(forKey: kLoginPageFooter)
-        if (pageFooterText != nil) {
-            self.loginFooter.text = (pageFooterText as! String)
+        if pageFooterText != nil {
+            self.loginFooter.text = pageFooterText as? String
         }
 
     }
@@ -54,40 +54,43 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func loginClicked(_ sender: UIButton) {
-        if ((self.emailField.text?.isEmpty) == true) {
+        if self.emailField.text?.isEmpty == true {
             self.presentAlertWithText("Please enter your Email.")
             return
         }
-        if ((self.passwordField.text?.isEmpty) == true) {
+        if self.passwordField.text?.isEmpty == true {
             self.presentAlertWithText("Please enter your Password.")
             return
         }
         
-        if (!(self.emailField.text?.isEmpty)! && !(self.passwordField.text?.isEmpty)!) {
+        if !(self.emailField.text?.isEmpty)! && !(self.passwordField.text?.isEmpty)! {
             //store inputs in NSUserDefaults. We will be checking them on each app launch
             UserDefaults.standard.set(self.emailField.text!, forKey: kUserEmail)
             UserDefaults.standard.set(self.passwordField.text!, forKey: kUserPassword)
             
-            ZypeAppleTVBase.sharedInstance.login(self.emailField.text!, passwd: self.passwordField.text!, completion:{ (logedIn: Bool, error: NSError?) in
-                print(logedIn)
-                if (error != nil) {
+            ZypeAppleTVBase.sharedInstance.login(self.emailField.text!, passwd: self.passwordField.text!, completion:{ (loggedIn: Bool, error: NSError?) in
+                print(loggedIn)
+                if error != nil {
                     self.presentAlertWithText("Invalid Login and Password.")
                     return
                 }
                 
-                if (logedIn){
+                if loggedIn {
                      UserDefaults.standard.set(true, forKey: kDeviceLinkedStatus)
                       NotificationCenter.default.post(name: Notification.Name(rawValue: kZypeReloadScreenNotification), object: nil)
-                    self.dismiss(animated: true, completion: {_ in})
-                } else {
+                    self.dismiss(animated: true, completion: { _ in })
+                }
+                else {
                     UserDefaults.standard.set(false, forKey: kDeviceLinkedStatus)
                     ZypeAppleTVBase.sharedInstance.logOut()
                 }
-                
             })
         }
     }
     
+    @IBAction func registerClicked(_ sender: UIButton) {
+        ZypeUtilities.presentRegisterVC(self)
+    }
     
     func presentAlertWithText(_ message : String){
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -97,6 +100,5 @@ class LoginVC: UIViewController {
         alertController.addAction(ignoreAction)
 
         self.present(alertController, animated: true, completion: nil)
-
     }
 }
