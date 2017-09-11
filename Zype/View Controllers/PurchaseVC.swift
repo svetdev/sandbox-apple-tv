@@ -17,6 +17,8 @@ class PurchaseVC: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    var selectedPlan: String!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,6 +36,10 @@ class PurchaseVC: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(unspinForPurchase),
                                                name: NSNotification.Name(rawValue: "kUnspinForPurchase"),
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(completePurchase),
+                                               name: NSNotification.Name(rawValue: "kRegisterCompleted"),
                                                object: nil)
     }
     
@@ -94,6 +100,9 @@ class PurchaseVC: UIViewController {
                                                    selector: #selector(onPurchased),
                                                    name: NSNotification.Name(rawValue: InAppPurchaseManager.kPurchaseCompleted),
                                                    object: nil)
+
+            self.selectedPlan = Const.productIdentifiers[sender.tag]
+
             ZypeUtilities.presentRegisterVC(self)
         }
         else {
@@ -111,6 +120,10 @@ class PurchaseVC: UIViewController {
     
     func purchase(_ productID: String) {
         InAppPurchaseManager.sharedInstance.purchase(productID)
+    }
+
+    func completePurchase() {
+        self.purchase(self.selectedPlan)
     }
     
     func onPurchased() {
